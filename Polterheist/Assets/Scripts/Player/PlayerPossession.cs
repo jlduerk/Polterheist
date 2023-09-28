@@ -21,6 +21,7 @@ public class PlayerPossession : MonoBehaviour
         OnPossessionEndAction += OnPossessionEnd;
     }
 
+    #region Possession Actions
 
     public void TryPossess(Possessable possessable)
     {
@@ -36,7 +37,14 @@ public class PlayerPossession : MonoBehaviour
         currentlyPossessing.Eject();
     }
 
+    public void PassMovementInput(Vector2 inputVector)
+    {
+        // Just a stub - use this to 
+    }
+    #endregion Possession Actions
 
+
+    #region Possession Callbacks
     private void OnPossessionBegin(Possessable possessable, PlayerPossession possessor)
     {
         if (possessor == this)
@@ -54,6 +62,10 @@ public class PlayerPossession : MonoBehaviour
         }
     }
 
+    #endregion Possession Callbacks
+
+
+    #region Getters
 
     public Vector3 PossessableAttachPoint => possessableAttachPoint;
 
@@ -62,4 +74,6 @@ public class PlayerPossession : MonoBehaviour
         // TODO: Rigidbody may ultimately not be on same object
         return gameObject.GetComponent<Rigidbody>();
     }
+
+    #endregion Getters
 }
