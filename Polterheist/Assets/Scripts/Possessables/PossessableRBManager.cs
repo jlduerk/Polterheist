@@ -6,6 +6,7 @@ using UnityEngine;
  * This is placed on all Possessable objects that can be moved.
  */
 
+[RequireComponent(typeof(Rigidbody))]
 public class PossessableRBManager : MonoBehaviour
 {
     private SpringJoint springJoint = null;
@@ -30,6 +31,9 @@ public class PossessableRBManager : MonoBehaviour
         springJoint.connectedBody = rb;
         springJoint.autoConfigureConnectedAnchor = false;
         springJoint.connectedAnchor = anchorPoint;
+
+        // TODO: Find appropriate spring strength
+        // TODO: Might want to reduce gravity for possessables, so they don't drag as much
     }
 
 

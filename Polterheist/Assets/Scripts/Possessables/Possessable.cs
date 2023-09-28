@@ -5,17 +5,22 @@ using UnityEngine.Events;
 
 public class Possessable : MonoBehaviour
 {
-    // Handles Rigidbody logic, such as spring joints
-    [SerializeField] private PossessableRBManager rbManager = null;
-
     // Events to signal when something has become possessed
     [SerializeField] private UnityEvent<Possessable, PlayerPossession> OnPossessionBegin = new UnityEvent<Possessable, PlayerPossession>();
     [SerializeField] private UnityEvent<Possessable, PlayerPossession> OnPossessionEnd = new UnityEvent<Possessable, PlayerPossession>();
 
+    // Handles Rigidbody logic, such as spring joints
+    private PossessableRBManager rbManager = null;
 
     private PlayerPossession possessedBy = null;
-
     public bool IsPossessed => possessedBy != null;
+
+
+    private void Start()
+    {
+        // PossessableRBManager is optional - but get a reference to it if it's there
+        rbManager = GetComponent<PossessableRBManager>();
+    }
 
 
     // Return whether this Possessable is ready to be possessed
