@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class PlayerPossession : MonoBehaviour
 {
-    [SerializeField]
-    private Vector3 possessableAttachPoint;
+    [SerializeField] private Vector3 possessableAttachPoint;
+    [SerializeField] private PossessableDetector possessableDetector;
+
 
     // Actions triggered by Possessables
     public UnityAction<Possessable, PlayerPossession> OnPossessionBeginAction;
@@ -14,15 +16,49 @@ public class PlayerPossession : MonoBehaviour
 
     private Possessable currentlyPossessing;
 
+    private PlayerInput playerInputComponent = null;
+
     private void Start()
     {
+        playerInputComponent = GetComponent<PlayerInput>();
+        playerInputComponent.onActionTriggered += HandleInput;
+
         // Attach possession begin/end events to respective UnityActions
         OnPossessionBeginAction += OnPossessionBegin;
         OnPossessionEndAction += OnPossessionEnd;
     }
 
-    #region Possession Actions
+    /*
+     * Handle the general onActionTriggered event from PlayerInput component
+     * This is a little cumbersome in code, but seems more flexible than hooking up functions
+     * to UnityEvents created by the PlayerInput component (since we can make/control our own UnityEvents)
+     */
+    public void HandleInput(InputAction.CallbackContext context)
+    {
+        if (context.action.name.Equals("Possess") && context.performed)
+        {
+            OnPossessButtonPressed();
+        }
+    }
 
+
+    public void OnPossessButtonPressed()
+    {
+        if (currentlyPossessing)
+        {
+            Unpossess();
+            return;
+        }
+        
+        Possessable nextPossessable = possessableDetector.GetAvailablePossessable();
+        if (!nextPossessable)
+            return;
+
+        TryPossess(nextPossessable);
+    }
+
+
+    #region Possession Actions
     public void TryPossess(Possessable possessable)
     {
         // Just try to possess - if it succeeds, OnPossessionBegin should fire
@@ -35,11 +71,6 @@ public class PlayerPossession : MonoBehaviour
             return;
 
         currentlyPossessing.Eject();
-    }
-
-    public void PassMovementInput(Vector2 inputVector)
-    {
-        // Just a stub - use this to 
     }
     #endregion Possession Actions
 
@@ -61,12 +92,10 @@ public class PlayerPossession : MonoBehaviour
             currentlyPossessing = null;
         }
     }
-
     #endregion Possession Callbacks
 
 
     #region Getters
-
     public Vector3 PossessableAttachPoint => possessableAttachPoint;
 
     public Rigidbody GetPlayerRB()
@@ -74,6 +103,5 @@ public class PlayerPossession : MonoBehaviour
         // TODO: Rigidbody may ultimately not be on same object
         return gameObject.GetComponent<Rigidbody>();
     }
-
     #endregion Getters
 }
