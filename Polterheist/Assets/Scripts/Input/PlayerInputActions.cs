@@ -37,7 +37,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Possesss"",
+                    ""name"": ""Possess"",
                     ""type"": ""Button"",
                     ""id"": ""5d52d821-c665-4931-9991-b515d11bb60a"",
                     ""expectedControlType"": ""Button"",
@@ -120,7 +120,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Possesss"",
+                    ""action"": ""Possess"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -131,7 +131,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""Possesss"",
+                    ""action"": ""Possess"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -311,7 +311,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
-        m_Player_Possesss = m_Player.FindAction("Possesss", throwIfNotFound: true);
+        m_Player_Possess = m_Player.FindAction("Possess", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigation = m_UI.FindAction("Navigation", throwIfNotFound: true);
@@ -379,13 +379,13 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player;
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Move;
-    private readonly InputAction m_Player_Possesss;
+    private readonly InputAction m_Player_Possess;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
         public PlayerActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
-        public InputAction @Possesss => m_Wrapper.m_Player_Possesss;
+        public InputAction @Possess => m_Wrapper.m_Player_Possess;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -398,9 +398,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
-            @Possesss.started += instance.OnPossesss;
-            @Possesss.performed += instance.OnPossesss;
-            @Possesss.canceled += instance.OnPossesss;
+            @Possess.started += instance.OnPossess;
+            @Possess.performed += instance.OnPossess;
+            @Possess.canceled += instance.OnPossess;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -408,9 +408,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
-            @Possesss.started -= instance.OnPossesss;
-            @Possesss.performed -= instance.OnPossesss;
-            @Possesss.canceled -= instance.OnPossesss;
+            @Possess.started -= instance.OnPossess;
+            @Possess.performed -= instance.OnPossess;
+            @Possess.canceled -= instance.OnPossess;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -511,7 +511,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnPossesss(InputAction.CallbackContext context);
+        void OnPossess(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

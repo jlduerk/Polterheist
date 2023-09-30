@@ -1,5 +1,5 @@
 {
-    "name": "PlayerInput",
+    "name": "PlayerInputActions",
     "maps": [
         {
             "name": "Player",
@@ -15,7 +15,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Possesss",
+                    "name": "Possess",
                     "type": "Button",
                     "id": "5d52d821-c665-4931-9991-b515d11bb60a",
                     "expectedControlType": "Button",
@@ -98,7 +98,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Possesss",
+                    "action": "Possess",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -109,7 +109,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Possesss",
+                    "action": "Possess",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
