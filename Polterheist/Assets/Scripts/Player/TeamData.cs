@@ -7,6 +7,8 @@ public class TeamData : ScriptableObject {
     public enum Team {
         Red = 1,
         Blue = 2,
+        Green = 3,
+        Yellow = 4,
     }
 
     public Team team;

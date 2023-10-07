@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -14,9 +15,11 @@ public class Possessable : MonoBehaviour
     // Events to signal when something has become possessed
     [SerializeField] private UnityEvent<Possessable, PlayerPossession> OnPossessionBegin = new UnityEvent<Possessable, PlayerPossession>();
     [SerializeField] private UnityEvent<Possessable, PlayerPossession> OnPossessionEnd = new UnityEvent<Possessable, PlayerPossession>();
+    [SerializeField] private UnityEvent<Possessable, PlayerPossession> OnHaunt = new UnityEvent<Possessable, PlayerPossession>();
+
 
     // Handles Rigidbody logic, such as spring joints
-    private PossessableRBManager rbManager = null;
+    [HideInInspector] public PossessableRBManager rbManager = null;
 
     private PlayerPossession possessedBy = null;
 
@@ -51,6 +54,7 @@ public class Possessable : MonoBehaviour
         possessedBy = player;
         OnPossessionBegin.AddListener(possessedBy.OnPossessionBeginAction);
         OnPossessionEnd.AddListener(possessedBy.OnPossessionEndAction);
+
 
         OnPossessionBegin.Invoke(this, possessedBy);
 
@@ -90,5 +94,11 @@ public class Possessable : MonoBehaviour
             return;
         }
         renderer.material = material;
+    }
+
+    public void Haunt()
+    {
+        Debug.Log("HAUNT NOWf");
+        OnHaunt.Invoke(this, possessedBy);
     }
 }

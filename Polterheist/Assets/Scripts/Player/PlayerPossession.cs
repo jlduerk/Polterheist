@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,7 @@ public class PlayerPossession : MonoBehaviour {
     public UnityAction<Possessable, PlayerPossession> OnPossessionBeginAction;
     public UnityAction<Possessable, PlayerPossession> OnPossessionEndAction;
 
+
     private Possessable currentlyPossessing;
     private PlayerMovement playerMovement;
 
@@ -23,6 +25,8 @@ public class PlayerPossession : MonoBehaviour {
     private float ghostSpeed;
 
     private const string POSSESSION_INPUT_ID = "Possess";
+    private const string HAUNT_INPUT_ID = "Haunt";
+
 
     private void Start()
     {
@@ -54,6 +58,10 @@ public class PlayerPossession : MonoBehaviour {
         {
             OnPossessButtonPressed();
         }
+        if (context.action.name.Equals(HAUNT_INPUT_ID) && context.performed)
+        {
+            OnHauntButtonPressed();
+        }
     }
 
 
@@ -70,6 +78,18 @@ public class PlayerPossession : MonoBehaviour {
             return;
 
         TryPossess(nextPossessable);
+    }
+
+    public void OnHauntButtonPressed()
+    {
+        if (currentlyPossessing)
+        {
+           currentlyPossessing.Haunt();
+        }
+        else
+        {
+            Debug.Log("Nice try. that dont do shit");
+        }
     }
 
 
