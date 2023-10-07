@@ -49,7 +49,8 @@ public class GameManager : MonoBehaviour {
     }
 
     public void OnPlayerJoined(PlayerInput playerInput) {
-        playerInput.gameObject.GetComponent<PlayerPossession>().TeamDataInit(teamDatas[playerCount]);
+        int counterModulo = playerCount % teamDatas.Length;
+        playerInput.gameObject.GetComponent<PlayerPossession>().TeamDataInit(teamDatas[counterModulo]);
         playerCount++;
     }
 }

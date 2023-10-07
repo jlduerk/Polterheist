@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed2dcf79f6d529349b1cbffdf1d0592b, type: 3}
+  m_Name: YellowTeamData
+  m_EditorClassIdentifier: 
+  team: 4
+  teamMaterial: {fileID: 2100000, guid: 848a66b5054f5da49b9dd9799d6c904e, type: 2}
+  teamZone: 0
+  teamColor: {r: 1, g: 0.8489028, b: 0, a: 0}
