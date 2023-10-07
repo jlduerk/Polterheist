@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5929842339732703673}
   - component: {fileID: 8179551597782552642}
   - component: {fileID: 4994029108646828306}
+  - component: {fileID: 7518254748710469940}
   m_Layer: 6
   m_Name: Chair
   m_TagString: Possessable
@@ -55,6 +56,22 @@ MonoBehaviour:
   OnPossessionEnd:
     m_PersistentCalls:
       m_Calls: []
+  OnHaunt:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7518254748710469940}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  rbManager: {fileID: 0}
 --- !u!114 &8179551597782552642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,6 +111,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7518254748710469940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451198862759642605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfcf038d31a19604bab37c101b76d172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &528532360243412854
 GameObject:
   m_ObjectHideFlags: 0

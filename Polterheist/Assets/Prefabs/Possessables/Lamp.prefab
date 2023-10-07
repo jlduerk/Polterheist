@@ -117,6 +117,7 @@ GameObject:
   - component: {fileID: 3189984320146836655}
   - component: {fileID: 6013512395915002608}
   - component: {fileID: 5107988879633566421}
+  - component: {fileID: 521847103448070049}
   m_Layer: 6
   m_Name: Lamp
   m_TagString: Possessable
@@ -160,6 +161,22 @@ MonoBehaviour:
   OnPossessionEnd:
     m_PersistentCalls:
       m_Calls: []
+  OnHaunt:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 521847103448070049}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  rbManager: {fileID: 0}
 --- !u!114 &6013512395915002608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,6 +216,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &521847103448070049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5923155032967779314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfcf038d31a19604bab37c101b76d172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7961345560909514022
 GameObject:
   m_ObjectHideFlags: 0
