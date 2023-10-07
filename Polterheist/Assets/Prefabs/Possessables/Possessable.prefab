@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 7388964437311033581}
   - component: {fileID: 914949422531719884}
   - component: {fileID: 4956438487443423879}
+  - component: {fileID: 1609714218722372935}
   m_Layer: 6
   m_Name: Possessable
   m_TagString: Possessable
@@ -165,7 +166,7 @@ Transform:
   m_GameObject: {fileID: 8498999244432665625}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.0658978, y: 0.2030915, z: 1.4292018}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -184,12 +185,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d994d0dc665347c49955b42cf2aa5802, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ScoreValue: 1
+  WasScored: 0
   OnPossessionBegin:
     m_PersistentCalls:
       m_Calls: []
   OnPossessionEnd:
     m_PersistentCalls:
       m_Calls: []
+  OnHaunt:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1609714218722372935}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  rbManager: {fileID: 0}
 --- !u!114 &914949422531719884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,3 +248,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1609714218722372935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8498999244432665625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfcf038d31a19604bab37c101b76d172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

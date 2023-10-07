@@ -1,25 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class Possessable : MonoBehaviour
 {
+    // How many points a team will get from this possessable in their zone
+    public int ScoreValue = 1;
+
+    // When counting score, used to ensure we don't count a possessable twice
+    public bool WasScored = false;
+
     // Events to signal when something has become possessed
     [SerializeField] private UnityEvent<Possessable, PlayerPossession> OnPossessionBegin = new UnityEvent<Possessable, PlayerPossession>();
     [SerializeField] private UnityEvent<Possessable, PlayerPossession> OnPossessionEnd = new UnityEvent<Possessable, PlayerPossession>();
+    [SerializeField] private UnityEvent OnHaunt = new UnityEvent();
+
 
     // Handles Rigidbody logic, such as spring joints
-    private PossessableRBManager rbManager = null;
+    [HideInInspector] public PossessableRBManager rbManager = null;
 
     private PlayerPossession possessedBy = null;
+
+    private MeshRenderer renderer;
+    private Material defaultMaterial;
     public bool IsPossessed => possessedBy != null;
-
-
     private void Start()
     {
         // PossessableRBManager is optional - but get a reference to it if it's there
         rbManager = GetComponent<PossessableRBManager>();
+        renderer = GetComponentInChildren<MeshRenderer>();
+        defaultMaterial = renderer.material;
     }
 
 
@@ -42,6 +54,7 @@ public class Possessable : MonoBehaviour
         possessedBy = player;
         OnPossessionBegin.AddListener(possessedBy.OnPossessionBeginAction);
         OnPossessionEnd.AddListener(possessedBy.OnPossessionEndAction);
+
 
         OnPossessionBegin.Invoke(this, possessedBy);
 
@@ -73,5 +86,19 @@ public class Possessable : MonoBehaviour
             rbManager.DetachSpring();
 
         possessedBy = null;
+    }
+
+    public void SetColor(Material material) {
+        if (material == null) {
+            renderer.material = defaultMaterial;
+            return;
+        }
+        renderer.material = material;
+    }
+
+    public void Haunt()
+    {
+        Debug.Log("HAUNT NOWf");
+        OnHaunt.Invoke();
     }
 }

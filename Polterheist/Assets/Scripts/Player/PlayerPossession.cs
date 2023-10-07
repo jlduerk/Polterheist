@@ -1,11 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-public class PlayerPossession : MonoBehaviour
-{
+public class PlayerPossession : MonoBehaviour {
+    public TeamData teamData;
+    public MeshRenderer renderer;
+
     [SerializeField] private Vector3 possessableAttachPoint;
     [SerializeField] private PossessableDetector possessableDetector;
 
@@ -14,9 +17,16 @@ public class PlayerPossession : MonoBehaviour
     public UnityAction<Possessable, PlayerPossession> OnPossessionBeginAction;
     public UnityAction<Possessable, PlayerPossession> OnPossessionEndAction;
 
+
     private Possessable currentlyPossessing;
+    private PlayerMovement playerMovement;
 
     private PlayerInput playerInputComponent = null;
+    private float ghostSpeed;
+
+    private const string POSSESSION_INPUT_ID = "Possess";
+    private const string HAUNT_INPUT_ID = "Haunt";
+
 
     private void Start()
     {
@@ -26,6 +36,15 @@ public class PlayerPossession : MonoBehaviour
         // Attach possession begin/end events to respective UnityActions
         OnPossessionBeginAction += OnPossessionBegin;
         OnPossessionEndAction += OnPossessionEnd;
+
+        playerMovement = GetComponent<PlayerMovement>();
+        ghostSpeed = playerMovement.speed;
+    }
+
+    private void OnDisable() {
+
+        OnPossessionBeginAction -= OnPossessionBegin;
+        OnPossessionEndAction -= OnPossessionEnd;
     }
 
     /*
@@ -35,9 +54,13 @@ public class PlayerPossession : MonoBehaviour
      */
     public void HandleInput(InputAction.CallbackContext context)
     {
-        if (context.action.name.Equals("Possess") && context.performed)
+        if (context.action.name.Equals(POSSESSION_INPUT_ID) && context.performed)
         {
             OnPossessButtonPressed();
+        }
+        if (context.action.name.Equals(HAUNT_INPUT_ID) && context.performed)
+        {
+            OnHauntButtonPressed();
         }
     }
 
@@ -57,6 +80,18 @@ public class PlayerPossession : MonoBehaviour
         TryPossess(nextPossessable);
     }
 
+    public void OnHauntButtonPressed()
+    {
+        if (currentlyPossessing)
+        {
+           currentlyPossessing.Haunt();
+        }
+        else
+        {
+            Debug.Log("Nice try. that dont do shit");
+        }
+    }
+
 
     #region Possession Actions
     public void TryPossess(Possessable possessable)
@@ -70,6 +105,7 @@ public class PlayerPossession : MonoBehaviour
         if (!currentlyPossessing)
             return;
 
+        currentlyPossessing.SetColor(null);
         currentlyPossessing.Eject();
     }
     #endregion Possession Actions
@@ -81,6 +117,8 @@ public class PlayerPossession : MonoBehaviour
         if (possessor == this)
         {
             currentlyPossessing = possessable;
+            playerMovement.speed /= possessable.gameObject.GetComponent<Rigidbody>().mass;
+            currentlyPossessing.SetColor(teamData.teamMaterial);
         }
     }
 
@@ -90,6 +128,7 @@ public class PlayerPossession : MonoBehaviour
         if (possessor == this)
         {
             currentlyPossessing = null;
+            playerMovement.speed = ghostSpeed;
         }
     }
     #endregion Possession Callbacks
@@ -104,4 +143,12 @@ public class PlayerPossession : MonoBehaviour
         return gameObject.GetComponent<Rigidbody>();
     }
     #endregion Getters
+
+    #region Team Data
+    public void TeamDataInit(TeamData teamDataToAssign) {
+        teamData = teamDataToAssign;
+
+        renderer.material = teamData.teamMaterial;
+    }
+    #endregion
 }

@@ -10,6 +10,15 @@ using UnityEngine;
 public class PossessableRBManager : MonoBehaviour
 {
     private SpringJoint springJoint = null;
+    private Rigidbody rb = null;
+    public Rigidbody possessableRigidBody {
+        get { return rb; }
+        private set { }
+    }
+
+    private void Start() {
+        rb = GetComponent<Rigidbody>();
+    }
 
     private Rigidbody GetSpringAttachedRB()
     {
@@ -31,6 +40,8 @@ public class PossessableRBManager : MonoBehaviour
         springJoint.connectedBody = rb;
         springJoint.autoConfigureConnectedAnchor = false;
         springJoint.connectedAnchor = anchorPoint;
+        springJoint.maxDistance = 0;
+        springJoint.spring = 1000;
 
         // TODO: Find appropriate spring strength
         // TODO: Might want to reduce gravity for possessables, so they don't drag as much
