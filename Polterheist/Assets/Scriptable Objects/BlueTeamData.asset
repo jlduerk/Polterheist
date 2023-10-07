@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed2dcf79f6d529349b1cbffdf1d0592b, type: 3}
   m_Name: BlueTeamData
   m_EditorClassIdentifier: 
+  teamName: Blue Team
   team: 2
   teamMaterial: {fileID: 2100000, guid: cc44efea70b425c41bc912d6029eae77, type: 2}
   teamZone: 1
-  teamColor: {r: 0.14929688, g: 0.2077299, b: 0.5188679, a: 1}
+  teamColor: {r: 0.34509805, g: 0.25490198, b: 0.33333334, a: 1}
