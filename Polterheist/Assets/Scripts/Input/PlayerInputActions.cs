@@ -44,6 +44,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Haunt"",
+                    ""type"": ""Button"",
+                    ""id"": ""b6b6b41e-6172-43fd-8f86-c62d682df3c2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -132,6 +141,28 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
                     ""action"": ""Possess"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""30def220-81bd-4c6e-a91e-83dd39b18bd1"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Haunt"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3912d40d-707a-4572-b8e7-c8c509c8fd8c"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Haunt"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -312,6 +343,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Possess = m_Player.FindAction("Possess", throwIfNotFound: true);
+        m_Player_Haunt = m_Player.FindAction("Haunt", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigation = m_UI.FindAction("Navigation", throwIfNotFound: true);
@@ -380,12 +412,14 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Possess;
+    private readonly InputAction m_Player_Haunt;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
         public PlayerActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Possess => m_Wrapper.m_Player_Possess;
+        public InputAction @Haunt => m_Wrapper.m_Player_Haunt;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -401,6 +435,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Possess.started += instance.OnPossess;
             @Possess.performed += instance.OnPossess;
             @Possess.canceled += instance.OnPossess;
+            @Haunt.started += instance.OnHaunt;
+            @Haunt.performed += instance.OnHaunt;
+            @Haunt.canceled += instance.OnHaunt;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -411,6 +448,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Possess.started -= instance.OnPossess;
             @Possess.performed -= instance.OnPossess;
             @Possess.canceled -= instance.OnPossess;
+            @Haunt.started -= instance.OnHaunt;
+            @Haunt.performed -= instance.OnHaunt;
+            @Haunt.canceled -= instance.OnHaunt;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -512,6 +552,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnPossess(InputAction.CallbackContext context);
+        void OnHaunt(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

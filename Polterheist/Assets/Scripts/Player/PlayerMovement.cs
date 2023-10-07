@@ -32,7 +32,6 @@ public class PlayerMovement : MonoBehaviour {
             movementVector = new Vector3(inputDelta.x, 0, inputDelta.y);
         }
         else if (context.canceled) {
-            Debug.LogWarning("STOP!!");
             movementVector = Vector3.zero;
         }
     }
