@@ -5,6 +5,12 @@ using UnityEngine.Events;
 
 public class Possessable : MonoBehaviour
 {
+    // How many points a team will get from this possessable in their zone
+    public int ScoreValue = 1;
+
+    // When counting score, used to ensure we don't count a possessable twice
+    public bool WasScored = false;
+
     // Events to signal when something has become possessed
     [SerializeField] private UnityEvent<Possessable, PlayerPossession> OnPossessionBegin = new UnityEvent<Possessable, PlayerPossession>();
     [SerializeField] private UnityEvent<Possessable, PlayerPossession> OnPossessionEnd = new UnityEvent<Possessable, PlayerPossession>();
@@ -18,8 +24,13 @@ public class Possessable : MonoBehaviour
     private Material defaultMaterial;
     public bool IsPossessed => possessedBy != null;
 
+<<<<<<< HEAD
 
     private void Start() {
+=======
+    private void Start()
+    {
+>>>>>>> 0b84cda (scoring and zones)
         // PossessableRBManager is optional - but get a reference to it if it's there
         rbManager = GetComponent<PossessableRBManager>();
         renderer = GetComponentInChildren<MeshRenderer>();
