@@ -10,7 +10,7 @@ public class TeamData : ScriptableObject {
         Green = 3,
         Yellow = 4,
     }
-
+    public string teamName = "team";
     public Team team;
     public Material teamMaterial;
     public EZone teamZone;
