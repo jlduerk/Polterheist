@@ -16,7 +16,7 @@ public class Possessable : MonoBehaviour
     [SerializeField] private UnityEvent<Possessable, PlayerPossession> OnPossessionEnd = new UnityEvent<Possessable, PlayerPossession>();
 
     // Handles Rigidbody logic, such as spring joints
-    private PossessableRBManager rbManager = null;
+    [HideInInspector] public PossessableRBManager rbManager = null;
 
     private PlayerPossession possessedBy = null;
 

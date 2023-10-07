@@ -10,6 +10,15 @@ using UnityEngine;
 public class PossessableRBManager : MonoBehaviour
 {
     private SpringJoint springJoint = null;
+    private Rigidbody rb = null;
+    public Rigidbody possessableRigidBody {
+        get { return rb; }
+        private set { }
+    }
+
+    private void Start() {
+        rb = GetComponent<Rigidbody>();
+    }
 
     private Rigidbody GetSpringAttachedRB()
     {

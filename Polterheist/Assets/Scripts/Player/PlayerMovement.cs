@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour {
     private Vector3 newVelocity = new Vector3();
     public float speed = 2;
     public float jumpFloatSpeed = 5;
+    private float jumpMultiplier = 1;
 
     private void Start() {
         Init();
@@ -53,5 +54,13 @@ public class PlayerMovement : MonoBehaviour {
             newVelocity.y = jumpFloatSpeed;
         }
         playerRigidbody.velocity = newVelocity;
+    }
+
+    public void JumpMultiplier(Possessable possessable) {
+        jumpMultiplier = possessable.rbManager.possessableRigidBody.mass;
+    }
+
+    public void ResetJumpMultiplier() {
+        jumpMultiplier = 1;
     }
 }
