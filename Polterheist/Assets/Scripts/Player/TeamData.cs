@@ -8,6 +8,9 @@ public class TeamData : ScriptableObject {
         Red = 1,
         Blue = 2,
     }
+
     public Team team;
     public Material teamMaterial;
+    public EZone teamZone;
+    public Color teamColor;
 }
