@@ -13,6 +13,9 @@ public class ScoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Initialize zone lists
+        AZones = new List<Zone>();
+        BZones = new List<Zone>();
         GetZones();
     }
 
@@ -32,16 +35,25 @@ public class ScoreManager : MonoBehaviour
         else if (zone == EZone.ZoneB) zoneList = BZones;
         else return -1;
 
+        // Early out if no zones
+        if (zoneList.Count == 0) return 0;
+
         // Reset every possessable to not have been scored yet
         foreach(Zone z in zoneList)
         {
-            foreach (Collider collider in z.possessableColliders)
+            // Early out if no colliders
+            if (z.possessableColliders.Length == 0 || z.possessableColliders == null) break;
+
+            int i = 0;
+            while (z.possessableColliders[i] != null)
             {
-                Possessable possessable = collider.GetComponentInParent<Possessable>();
+                Possessable possessable = z.possessableColliders[i].GetComponentInParent<Possessable>();
                 if (possessable != null)
                 {
                     possessable.WasScored = false;
                 }
+
+                i++;
             }
         }
 
@@ -57,7 +69,11 @@ public class ScoreManager : MonoBehaviour
     private void GetZones()
     {
         Zone[] allZones = FindObjectsByType<Zone>(FindObjectsSortMode.None);
-        foreach(Zone zone in allZones)
+
+        // Early out if no zones
+        if (allZones.Length == 0 || allZones == null) return;
+
+        foreach (Zone zone in allZones)
         {
             switch (zone.thisZone)
             {

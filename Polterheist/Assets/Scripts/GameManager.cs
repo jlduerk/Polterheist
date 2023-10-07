@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour {
     private static GameManager instance;
-    public GameManager Instance {
+    public static GameManager Instance {
         get { return instance; }
         private set { }
     }
@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour {
 
     private PlayerInputManager playerInputManager;
     private int playerCount;
+
+    public ScoreManager scoreManager;
 
     #region Monobehavior
     private void Awake() {

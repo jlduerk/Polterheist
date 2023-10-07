@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,15 +13,20 @@ public class Zone : MonoBehaviour
 
     public Collider[] possessableColliders;
 
-    void FixedUpdate()
+    private void Start()
     {
         possessableColliders = new Collider[maxPossessablesInLevel];
+    }
+
+    void FixedUpdate()
+    {
         GetCollidingPossessables();
     }
 
     // Gets all possessables and puts them in the possessableColliders array
     void GetCollidingPossessables()
     {
+        Array.Clear(possessableColliders, 0, possessableColliders.Length);
         Physics.OverlapBoxNonAlloc(gameObject.transform.position, transform.localScale / 2, possessableColliders, Quaternion.identity, m_LayerMask);
     }
 
@@ -29,13 +35,15 @@ public class Zone : MonoBehaviour
     {
         int score = 0;
 
-        foreach(Collider collider in possessableColliders)
+        int i = 0;
+        while (possessableColliders[i] != null)
         {
-            Possessable possessable = collider.GetComponentInParent<Possessable>();
+            Possessable possessable = possessableColliders[i].GetComponentInParent<Possessable>();
             if (possessable != null && !possessable.WasScored)
             {
                 score += possessable.ScoreValue;
             }
+            i++;
         }
 
         return score;
