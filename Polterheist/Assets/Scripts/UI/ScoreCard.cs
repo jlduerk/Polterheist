@@ -10,22 +10,29 @@ public class ScoreCard : MonoBehaviour
     [SerializeField] private Image bgImage;
     private ScoreManager scoreManager;
     public TextMeshProUGUI scoreText;
+    private GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameManager.Instance;
         bgImage.color = teamData.teamColor;
         scoreManager = GameManager.Instance.scoreManager;
     }
 
     void FixedUpdate()
     {
-        if (teamData.teamZone == EZone.ZoneA)
+        if (gameManager.GameInProgress) // Only do scoring when game has started
         {
-            scoreText.text = scoreManager.ScoreA.ToString();
-        } else if (teamData.teamZone == EZone.ZoneB)
-        {
-            scoreText.text = scoreManager.ScoreB.ToString();
+            if (teamData.teamZone == EZone.ZoneA)
+            {
+                scoreText.text = scoreManager.ScoreA.ToString();
+            }
+            else if (teamData.teamZone == EZone.ZoneB)
+            {
+                scoreText.text = scoreManager.ScoreB.ToString();
+            }
         }
+
     }
 }

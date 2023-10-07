@@ -16,6 +16,7 @@ public class Zone : MonoBehaviour
     private void Start()
     {
         possessableColliders = new Collider[maxPossessablesInLevel];
+        GetCollidingPossessables();
     }
 
     void FixedUpdate()

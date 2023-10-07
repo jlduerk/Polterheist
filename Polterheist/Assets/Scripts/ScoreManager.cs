@@ -6,6 +6,7 @@ public class ScoreManager : MonoBehaviour
 {
     private List<Zone> AZones;
     private List<Zone> BZones;
+    private GameManager gameManager;
 
     public int ScoreA;
     public int ScoreB;
@@ -13,6 +14,8 @@ public class ScoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameManager.Instance;
+
         // Initialize zone lists
         AZones = new List<Zone>();
         BZones = new List<Zone>();
@@ -21,8 +24,11 @@ public class ScoreManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        ScoreA = CalculateScore(EZone.ZoneA);
-        ScoreB = CalculateScore(EZone.ZoneB);
+        if (gameManager.GameInProgress) // Only do scoring when game has started
+        {
+            ScoreA = CalculateScore(EZone.ZoneA);
+            ScoreB = CalculateScore(EZone.ZoneB);
+        }
     }
 
     // Calculates a zone's score
