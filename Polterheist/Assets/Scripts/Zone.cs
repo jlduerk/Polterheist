@@ -42,6 +42,7 @@ public class Zone : MonoBehaviour
             if (possessable != null && !possessable.WasScored)
             {
                 score += possessable.ScoreValue;
+                possessable.WasScored = true;
             }
             i++;
         }
