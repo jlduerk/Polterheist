@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EZone { ZoneA, ZoneB, none }
+public enum EZone { ZoneA = 1, ZoneB = 2, none = 0 }
 
 public class Zone : MonoBehaviour
 { 
