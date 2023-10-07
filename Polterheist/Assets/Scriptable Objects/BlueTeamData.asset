@@ -15,4 +15,4 @@ MonoBehaviour:
   team: 2
   teamMaterial: {fileID: 2100000, guid: cc44efea70b425c41bc912d6029eae77, type: 2}
   teamZone: 1
-  teamColor: {r: 0.14929688, g: 0.2077299, b: 0.5188679, a: 0}
+  teamColor: {r: 0.14929688, g: 0.2077299, b: 0.5188679, a: 1}
