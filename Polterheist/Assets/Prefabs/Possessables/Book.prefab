@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1083388282532743406}
   - component: {fileID: 1571077260044355572}
   - component: {fileID: 7447874238195197461}
+  - component: {fileID: 1439128832723344354}
   m_Layer: 6
   m_Name: Book
   m_TagString: Possessable
@@ -55,6 +56,22 @@ MonoBehaviour:
   OnPossessionEnd:
     m_PersistentCalls:
       m_Calls: []
+  OnHaunt:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1439128832723344354}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  rbManager: {fileID: 0}
 --- !u!114 &1571077260044355572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,6 +111,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1439128832723344354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107880392791191640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfcf038d31a19604bab37c101b76d172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3688549881097495559
 GameObject:
   m_ObjectHideFlags: 0
