@@ -293,7 +293,31 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ab62302c-9802-480e-ae9f-c21cacdf9ada
+    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5d52d821-c665-4931-9991-b515d11bb60a
+    m_ActionName: Player/Possess[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b6b6b41e-6172-43fd-8f86-c62d682df3c2
+    m_ActionName: Player/Haunt[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 16c80eb5-ccbe-4000-b9ff-df589aef55e7
+    m_ActionName: UI/Navigation[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fefe3978-987e-4abb-a7a3-dd79bb56b7c9
+    m_ActionName: UI/Confirm[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 21e34271-9a9a-44af-a7de-8d65597adada
+    m_ActionName: UI/Cancel[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player

@@ -41,7 +41,6 @@ public class PlayerMovement : MonoBehaviour {
             return;
         }
 
-        Debug.Log($"{name} {movementVector}");
         playerRigidbody.velocity = movementVector * speed;
     }
 }
