@@ -23,9 +23,8 @@ public class Possessable : MonoBehaviour
     private MeshRenderer renderer;
     private Material defaultMaterial;
     public bool IsPossessed => possessedBy != null;
-
-
-    private void Start() {
+    private void Start()
+    {
         // PossessableRBManager is optional - but get a reference to it if it's there
         rbManager = GetComponent<PossessableRBManager>();
         renderer = GetComponentInChildren<MeshRenderer>();
