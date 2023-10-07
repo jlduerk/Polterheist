@@ -254,6 +254,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bb184eb576646f488e5bf71d91fa628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  teamData: {fileID: 0}
+  renderer: {fileID: 6170815972869553730}
   possessableAttachPoint: {x: 0, y: 0, z: 0}
   possessableDetector: {fileID: 8228207624677498279}
 --- !u!114 &2944065220258524602
