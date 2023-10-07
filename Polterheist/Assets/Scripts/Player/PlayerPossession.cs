@@ -18,6 +18,8 @@ public class PlayerPossession : MonoBehaviour
 
     private PlayerInput playerInputComponent = null;
 
+    private const string POSSESSION_INPUT_ID = "Possess";
+
     private void Start()
     {
         playerInputComponent = GetComponent<PlayerInput>();
@@ -28,6 +30,12 @@ public class PlayerPossession : MonoBehaviour
         OnPossessionEndAction += OnPossessionEnd;
     }
 
+    private void OnDisable() {
+
+        OnPossessionBeginAction -= OnPossessionBegin;
+        OnPossessionEndAction -= OnPossessionEnd;
+    }
+
     /*
      * Handle the general onActionTriggered event from PlayerInput component
      * This is a little cumbersome in code, but seems more flexible than hooking up functions
@@ -35,7 +43,7 @@ public class PlayerPossession : MonoBehaviour
      */
     public void HandleInput(InputAction.CallbackContext context)
     {
-        if (context.action.name.Equals("Possess") && context.performed)
+        if (context.action.name.Equals(POSSESSION_INPUT_ID) && context.performed)
         {
             OnPossessButtonPressed();
         }
