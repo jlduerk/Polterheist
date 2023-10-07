@@ -6,9 +6,14 @@ using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour {
     private static GameManager instance;
-    public static TeamData[] teamDatas;
+    public GameManager Instance {
+        get { return instance; }
+        private set { }
+    }
+    public TeamData[] teamDatas;
 
     private PlayerInputManager playerInputManager;
+    private int playerCount;
 
     #region Monobehavior
     private void Awake() {
@@ -33,7 +38,7 @@ public class GameManager : MonoBehaviour {
     }
     #endregion
 
-    public static TeamData GetTeamData(TeamData.Team teamToRequest) {
+    public TeamData GetTeamData(TeamData.Team teamToRequest) {
         foreach (TeamData teamData in teamDatas) {
             if (teamData.team == teamToRequest) {
                 return teamData;
@@ -44,6 +49,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public void OnPlayerJoined(PlayerInput playerInput) {
-        Debug.Log("Player joined with device: " + playerInput.gameObject.name);
+        playerInput.gameObject.GetComponent<PlayerPossession>().TeamDataInit(teamDatas[playerCount]);
+        playerCount++;
     }
 }

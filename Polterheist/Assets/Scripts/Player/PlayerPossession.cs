@@ -4,8 +4,10 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-public class PlayerPossession : MonoBehaviour
-{
+public class PlayerPossession : MonoBehaviour {
+    public TeamData teamData;
+    public MeshRenderer renderer;
+
     [SerializeField] private Vector3 possessableAttachPoint;
     [SerializeField] private PossessableDetector possessableDetector;
 
@@ -78,6 +80,7 @@ public class PlayerPossession : MonoBehaviour
         if (!currentlyPossessing)
             return;
 
+        currentlyPossessing.SetColor(null);
         currentlyPossessing.Eject();
     }
     #endregion Possession Actions
@@ -89,6 +92,7 @@ public class PlayerPossession : MonoBehaviour
         if (possessor == this)
         {
             currentlyPossessing = possessable;
+            currentlyPossessing.SetColor(teamData.teamMaterial);
         }
     }
 
@@ -112,4 +116,12 @@ public class PlayerPossession : MonoBehaviour
         return gameObject.GetComponent<Rigidbody>();
     }
     #endregion Getters
+
+    #region Team Data
+    public void TeamDataInit(TeamData teamDataToAssign) {
+        teamData = teamDataToAssign;
+
+        renderer.material = teamData.teamMaterial;
+    }
+    #endregion
 }

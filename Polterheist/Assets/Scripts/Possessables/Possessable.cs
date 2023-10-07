@@ -13,13 +13,17 @@ public class Possessable : MonoBehaviour
     private PossessableRBManager rbManager = null;
 
     private PlayerPossession possessedBy = null;
+
+    private MeshRenderer renderer;
+    private Material defaultMaterial;
     public bool IsPossessed => possessedBy != null;
 
 
-    private void Start()
-    {
+    private void Start() {
         // PossessableRBManager is optional - but get a reference to it if it's there
         rbManager = GetComponent<PossessableRBManager>();
+        renderer = GetComponentInChildren<MeshRenderer>();
+        defaultMaterial = renderer.material;
     }
 
 
@@ -73,5 +77,13 @@ public class Possessable : MonoBehaviour
             rbManager.DetachSpring();
 
         possessedBy = null;
+    }
+
+    public void SetColor(Material material) {
+        if (material == null) {
+            renderer.material = defaultMaterial;
+            return;
+        }
+        renderer.material = material;
     }
 }
