@@ -13,6 +13,7 @@ public class TeamData : ScriptableObject {
     public string teamName = "team";
     public Team team;
     public Material teamMaterial;
+    public Material teamMaterialHover;
     public EZone teamZone;
     public Color teamColor;
 }

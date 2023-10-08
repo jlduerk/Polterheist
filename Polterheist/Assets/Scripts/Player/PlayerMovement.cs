@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour {
         if (playerRigidbody == null) {
             return;
         }
-
+        
         newVelocity.x = movementVector.x * speed;
         newVelocity.y = playerRigidbody.velocity.y;
         newVelocity.z = movementVector.z * speed;
