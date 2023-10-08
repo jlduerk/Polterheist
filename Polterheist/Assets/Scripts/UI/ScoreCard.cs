@@ -10,6 +10,7 @@ public class ScoreCard : MonoBehaviour
     [SerializeField] private Image bgImage;
     private ScoreManager scoreManager;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI teamText;
     private GameManager gameManager;
 
     // Start is called before the first frame update
@@ -17,6 +18,7 @@ public class ScoreCard : MonoBehaviour
     {
         gameManager = GameManager.Instance;
         bgImage.color = teamData.teamColor;
+        teamText.text = teamData.teamName;
         scoreManager = GameManager.Instance.scoreManager;
     }
 
