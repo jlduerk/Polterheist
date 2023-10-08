@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Green
+  m_Name: BluePossess
   m_Shader: {fileID: -6465566751694194690, guid: b19e849933e38354ab389b03c4a02894, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -40,9 +40,9 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _Color: {r: 0, g: 1, b: 0.06282711, a: 1}
+    - _Color: {r: 0.28114986, g: 0.31092185, b: 0.735849, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &235565741879483874
+--- !u!114 &2865841944340352298
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

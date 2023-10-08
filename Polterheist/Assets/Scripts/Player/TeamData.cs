@@ -14,6 +14,7 @@ public class TeamData : ScriptableObject {
     public Team team;
     public Material teamMaterial;
     public Material teamMaterialHover;
+    public Material teamMaterialPossess;
     public EZone teamZone;
     public Color teamColor;
 }

@@ -8,7 +8,6 @@ using UnityEngine.InputSystem;
 public class PlayerPossession : MonoBehaviour {
     public TeamData teamData;
     public MeshRenderer renderer;
-    public Material invisibleMaterial;
 
     [SerializeField] private Vector3 possessableAttachPoint;
     [SerializeField] private PossessableDetector possessableDetector;
@@ -120,7 +119,7 @@ public class PlayerPossession : MonoBehaviour {
         {
             currentlyPossessing = possessable;
             playerMovement.speed /= possessable.gameObject.GetComponent<Rigidbody>().mass;
-            renderer.material = invisibleMaterial;
+            renderer.material = teamData.teamMaterialPossess;
             currentlyPossessing.SetColor(teamData.teamMaterial);
         }
     }
