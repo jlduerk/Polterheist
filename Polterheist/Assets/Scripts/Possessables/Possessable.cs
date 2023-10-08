@@ -15,7 +15,7 @@ public class Possessable : MonoBehaviour
     // Events to signal when something has become possessed
     [SerializeField] private UnityEvent<Possessable, PlayerPossession> OnPossessionBegin = new UnityEvent<Possessable, PlayerPossession>();
     [SerializeField] private UnityEvent<Possessable, PlayerPossession> OnPossessionEnd = new UnityEvent<Possessable, PlayerPossession>();
-    [SerializeField] private UnityEvent OnHaunt = new UnityEvent();
+    [SerializeField] private UnityEvent<Possessable, PlayerPossession> OnHaunt = new UnityEvent<Possessable, PlayerPossession>();
 
 
     // Handles Rigidbody logic, such as spring joints
@@ -99,6 +99,6 @@ public class Possessable : MonoBehaviour
     public void Haunt()
     {
         Debug.Log("HAUNT NOWf");
-        OnHaunt.Invoke();
+        OnHaunt.Invoke(this, possessedBy);
     }
 }
