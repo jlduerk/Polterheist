@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class MenuContainer : MonoBehaviour {
+    public Transform menuItemsContainer;
     public List<MenuItem> menuItems;
 
     private PlayerInputActions inputActions;
@@ -21,7 +22,8 @@ public class MenuContainer : MonoBehaviour {
     }
 
     private void Init() {
-        foreach (Transform child in transform) {
+        menuItems = new List<MenuItem>();
+        foreach (Transform child in menuItemsContainer) {
             MenuItem menuItem = child.GetComponent<MenuItem>();
             if (menuItem == null) {
                 continue;
@@ -38,14 +40,6 @@ public class MenuContainer : MonoBehaviour {
         inputActions.UI.Navigation.performed += MenuNavigation;
         inputActions.UI.Confirm.performed += ConfirmAction;
     }
-
-    //public void StartGame() {
-    //    SceneManager.LoadScene(MAIN_SCENE_NAME);
-    //}
-
-    //public void QuitGame() {
-    //    Application.Quit();
-    //}
 
     public void MenuNavigation(InputAction.CallbackContext context) {
 

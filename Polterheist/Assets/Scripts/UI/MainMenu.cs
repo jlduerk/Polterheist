@@ -27,6 +27,8 @@ public class MainMenu : MonoBehaviour {
 
     private void InitInput() {
         eventSystem = EventSystem.current;
+        inputActions = new PlayerInputActions();
+
         inputActions.UI.Enable();
         inputActions.UI.Navigation.performed += MenuNavigation;
         inputActions.UI.Confirm.performed += ConfirmAction;

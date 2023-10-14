@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class UICommands {
+public class UICommands : MonoBehaviour {
     public static void LoadScene(string sceneName) {
         SceneManager.LoadScene(sceneName);
     }
