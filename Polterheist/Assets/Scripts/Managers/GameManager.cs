@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour {
     private int playerCount;
 
     public ScoreManager scoreManager;
+    public GameFlowManager gameFlowManager;
 
     public bool GameInProgress = false;
 
@@ -43,8 +44,6 @@ public class GameManager : MonoBehaviour {
 
         GameStartEvent.AddListener(OnGameStarted);
         GameEndEvent.AddListener(OnGameEnded);
-
-        GameStartEvent.Invoke();
     }
 
     private void OnEnable() {
@@ -81,5 +80,9 @@ public class GameManager : MonoBehaviour {
     {
         Debug.Log("Game Ended");
         GameInProgress = false;
+    }
+
+    public void PlayersSayStart() {
+        GameStartEvent.Invoke();
     }
 }
