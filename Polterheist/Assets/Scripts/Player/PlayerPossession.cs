@@ -121,6 +121,7 @@ public class PlayerPossession : MonoBehaviour {
             playerMovement.speed /= possessable.gameObject.GetComponent<Rigidbody>().mass;
             renderer.material = teamData.teamMaterialPossess;
             currentlyPossessing.SetColor(teamData.teamMaterial);
+            possessableDetector.ClearPossiblePossessables();
         }
     }
 
