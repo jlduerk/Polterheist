@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevatateObject : MonoBehaviour
+public class RotateTransform : MonoBehaviour
 {
     public float xRotation = 0;
     public float yRotation = 0;
