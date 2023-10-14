@@ -5202,7 +5202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 3816136930357827420}
   target: {fileID: 7886963989797212873}
-  material: {fileID: 2100000, guid: 73528ea0e92210b478124a76a9e6f66a, type: 2}
+  renderer: {fileID: 4076965277503824768}
   wiggleSlantMultiplier: 0.04
   wiggleSpeedMultiplier: 2
 --- !u!4 &2945185437555644655 stripped

@@ -6,7 +6,8 @@ public class Ghost : MonoBehaviour
 {
     public Rigidbody rb;    
     public Transform target;
-    public Material material;
+    public Renderer renderer;
+    private Material material;
     private const string SHADER_SLANTDIR_REFERENCE = "_SlantDir";
     public float wiggleSlantMultiplier = 0.5f;
     private const string SHADER_WIGGLE_SPEED_REFERENCE = "_WiggleSpeed";
@@ -19,6 +20,7 @@ public class Ghost : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        material = renderer.material;
     }
 
     // Update is called once per frame
