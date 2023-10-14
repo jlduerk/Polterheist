@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class LevatateObject : MonoBehaviour
 {
+    public float xRotation = 0;
+    public float yRotation = 0;
+    public float zRotation = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +16,6 @@ public class LevatateObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        transform.Rotate(xRotation * Time.deltaTime, yRotation * Time.deltaTime, zRotation * Time.deltaTime); 
     }
 }
