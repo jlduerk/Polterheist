@@ -12,7 +12,15 @@ public class Timer : MonoBehaviour
 
     private void Start()
     {
+        timerText.gameObject.SetActive(false);
         // Starts the timer automatically
+
+        GameManager.Instance.GameStartEvent.AddListener(StartTimer);
+    }
+
+    void StartTimer()
+    {
+        timerText.gameObject.SetActive(true);
         timerIsRunning = true;
     }
 
