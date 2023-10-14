@@ -12,4 +12,16 @@ public class UICommands : MonoBehaviour {
     public static void QuitGame() {
         Application.Quit();
     }
+
+    public void Pause(bool pauseGame) {
+        int timeScale = pauseGame ? 0 : 1;
+        Time.timeScale = timeScale;
+        //TODO?
+        if (pauseGame) {
+            
+        }
+        else {
+
+        }
+    }
 }

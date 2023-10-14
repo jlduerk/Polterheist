@@ -15,7 +15,7 @@ public class MainMenu : MonoBehaviour {
     public bool inGameScene;
 
     private void Start() {
-        InitInput();
+        EventSystemInit();
         if (SceneManager.GetActiveScene().name == MAIN_SCENE_NAME) {
             inGameScene = true;
         }
@@ -25,13 +25,9 @@ public class MainMenu : MonoBehaviour {
         inputActions.UI.Disable();
     }
 
-    private void InitInput() {
+    private void EventSystemInit() {
         eventSystem = EventSystem.current;
-        inputActions = new PlayerInputActions();
-
-        inputActions.UI.Enable();
-        inputActions.UI.Navigation.performed += MenuNavigation;
-        inputActions.UI.Confirm.performed += ConfirmAction;
+        eventSystem.currentSelectedGameObject
     }
 
     public void StartGame() {
