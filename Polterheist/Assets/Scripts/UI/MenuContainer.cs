@@ -17,10 +17,6 @@ public class MenuContainer : MonoBehaviour {
 
     }
 
-    private void Update() {
-        Debug.Log(eventSystem.currentSelectedGameObject.name);
-    }
-
     private void OnDisable() {
         inputActions.UI.Disable();
     }
