@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour {
         GameInProgress = false;
     }
 
-    public void PlayersSayStart() {
+    public void StartGame() {
         GameStartEvent.Invoke();
     }
 }
