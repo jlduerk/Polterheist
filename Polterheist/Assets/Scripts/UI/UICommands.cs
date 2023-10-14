@@ -6,11 +6,21 @@ using UnityEngine.UI;
 
 public class UICommands : MonoBehaviour {
     public static void LoadScene(string sceneName) {
-        SceneManager.LoadScene(sceneName);
+        SceneTransition sceneTransition = FindObjectOfType<SceneTransition>();
+        if (sceneTransition == null) {
+            return;
+        }
+
+        sceneTransition.GoToSceneTransition(sceneName);
     }
 
     public static void QuitGame() {
-        Application.Quit();
+        SceneTransition sceneTransition = FindObjectOfType<SceneTransition>();
+        if (sceneTransition == null) {
+            return;
+        }
+
+        sceneTransition.QuitGameTransition();
     }
 
     public void Pause(bool pauseGame) {
