@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PossessableDetector : MonoBehaviour
 {
-    private List<Possessable> possessables = new List<Possessable>();
+    private List<Possessable> possiblePossessables = new List<Possessable>();
     private PlayerPossession playerPossession;
 
     private void Start() {
@@ -15,38 +15,61 @@ public class PossessableDetector : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Possessable possessable = other.gameObject.GetComponentInParent<Possessable>();
-        if (playerPossession.currentlyPossessing || !possessable || possessable.IsPossessed || possessables.Contains(possessable))
+        if (playerPossession.currentlyPossessing || !possessable || possessable.IsPossessed || possiblePossessables.Contains(possessable))
             return;
 
-        possessables.Add(possessable);
-        possessable.SetColor(playerPossession.teamData.teamMaterialHover);
-
+        possiblePossessables.Add(possessable);
+        OnAddPossiblePossessable(possessable);
         Debug.Log("Touching Possessable: " + possessable.gameObject.name);
     }
 
     private void OnTriggerExit(Collider other)
     {
         Possessable possessable = other.gameObject.GetComponentInParent<Possessable>();
-        if (playerPossession.currentlyPossessing || !possessable || !possessables.Contains(possessable))
+        if (playerPossession.currentlyPossessing || !possessable || !possiblePossessables.Contains(possessable))
             return;
 
-        possessables.Remove(possessable);
-        possessable.SetColor(null);
+        possiblePossessables.Remove(possessable);
+        OnRemovePossiblePossessable(possessable);
         Debug.Log("Stopped touching Possessable: " + possessable.gameObject.name);
     }
 
     public Possessable GetAvailablePossessable()
     {
         Possessable possessable = null;
-        for (int i = possessables.Count - 1; i >= 0; i--)
+        for (int i = possiblePossessables.Count - 1; i >= 0; i--)
         {
-            if (possessables[i].CanBePossessed())
+            if (possiblePossessables[i].CanBePossessed())
             {
-                possessable = possessables[i];
+                possessable = possiblePossessables[i];
                 break;
             }
         }
 
         return possessable;
+    }
+
+    // Clear all possible Possessables in range, and revert them to their original visual state
+    public void ClearPossiblePossessables()
+    {
+        for (int i = 0;  i < possiblePossessables.Count; i++)
+        {
+            if (possiblePossessables[i] == playerPossession.currentlyPossessing)
+                continue;
+
+            OnRemovePossiblePossessable(possiblePossessables[i]);
+        }
+
+        possiblePossessables.Clear();
+    }
+
+    private void OnAddPossiblePossessable(Possessable possessable)
+    {
+        possessable.SetColor(playerPossession.teamData.teamMaterialHover);
+    }
+
+    private void OnRemovePossiblePossessable(Possessable possessable)
+    {
+        possessable.SetColor(null);
     }
 }
