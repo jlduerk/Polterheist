@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Selectable))]
 public class MenuItem : MonoBehaviour {

@@ -17,6 +17,10 @@ public class MenuContainer : MonoBehaviour {
 
     }
 
+    private void Update() {
+        Debug.Log(eventSystem.currentSelectedGameObject.name);
+    }
+
     private void OnDisable() {
         inputActions.UI.Disable();
     }
@@ -35,28 +39,21 @@ public class MenuContainer : MonoBehaviour {
     }
 
     private void InitInput() {
-        eventSystem = EventSystem.current;
+        inputActions = new PlayerInputActions();
         inputActions.UI.Enable();
-        inputActions.UI.Navigation.performed += MenuNavigation;
         inputActions.UI.Confirm.performed += ConfirmAction;
+
+        eventSystem = EventSystem.current;
+        GameObject defaultSelectable = gameObject;
+        if (menuItems.Count == 0 || menuItems[0] == null) {
+            Debug.LogWarning("No Menu Items in the menuItems list!");
+            return;
+        }
+        eventSystem.SetSelectedGameObject(menuItems[0].gameObject);
     }
 
-    public void MenuNavigation(InputAction.CallbackContext context) {
-
-    }
 
     public void ConfirmAction(InputAction.CallbackContext context) {
         eventSystem.currentSelectedGameObject.GetComponent<MenuItem>().DoAction();
     }
-
-    //public void Pause(InputAction.CallbackContext context) {
-    //    if (!inGameScene) {
-    //        return;
-    //    }
-
-    //    isPaused = !isPaused;
-
-    //    int timeScale = isPaused ? 0 : 1;
-    //    Time.timeScale = timeScale;
-    //}
 }
