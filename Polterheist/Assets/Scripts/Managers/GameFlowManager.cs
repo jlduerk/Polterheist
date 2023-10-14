@@ -8,22 +8,12 @@ public class GameFlowManager : MonoBehaviour {
 
     [Header("Rounds Attributes")]
     public int numRounds = 3;
-    public float roundStartDelay = 2;
     private int roundsCounter = 0;
-    private CoroutineHandle beginRoundCoroutine;
 
     public void BeginRound() {
-        if (!beginRoundCoroutine.IsRunning) {
-            beginRoundCoroutine = Timing.RunCoroutine(_BeginRound());
-        }
-    }
-
-    private IEnumerator<float> _BeginRound() {
-        //TODO send a message for screen transitions OR wait time prior to game start
-        
-        yield return Timing.WaitForSeconds(roundStartDelay);
+        //DOTWEEN CALL THIS!
         GameManager.Instance.StartGame();
-    } 
+    }
 
     private void NextRound() {
         roundsCounter++;

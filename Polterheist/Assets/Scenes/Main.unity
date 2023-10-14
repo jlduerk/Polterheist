@@ -2583,6 +2583,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 131717728733572350, guid: e5a44564f207831408cac1fb4c07d4c3, type: 3}
+      propertyPath: possessablePool.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 131717728733572350, guid: e5a44564f207831408cac1fb4c07d4c3, type: 3}
+      propertyPath: possessablePool.Array.data[0]
+      value: 
+      objectReference: {fileID: 1083388282532743406, guid: 87329dd1f8a5dc741a6630bd7f03aba1, type: 3}
+    - target: {fileID: 131717728733572350, guid: e5a44564f207831408cac1fb4c07d4c3, type: 3}
+      propertyPath: possessablePool.Array.data[1]
+      value: 
+      objectReference: {fileID: 5929842339732703673, guid: 774d2eefaa3da9c44ad0642b50a8e0e4, type: 3}
+    - target: {fileID: 131717728733572350, guid: e5a44564f207831408cac1fb4c07d4c3, type: 3}
+      propertyPath: possessablePool.Array.data[2]
+      value: 
+      objectReference: {fileID: 3189984320146836655, guid: 2976b09dab8d67042855707e8a0064f0, type: 3}
+    - target: {fileID: 131717728733572350, guid: e5a44564f207831408cac1fb4c07d4c3, type: 3}
+      propertyPath: possessablePool.Array.data[3]
+      value: 
+      objectReference: {fileID: 7388964437311033581, guid: 1968a33fbe19d734c8a68f937b988dee, type: 3}
+    - target: {fileID: 131717728733572350, guid: e5a44564f207831408cac1fb4c07d4c3, type: 3}
+      propertyPath: possessablePool.Array.data[4]
+      value: 
+      objectReference: {fileID: 68530049018512232, guid: ed679f83c011234438dc735950a875fb, type: 3}
     - target: {fileID: 2213370978950947935, guid: e5a44564f207831408cac1fb4c07d4c3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
