@@ -18,4 +18,4 @@ MonoBehaviour:
   teamMaterialHover: {fileID: 2100000, guid: 8b9986acbbd2c5a4ca6f7d1a81964adb, type: 2}
   teamMaterialPossess: {fileID: 2100000, guid: b65a9c73013f3ce4bb71bf70332de112, type: 2}
   teamZone: 1
-  teamColor: {r: 0.34509805, g: 0.25490198, b: 0.33333334, a: 1}
+  teamColor: {r: 0.054901965, g: 0.59607846, b: 0.8078432, a: 1}
