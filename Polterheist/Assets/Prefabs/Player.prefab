@@ -5200,8 +5200,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64702af7f11b56f4d9395b06ffe843d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  target: {fileID: 0}
+  rb: {fileID: 3816136930357827420}
+  target: {fileID: 7886963989797212873}
   material: {fileID: 2100000, guid: 73528ea0e92210b478124a76a9e6f66a, type: 2}
   wiggleSlantMultiplier: 0.04
   wiggleSpeedMultiplier: 2
