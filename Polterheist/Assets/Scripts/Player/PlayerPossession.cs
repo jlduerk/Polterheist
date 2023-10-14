@@ -150,8 +150,7 @@ public class PlayerPossession : MonoBehaviour {
     #region Team Data
     public void TeamDataInit(TeamData teamDataToAssign) {
         teamData = teamDataToAssign;
-
-        renderer.material = teamData.teamMaterial;
+        renderer.material.SetColor("_Color", teamData.teamColor);
     }
     #endregion
 }

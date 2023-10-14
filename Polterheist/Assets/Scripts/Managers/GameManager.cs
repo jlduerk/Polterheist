@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour {
 
     public ScoreManager scoreManager;
     public GameFlowManager gameFlowManager;
+    public AudioManager audioManager;
 
     public bool GameInProgress = false;
 

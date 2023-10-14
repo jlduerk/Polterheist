@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
+    private Zone[] allZones;
     private List<Zone> AZones;
     private List<Zone> BZones;
     private GameManager gameManager;
@@ -74,7 +75,7 @@ public class ScoreManager : MonoBehaviour
     // Populates zone lists 
     private void GetZones()
     {
-        Zone[] allZones = FindObjectsByType<Zone>(FindObjectsSortMode.None);
+        allZones = FindObjectsByType<Zone>(FindObjectsSortMode.None);
 
         // Early out if no zones
         if (allZones.Length == 0 || allZones == null) return;
