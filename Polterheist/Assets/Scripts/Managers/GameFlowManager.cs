@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameFlowManager : MonoBehaviour {
+    private List<Possessable> spawnedPossessables = new List<Possessable>();
+
+    [Header("Rounds Attributes")]
     public int numRounds = 3;
     public float roundStartDelay = 2;
     private int roundsCounter = 0;
