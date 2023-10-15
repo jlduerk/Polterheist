@@ -67,7 +67,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Apature: -0.100000024
-    - _Dissolve_Amount: 0.5
+    - _Dissolve_Amount: 0.19999999
     - _Dissolve_Scale: 2
     - _Dissolve_Speed: 0.2
     - _QueueControl: 0

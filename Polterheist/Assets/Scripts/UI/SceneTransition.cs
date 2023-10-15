@@ -7,11 +7,12 @@ using DG.Tweening;
 using UnityEngine.UI;
 
 public class SceneTransition : MonoBehaviour {
+    public bool mainMenu;
     public float duration = 3;
     public const float DISSOLVE_TRANSITION_DURATION = 0.2f;
-    public const float DELAY = 0.25f;
+    public const float DELAY = 0;
     private const float DISSOLVE_AMOUNT_CLOSED = 1.15f;
-    private const float DISSOLVE_AMOUNT_OPEN = 0.5f;
+    private const float DISSOLVE_AMOUNT_OPEN = 0.2f;
     private const string SHADER_APATURE_REFERENCE = "_Apature";
     private const string SHADER_DISSOLVE_AMOUNT_REFERENCE = "_Dissolve_Amount";
     private static readonly int Apature = Shader.PropertyToID(SHADER_APATURE_REFERENCE);
@@ -29,17 +30,23 @@ public class SceneTransition : MonoBehaviour {
         startingApatureValue = material.GetFloat(Apature);
         material.SetFloat(DissolveAmount, DISSOLVE_AMOUNT_CLOSED);
         material.SetFloat(Apature, 1.5f);
-        Invoke("SceneStartTransition", 0.35f);
+        Invoke("SceneStartTransition", 0);
     }
 
     private void SceneStartTransition() {
         material.DOFloat(DISSOLVE_AMOUNT_OPEN, DissolveAmount, duration).SetEase(Ease.InCubic);
-        material.DOFloat(-0.1f, Apature, duration).SetEase(Ease.InCubic);
+        material.DOFloat(-0.1f, Apature, duration).SetEase(Ease.InCubic).OnComplete(StartGame);
     }
 
     public void GoToSceneTransition(string sceneToLoad = "") {
         material.DOFloat(DISSOLVE_AMOUNT_CLOSED, DissolveAmount, duration).SetEase(Ease.InOutCubic);
-        material.DOFloat(1.4f, Apature, duration).SetEase(Ease.InOutCubic).OnComplete( ()=> LoadScene(sceneToLoad) );
+        material.DOFloat(1.4f, Apature, duration).SetEase(Ease.InOutCubic).OnComplete( ()=> LoadScene(sceneToLoad));
+    }
+
+    private void StartGame() {
+        if (!mainMenu) {
+            GameManager.Instance.gameFlowManager.StartCountdown();
+        }
     }
 
     public void QuitGameTransition() {

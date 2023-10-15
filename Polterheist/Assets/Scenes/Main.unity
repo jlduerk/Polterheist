@@ -2490,6 +2490,14 @@ PrefabInstance:
       propertyPath: timeRemaining
       value: 120
       objectReference: {fileID: 0}
+    - target: {fileID: 4135321434389663448, guid: 3dcb17298e1d68d4db5b28c04b0257cb, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4135321434389663448, guid: 3dcb17298e1d68d4db5b28c04b0257cb, type: 3}
+      propertyPath: m_fontSize
+      value: 36
+      objectReference: {fileID: 0}
     - target: {fileID: 5596116512833777139, guid: 3dcb17298e1d68d4db5b28c04b0257cb, type: 3}
       propertyPath: m_text
       value: 0
@@ -2698,6 +2706,10 @@ PrefabInstance:
     - target: {fileID: 1453042376395716779, guid: 2652c6e466a23284282c4f2e7ee8b5bd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162226539598216148, guid: 2652c6e466a23284282c4f2e7ee8b5bd, type: 3}
+      propertyPath: duration
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

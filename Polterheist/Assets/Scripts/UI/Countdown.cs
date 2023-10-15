@@ -27,6 +27,7 @@ public class Countdown : MonoBehaviour
         if (countdownNum > 0)
         {
             CountdownText.text = countdownNum.ToString();
+            CountdownText.alpha = 0;
             GameManager.Instance.audioManager.Play("Countdown");
             NumberAnimation();
         }
