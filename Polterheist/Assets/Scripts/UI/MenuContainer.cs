@@ -3,17 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using DG.Tweening;
 
 public class MenuContainer : MonoBehaviour {
+    private PlayerInputActions inputActions;
+    EventSystem eventSystem;
+    
+    [Header("MenuItem Attributes")]
     public Transform menuItemsContainer;
     public List<MenuItem> menuItems;
 
-    private PlayerInputActions inputActions;
-    EventSystem eventSystem;
-
-    public DoTweenRequest fadeIn;
-    public DoTweenRequest fadeOut;
     private CanvasGroup canvasGroup;
+    [Header("Fade Attributes")]
+    public float fadeInDuration;
+    public Ease fadeInEase;
+    public float fadeOutDuration;
+    public Ease fadeOutEase;
 
     private void Start() {
         Init();
@@ -46,6 +51,7 @@ public class MenuContainer : MonoBehaviour {
         inputActions = new PlayerInputActions();
         inputActions.UI.Enable();
         inputActions.UI.Confirm.performed += ConfirmAction;
+        inputActions.UI.StartButton.performed += StartButton;
 
         eventSystem = EventSystem.current;
         GameObject defaultSelectable = gameObject;
@@ -56,14 +62,33 @@ public class MenuContainer : MonoBehaviour {
         
         eventSystem.SetSelectedGameObject(menuItems[0].gameObject);
     }
-
-
+    
     public void ConfirmAction(InputAction.CallbackContext context) {
+        if (!IsEnabled()) {
+            return;
+        }
+        if (eventSystem.currentSelectedGameObject == null) {
+            Debug.LogError($"No selected MenuItem to click!");
+            return;
+        }
         eventSystem.currentSelectedGameObject.GetComponent<MenuItem>().DoAction();
     }
 
-    public void ToggleMenu(bool enable) {
+    public virtual void StartButton(InputAction.CallbackContext context) {
+        eventSystem.SetSelectedGameObject(menuItems[0].gameObject);
+    }
+
+    public void FadeMenu(bool enable) {
         //dotween fade in/out
-        
+        if (enable) {
+            DOTween.To(()=> canvasGroup.alpha, x=> canvasGroup.alpha = x, 1, fadeInDuration).SetEase(fadeInEase);
+        }
+        else {
+            DOTween.To(()=> canvasGroup.alpha, x=> canvasGroup.alpha = x, 0, fadeOutDuration).SetEase(fadeOutEase);
+        }
+    }
+
+    public bool IsEnabled() {
+        return canvasGroup.alpha > 0;
     }
 }

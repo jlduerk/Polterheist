@@ -23,6 +23,10 @@ public class GameOver : MonoBehaviour
     [SerializeField] private Sprite redGhostVictory;
     [SerializeField] private Sprite redGhostDefeat;
 
+    [SerializeField] private string winText = "vict0ry!";
+    [SerializeField] private string drawText = "Draw!";
+    private const string MAIN_MENU_SCENE_NAME = "MainMenu";
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -39,18 +43,18 @@ public class GameOver : MonoBehaviour
 
         if (scoreManager.ScoreA > scoreManager.ScoreB)
         {
-            victoryText.text = $"{teamA.teamName} vict0ry!";
+            victoryText.text = $"{teamA.teamName} {winText}";
             blueGhost.sprite = blueGhostVictory;
             redGhost.sprite = redGhostDefeat;
         } 
         else if (scoreManager.ScoreB > scoreManager.ScoreA)
         {
-            victoryText.text = $"{teamB.teamName} vict0ry!";
+            victoryText.text = $"{teamB.teamName} {winText}";
             blueGhost.sprite = blueGhostDefeat;
             redGhost.sprite = redGhostVictory;
         } else
         {
-            victoryText.text = "Draw!";
+            victoryText.text = drawText;
             blueGhost.sprite = blueGhostVictory;
             redGhost.sprite = redGhostVictory;
         }
@@ -60,6 +64,6 @@ public class GameOver : MonoBehaviour
     }
 
     public void Continue() {
-        UICommands.LoadScene("MainMenu");
+        UICommands.LoadScene(MAIN_MENU_SCENE_NAME);
     }
 }

@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 6799490989176343979}
   - component: {fileID: 8435717018031805551}
   - component: {fileID: 5066305787096990002}
+  - component: {fileID: 5481564400029400852}
   m_Layer: 5
   m_Name: MenuContainer
   m_TagString: Untagged
@@ -151,3 +152,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuItemsContainer: {fileID: 7909288290545496220}
   menuItems: []
+  fadeInDuration: 1
+  fadeInEase: 12
+  fadeOutDuration: 1
+  fadeOutEase: 18
+--- !u!225 &5481564400029400852
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5664431281643758930}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
