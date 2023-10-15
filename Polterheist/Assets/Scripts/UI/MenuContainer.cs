@@ -17,6 +17,9 @@ public class MenuContainer : MonoBehaviour {
     }
 
     private void OnDisable() {
+        if (inputActions == null) {
+            return;
+        }
         inputActions.UI.Disable();
     }
 
