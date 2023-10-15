@@ -42,6 +42,14 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
+    private void Update()
+    {
+        if (movementVector != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(-movementVector);
+        }
+    }
+
     private void FixedUpdate() {
         if (playerRigidbody == null) {
             return;

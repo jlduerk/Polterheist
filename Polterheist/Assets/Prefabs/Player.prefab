@@ -255,7 +255,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 10
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 1
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -5202,7 +5202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 3816136930357827420}
   target: {fileID: 7886963989797212873}
-  material: {fileID: 2100000, guid: 73528ea0e92210b478124a76a9e6f66a, type: 2}
+  renderer: {fileID: 4076965277503824768}
   wiggleSlantMultiplier: 0.04
   wiggleSpeedMultiplier: 2
 --- !u!4 &2945185437555644655 stripped
