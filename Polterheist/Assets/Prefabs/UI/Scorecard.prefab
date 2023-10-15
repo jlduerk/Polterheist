@@ -485,6 +485,8 @@ MonoBehaviour:
   bgImage: {fileID: 6506403765602959521}
   scoreText: {fileID: 9160004034189723684}
   teamText: {fileID: 8145766341266630584}
+  MoveTweenY: 210
+  MoveTweenDuration: 1
 --- !u!1 &6460494553731241899
 GameObject:
   m_ObjectHideFlags: 0
