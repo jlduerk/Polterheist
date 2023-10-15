@@ -4,6 +4,7 @@ using TMPro;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour
 {
@@ -60,6 +61,7 @@ public class GameOver : MonoBehaviour
 
     public void Continue()
     {
-        Debug.Log("hiiii");
+        Debug.Log("?????");
+        UICommands.LoadScene("MainMenu");
     }
 }
