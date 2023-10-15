@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
         get { return instance; }
         private set { }
     }
+    public bool allowSinglePlayer;
     public TeamData[] teamDatas;
 
     private PlayerInputManager playerInputManager;
@@ -59,7 +60,7 @@ public class GameManager : MonoBehaviour {
         return null;
     }
 
-    private void OnLevelOpened()
+    public void OnLevelOpened()
     {
         scoreManager.Init();
         gameFlowManager.Init();
@@ -89,6 +90,10 @@ public class GameManager : MonoBehaviour {
         players.Add(playerInput);
         playerInput.gameObject.transform.position = playerSpawnPoints[players.Count - 1].position;
 
+        if (allowSinglePlayer) {
+            gameFlowManager.StartCountdown();
+            return;
+        }
         if (playerCount >= 2) {
             gameFlowManager.StartCountdown();
         }
