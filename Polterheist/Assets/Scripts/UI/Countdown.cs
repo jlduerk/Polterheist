@@ -40,13 +40,13 @@ public class Countdown : MonoBehaviour
         {
             CountdownText.text = countdownNum.ToString();
             CountdownText.alpha = 0;
-            GameManager.Instance.audioManager.Play("Countdown");
+            AudioManager.Instance.Play("Countdown");
             NumberAnimation();
         }
         else if (countdownNum == 0)
         {
             CountdownText.text = "O";
-            GameManager.Instance.audioManager.Play("CountdownGo");
+            AudioManager.Instance.Play("CountdownGo");
             GoAnimation();
         }
         countdownNum--;

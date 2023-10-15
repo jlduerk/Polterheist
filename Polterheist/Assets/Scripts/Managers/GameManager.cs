@@ -19,7 +19,6 @@ public class GameManager : MonoBehaviour {
 
     public ScoreManager scoreManager;
     public GameFlowManager gameFlowManager;
-    public AudioManager audioManager;
 
     public bool GameInProgress = false;
 
@@ -35,8 +34,7 @@ public class GameManager : MonoBehaviour {
         }
         // set the instance to this object if it doesn't exist
         instance = this;
-        // prevent the instance from being destroyed when loading new scenes
-        DontDestroyOnLoad(this.gameObject);
+
         playerInputManager = FindObjectOfType<PlayerInputManager>();
     }
 

@@ -10,6 +10,8 @@ public class MenuItem : MonoBehaviour {
     public Button button;
     public Vector3 highlightScaleUp = Vector3.one;
     public float scaleUpDuration = 1;
+    public string hoverSFX;
+    public string doActionSFX;
 
     public void Init() {
         button = GetComponent<Button>();
@@ -17,6 +19,7 @@ public class MenuItem : MonoBehaviour {
 
     public void Highlight() {
         transform.DOScale(highlightScaleUp, scaleUpDuration).SetEase(Ease.OutQuart);
+        AudioManager.Instance.Play(hoverSFX);
     }
 
     public void UnHighlight() {
@@ -29,6 +32,7 @@ public class MenuItem : MonoBehaviour {
             return;
         }
 
+        AudioManager.Instance.Play(doActionSFX);
         button.onClick.Invoke();
     }
 }
