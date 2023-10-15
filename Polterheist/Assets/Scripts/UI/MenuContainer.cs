@@ -7,8 +7,8 @@ using DG.Tweening;
 
 public class MenuContainer : MonoBehaviour {
     private PlayerInputActions inputActions;
-    EventSystem eventSystem;
-    
+    protected EventSystem eventSystem;
+
     [Header("MenuItem Attributes")]
     public Transform menuItemsContainer;
     public List<MenuItem> menuItems;
@@ -45,6 +45,7 @@ public class MenuContainer : MonoBehaviour {
         }
 
         canvasGroup = GetComponent<CanvasGroup>();
+        FadeMenu(IsEnabled());
     }
 
     private void InitInput() {
@@ -74,21 +75,29 @@ public class MenuContainer : MonoBehaviour {
         eventSystem.currentSelectedGameObject.GetComponent<MenuItem>().DoAction();
     }
 
-    public virtual void StartButton(InputAction.CallbackContext context) {
-        eventSystem.SetSelectedGameObject(menuItems[0].gameObject);
-    }
+    public virtual void StartButton(InputAction.CallbackContext context) { }
 
     public void FadeMenu(bool enable) {
-        //dotween fade in/out
         if (enable) {
-            DOTween.To(()=> canvasGroup.alpha, x=> canvasGroup.alpha = x, 1, fadeInDuration).SetEase(fadeInEase);
+            DOTween.To(()=> canvasGroup.alpha, x=> canvasGroup.alpha = x, 1, fadeInDuration).SetEase(fadeInEase).SetUpdate(true);
         }
         else {
-            DOTween.To(()=> canvasGroup.alpha, x=> canvasGroup.alpha = x, 0, fadeOutDuration).SetEase(fadeOutEase);
+            DOTween.To(()=> canvasGroup.alpha, x=> canvasGroup.alpha = x, 0, fadeOutDuration).SetEase(fadeOutEase).SetUpdate(true);
         }
+
+        ToggleMenuItems(enable);
     }
 
     public bool IsEnabled() {
+        if (canvasGroup == null) {
+            return false;
+        }
         return canvasGroup.alpha > 0;
+    }
+
+    public void ToggleMenuItems(bool enabled) {
+        foreach (MenuItem menuItem in menuItems) {
+            menuItem.EnableToggle(enabled);
+        }
     }
 }

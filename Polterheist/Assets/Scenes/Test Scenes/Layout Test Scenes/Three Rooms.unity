@@ -1632,22 +1632,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3170287336521305396, guid: 36bc516ab24451348aa556ffddbf966f, type: 3}
-      propertyPath: pauseDuration
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 3170287336521305396, guid: 36bc516ab24451348aa556ffddbf966f, type: 3}
-      propertyPath: fadeInDuration
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 3170287336521305396, guid: 36bc516ab24451348aa556ffddbf966f, type: 3}
-      propertyPath: fadeOutDuration
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 3170287336521305396, guid: 36bc516ab24451348aa556ffddbf966f, type: 3}
-      propertyPath: unPauseDuration
-      value: 0.25
-      objectReference: {fileID: 0}
     - target: {fileID: 6547910385763320280, guid: 36bc516ab24451348aa556ffddbf966f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

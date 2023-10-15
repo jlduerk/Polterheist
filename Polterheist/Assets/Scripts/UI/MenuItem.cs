@@ -12,21 +12,31 @@ public class MenuItem : MonoBehaviour {
     public float scaleUpDuration = 1;
     public string hoverSFX;
     public string doActionSFX;
-
+    private bool isEnabled = true;
+    
     public void Init() {
         button = GetComponent<Button>();
     }
 
     public void Highlight() {
-        transform.DOScale(highlightScaleUp, scaleUpDuration).SetEase(Ease.OutQuart);
+        if (!IsEnabled()) {
+            return;
+        }
+        transform.DOScale(highlightScaleUp, scaleUpDuration).SetEase(Ease.OutQuart).SetUpdate(true);
         AudioManager.Instance.Play(hoverSFX);
     }
 
     public void UnHighlight() {
-        transform.DOScale(Vector3.one, scaleUpDuration).SetEase(Ease.OutQuart);
+        if (!IsEnabled()) {
+            return;
+        }
+        transform.DOScale(Vector3.one, scaleUpDuration).SetEase(Ease.OutQuart).SetUpdate(true);
     }
 
     public void DoAction() {
+        if (!IsEnabled()) {
+            return;
+        }
         if (button == null) {
             Debug.LogWarning($"No Button component on game object!");
             return;
@@ -34,5 +44,13 @@ public class MenuItem : MonoBehaviour {
 
         AudioManager.Instance.Play(doActionSFX);
         button.onClick.Invoke();
+    }
+
+    public void EnableToggle(bool enable) {
+        isEnabled = enable;
+    }
+
+    public bool IsEnabled() {
+        return isEnabled;
     }
 }

@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour {
     public GameFlowManager gameFlowManager;
 
     public bool GameInProgress = false;
+    public bool Paused = false;
 
     public UnityEvent GameStartEvent;
     public UnityEvent GameEndEvent;
