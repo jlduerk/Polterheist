@@ -72,6 +72,12 @@ public class GameManager : MonoBehaviour {
         playerCount++;
     }
 
+    private void OnLevelOpened()
+    {
+        scoreManager.Init();
+        gameFlowManager.Init();
+    }
+
     private void OnGameStarted()
     {
         Debug.Log("Game Started");

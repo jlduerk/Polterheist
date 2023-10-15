@@ -17,6 +17,11 @@ public class ScoreManager : MonoBehaviour
     {
         gameManager = GameManager.Instance;
 
+        Init();
+    }
+
+    public void Init()
+    {
         // Initialize zone lists
         AZones = new List<Zone>();
         BZones = new List<Zone>();

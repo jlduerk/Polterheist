@@ -19,7 +19,7 @@ public class Countdown : MonoBehaviour
     void Start()
     {
         CountdownText = GetComponent<TextMeshProUGUI>();
-        AnimatedCountdown();
+        //AnimatedCountdown();
     }
 
     public void AnimatedCountdown()
@@ -27,11 +27,13 @@ public class Countdown : MonoBehaviour
         if (countdownNum > 0)
         {
             CountdownText.text = countdownNum.ToString();
+            GameManager.Instance.audioManager.Play("Countdown");
             NumberAnimation();
         }
         else if (countdownNum == 0)
         {
             CountdownText.text = "O";
+            GameManager.Instance.audioManager.Play("CountdownGo");
             GoAnimation();
         }
         countdownNum--;
@@ -63,7 +65,7 @@ public class Countdown : MonoBehaviour
 
     private void StartGame()
     {
-        GameManager.Instance.GameStartEvent.Invoke();
+        GameManager.Instance.gameFlowManager.BeginRound();
     }
 
 }

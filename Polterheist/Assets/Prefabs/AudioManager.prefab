@@ -46,12 +46,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mixerGroup: {fileID: 0}
   sounds:
-  - name: bingbong
-    clip: {fileID: 0}
-    volume: 0
+  - name: Countdown
+    clip: {fileID: 8300000, guid: a824db3a907c4c047831fa3218671a0c, type: 3}
+    volume: 1
     volumeVariance: 0
-    pitch: 0
+    pitch: 1
     pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: CountdownGo
+    clip: {fileID: 8300000, guid: 9406e434e75372148a2a3e411a7980fd, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Click
+    clip: {fileID: 8300000, guid: 436a830ad78390a4aa17a572d5ef2e42, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0.138
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
