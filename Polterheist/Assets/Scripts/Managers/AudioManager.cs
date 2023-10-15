@@ -4,13 +4,28 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-	public AudioMixerGroup mixerGroup;
+    private static AudioManager instance;
+    public static AudioManager Instance {
+        get { return instance; }
+        private set { }
+    }
+    public AudioMixerGroup mixerGroup;
 
 	public Sound[] sounds;
 
 	void Awake()
 	{
-		foreach (Sound s in sounds)
+        // check if the instance already exists and destroy the new instance if it does
+        if (instance != null && instance != this) {
+            Destroy(this.gameObject);
+            return;
+        }
+        // set the instance to this object if it doesn't exist
+        instance = this;
+        // prevent the instance from being destroyed when loading new scenes
+        DontDestroyOnLoad(this.gameObject);
+
+        foreach (Sound s in sounds)
 		{
 			s.source = gameObject.AddComponent<AudioSource>();
 			s.source.clip = s.clip;

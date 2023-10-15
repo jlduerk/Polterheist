@@ -14,7 +14,6 @@ public class MenuContainer : MonoBehaviour {
     private void Start() {
         Init();
         InitInput();
-
     }
 
     private void OnDisable() {
