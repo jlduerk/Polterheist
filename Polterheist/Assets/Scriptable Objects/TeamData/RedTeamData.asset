@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed2dcf79f6d529349b1cbffdf1d0592b, type: 3}
+  m_Name: RedTeamData
+  m_EditorClassIdentifier: 
+  teamName: Red Team
+  team: 1
+  teamMaterial: {fileID: 2100000, guid: 261cb68978848c946b1390732798c094, type: 2}
+  teamMaterialHover: {fileID: 2100000, guid: 1d007539778f70545994f2a0b3f93064, type: 2}
+  teamMaterialPossess: {fileID: 2100000, guid: f96418629b04a4342b91ad6126b21215, type: 2}
+  teamZone: 2
+  teamColor: {r: 0.9960785, g: 0.30588236, b: 0.4039216, a: 1}

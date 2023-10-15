@@ -105,7 +105,8 @@ public class PlayerPossession : MonoBehaviour {
         if (!currentlyPossessing)
             return;
 
-        renderer.material = teamData.teamMaterial;
+        renderer.material.SetFloat("_Opacity", 1);
+
         currentlyPossessing.SetColor(null);
         currentlyPossessing.Eject();
     }
@@ -119,8 +120,9 @@ public class PlayerPossession : MonoBehaviour {
         {
             currentlyPossessing = possessable;
             playerMovement.speed /= possessable.gameObject.GetComponent<Rigidbody>().mass;
-            renderer.material = teamData.teamMaterialPossess;
+            renderer.material.SetFloat("_Opacity", .5f);
             currentlyPossessing.SetColor(teamData.teamMaterial);
+            possessableDetector.ClearPossiblePossessables();
         }
     }
 
@@ -149,8 +151,7 @@ public class PlayerPossession : MonoBehaviour {
     #region Team Data
     public void TeamDataInit(TeamData teamDataToAssign) {
         teamData = teamDataToAssign;
-
-        renderer.material = teamData.teamMaterial;
+        renderer.material.SetColor("_Color", teamData.teamColor);
     }
     #endregion
 }
