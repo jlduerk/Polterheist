@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour {
     public TeamData[] teamDatas;
 
     private PlayerInputManager playerInputManager;
-    private int playerCount;
+    public int playerCount;
+    public Transform[] playerSpawnPoints;
 
     public ScoreManager scoreManager;
     public GameFlowManager gameFlowManager;
@@ -46,14 +47,6 @@ public class GameManager : MonoBehaviour {
         GameStartEvent.AddListener(OnGameStarted);
         GameEndEvent.AddListener(OnGameEnded);
     }
-
-    private void OnEnable() {
-        playerInputManager.onPlayerJoined += OnPlayerJoined;
-    }
-
-    private void OnDisable() {
-        playerInputManager.onPlayerJoined -= OnPlayerJoined;
-    }
     #endregion
 
     public TeamData GetTeamData(TeamData.Team teamToRequest) {
@@ -64,12 +57,6 @@ public class GameManager : MonoBehaviour {
         }
         Debug.LogError($"{teamToRequest} is not in GameManager TeamData array!");
         return null;
-    }
-
-    public void OnPlayerJoined(PlayerInput playerInput) {
-        int counterModulo = playerCount % teamDatas.Length;
-        playerInput.gameObject.GetComponent<PlayerPossession>().TeamDataInit(teamDatas[counterModulo]);
-        playerCount++;
     }
 
     private void OnLevelOpened()
@@ -91,5 +78,19 @@ public class GameManager : MonoBehaviour {
 
     public void StartGame() {
         GameStartEvent.Invoke();
+    }
+
+    List<PlayerInput> players = new List<PlayerInput>();
+    public void RegisterPlayer(PlayerInput playerInput) {
+        int counterModulo = playerCount % teamDatas.Length;
+        playerInput.gameObject.GetComponent<PlayerPossession>().TeamDataInit(teamDatas[counterModulo]);
+        playerCount++;
+
+        players.Add(playerInput);
+        playerInput.gameObject.transform.position = playerSpawnPoints[players.Count - 1].position;
+
+        if (playerCount >= 2) {
+            gameFlowManager.StartCountdown();
+        }
     }
 }

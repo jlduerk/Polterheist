@@ -7,7 +7,6 @@ using DG.Tweening;
 using UnityEngine.UI;
 
 public class SceneTransition : MonoBehaviour {
-    public bool mainMenu;
     public float duration = 3;
     public const float DISSOLVE_TRANSITION_DURATION = 0.2f;
     public const float DELAY = 0;
@@ -35,18 +34,12 @@ public class SceneTransition : MonoBehaviour {
 
     private void SceneStartTransition() {
         material.DOFloat(DISSOLVE_AMOUNT_OPEN, DissolveAmount, duration).SetEase(Ease.InCubic);
-        material.DOFloat(-0.1f, Apature, duration).SetEase(Ease.InCubic).OnComplete(StartGame);
+        material.DOFloat(-0.1f, Apature, duration).SetEase(Ease.InCubic);
     }
 
     public void GoToSceneTransition(string sceneToLoad = "") {
         material.DOFloat(DISSOLVE_AMOUNT_CLOSED, DissolveAmount, duration).SetEase(Ease.InOutCubic);
         material.DOFloat(1.4f, Apature, duration).SetEase(Ease.InOutCubic).OnComplete( ()=> LoadScene(sceneToLoad));
-    }
-
-    private void StartGame() {
-        if (!mainMenu) {
-            GameManager.Instance.gameFlowManager.StartCountdown();
-        }
     }
 
     public void QuitGameTransition() {

@@ -14,6 +14,7 @@ public class Countdown : MonoBehaviour
     [SerializeField] private float GhostScale = 2f;
 
     private int countdownNum = 3;
+    private bool countdownStarted;
 
     // Start is called before the first frame update
     void Start()
@@ -22,8 +23,19 @@ public class Countdown : MonoBehaviour
         //AnimatedCountdown();
     }
 
+    private void Update() {
+        if (countdownStarted) {
+            return;
+        }
+
+        int soulCount = 2 - GameManager.Instance.playerCount;
+        string soulString = soulCount > 1 ? "s0uls" : "s0ul";
+        CountdownText.text = $"Waiting f0r {soulCount.ToString()} {soulString}...";
+    }
+
     public void AnimatedCountdown()
     {
+        countdownStarted = true;
         if (countdownNum > 0)
         {
             CountdownText.text = countdownNum.ToString();
