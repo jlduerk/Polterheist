@@ -14,10 +14,12 @@ public class MenuContainer : MonoBehaviour {
     private void Start() {
         Init();
         InitInput();
-
     }
 
     private void OnDisable() {
+        if (inputActions == null) {
+            return;
+        }
         inputActions.UI.Disable();
     }
 

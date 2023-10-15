@@ -64,8 +64,17 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
-  - name: Click
-    clip: {fileID: 8300000, guid: 436a830ad78390a4aa17a572d5ef2e42, type: 3}
+  - name: Hover
+    clip: {fileID: 8300000, guid: 0429387e77457664fbd5e1f7ce8dc7d5, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0.138
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Select
+    clip: {fileID: 8300000, guid: 90aaf0a8f5d284c4f9e59d5d05185be2, type: 3}
     volume: 1
     volumeVariance: 0
     pitch: 1

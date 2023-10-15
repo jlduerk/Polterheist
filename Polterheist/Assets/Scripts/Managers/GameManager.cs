@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
         get { return instance; }
         private set { }
     }
+    public bool allowSinglePlayer;
     public TeamData[] teamDatas;
 
     private PlayerInputManager playerInputManager;
@@ -18,7 +19,6 @@ public class GameManager : MonoBehaviour {
 
     public ScoreManager scoreManager;
     public GameFlowManager gameFlowManager;
-    public AudioManager audioManager;
 
     public bool GameInProgress = false;
 
@@ -34,8 +34,7 @@ public class GameManager : MonoBehaviour {
         }
         // set the instance to this object if it doesn't exist
         instance = this;
-        // prevent the instance from being destroyed when loading new scenes
-        DontDestroyOnLoad(this.gameObject);
+
         playerInputManager = FindObjectOfType<PlayerInputManager>();
     }
 
@@ -59,7 +58,7 @@ public class GameManager : MonoBehaviour {
         return null;
     }
 
-    private void OnLevelOpened()
+    public void OnLevelOpened()
     {
         scoreManager.Init();
         gameFlowManager.Init();
@@ -89,6 +88,10 @@ public class GameManager : MonoBehaviour {
         players.Add(playerInput);
         playerInput.gameObject.transform.position = playerSpawnPoints[players.Count - 1].position;
 
+        if (allowSinglePlayer) {
+            gameFlowManager.StartCountdown();
+            return;
+        }
         if (playerCount >= 2) {
             gameFlowManager.StartCountdown();
         }

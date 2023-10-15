@@ -17,16 +17,19 @@ public class SceneTransition : MonoBehaviour {
     private static readonly int Apature = Shader.PropertyToID(SHADER_APATURE_REFERENCE);
     private static readonly int DissolveAmount = Shader.PropertyToID(SHADER_DISSOLVE_AMOUNT_REFERENCE);
     private Material material;
-    private float startingApatureValue;
+    private const string MAIN_MENU_NAME = "MainMenu";
 
     private void Start() {
+        if (SceneManager.GetActiveScene().name != MAIN_MENU_NAME) {
+            GameManager.Instance.OnLevelOpened();
+        }
+
         material = GetComponent<Image>().material;
         if (material == null) {
             Debug.LogError("No assigned material! What're you doing?!");
             return;
         }
 
-        startingApatureValue = material.GetFloat(Apature);
         material.SetFloat(DissolveAmount, DISSOLVE_AMOUNT_CLOSED);
         material.SetFloat(Apature, 1.5f);
         Invoke("SceneStartTransition", 0);

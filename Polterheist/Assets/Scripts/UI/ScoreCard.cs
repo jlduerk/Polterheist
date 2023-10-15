@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class ScoreCard : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class ScoreCard : MonoBehaviour
     public TextMeshProUGUI teamText;
     private GameManager gameManager;
 
+    [SerializeField] private float MoveTweenY = 161f;
+    [SerializeField] private float MoveTweenDuration = 1f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +24,22 @@ public class ScoreCard : MonoBehaviour
         bgImage.color = teamData.teamColor;
         teamText.text = teamData.teamName;
         scoreManager = GameManager.Instance.scoreManager;
+        gameManager.GameStartEvent.AddListener(GameStartTween);
+        gameManager.GameEndEvent.AddListener(GameEndTween);
+
+
+    }
+
+    void GameStartTween()
+    {
+        Sequence mySequence = DOTween.Sequence();
+        mySequence.Append(transform.DOMoveY(MoveTweenY, MoveTweenDuration));
+    }
+
+    void GameEndTween()
+    {
+        Sequence mySequence = DOTween.Sequence();
+        mySequence.Append(transform.DOMoveY(-MoveTweenY, MoveTweenDuration));
     }
 
     void FixedUpdate()
