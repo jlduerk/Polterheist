@@ -870,7 +870,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 68.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1220,6 +1220,10 @@ PrefabInstance:
       propertyPath: teamData
       value: 
       objectReference: {fileID: 11400000, guid: 002711089a0be104c87572d343d09fb4, type: 2}
+    - target: {fileID: 6604490179141668593, guid: 0517972caa4a0d140821b60751818cf1, type: 3}
+      propertyPath: teamData
+      value: 
+      objectReference: {fileID: 11400000, guid: 002711089a0be104c87572d343d09fb4, type: 2}
     - target: {fileID: 7718461956813064299, guid: 0517972caa4a0d140821b60751818cf1, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1493,6 +1497,10 @@ PrefabInstance:
       value: Blue Scorecard
       objectReference: {fileID: 0}
     - target: {fileID: 5670516064593514192, guid: 0517972caa4a0d140821b60751818cf1, type: 3}
+      propertyPath: teamData
+      value: 
+      objectReference: {fileID: 11400000, guid: efba2d66c024a37458625cb4d6647486, type: 2}
+    - target: {fileID: 6604490179141668593, guid: 0517972caa4a0d140821b60751818cf1, type: 3}
       propertyPath: teamData
       value: 
       objectReference: {fileID: 11400000, guid: efba2d66c024a37458625cb4d6647486, type: 2}
