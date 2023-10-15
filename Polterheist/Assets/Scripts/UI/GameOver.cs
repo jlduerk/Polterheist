@@ -59,9 +59,7 @@ public class GameOver : MonoBehaviour
 
     }
 
-    public void Continue()
-    {
-        Debug.Log("?????");
+    public void Continue() {
         UICommands.LoadScene("MainMenu");
     }
 }

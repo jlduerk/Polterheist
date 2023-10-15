@@ -11,6 +11,10 @@ public class MenuContainer : MonoBehaviour {
     private PlayerInputActions inputActions;
     EventSystem eventSystem;
 
+    public DoTweenRequest fadeIn;
+    public DoTweenRequest fadeOut;
+    private CanvasGroup canvasGroup;
+
     private void Start() {
         Init();
         InitInput();
@@ -34,6 +38,8 @@ public class MenuContainer : MonoBehaviour {
             menuItem.Init();
             menuItems.Add(menuItem);
         }
+
+        canvasGroup = GetComponent<CanvasGroup>();
     }
 
     private void InitInput() {
@@ -47,11 +53,17 @@ public class MenuContainer : MonoBehaviour {
             Debug.LogWarning("No Menu Items in the menuItems list!");
             return;
         }
+        
         eventSystem.SetSelectedGameObject(menuItems[0].gameObject);
     }
 
 
     public void ConfirmAction(InputAction.CallbackContext context) {
         eventSystem.currentSelectedGameObject.GetComponent<MenuItem>().DoAction();
+    }
+
+    public void ToggleMenu(bool enable) {
+        //dotween fade in/out
+        
     }
 }

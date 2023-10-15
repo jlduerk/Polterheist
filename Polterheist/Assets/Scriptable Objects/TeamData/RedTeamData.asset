@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed2dcf79f6d529349b1cbffdf1d0592b, type: 3}
   m_Name: RedTeamData
   m_EditorClassIdentifier: 
-  teamName: Red Team
+  teamName: Red
   team: 1
   teamMaterial: {fileID: 2100000, guid: 261cb68978848c946b1390732798c094, type: 2}
   teamMaterialHover: {fileID: 2100000, guid: 1d007539778f70545994f2a0b3f93064, type: 2}
