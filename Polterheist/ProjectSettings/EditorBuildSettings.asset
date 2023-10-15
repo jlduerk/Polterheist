@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: 5e3e6f1323bbfef4693459f1279207ca
+  - enabled: 1
+    path: Assets/Scenes/Test Scenes/Layout Test Scenes/Three Rooms.unity
+    guid: 2bb891c07bb91b54db3f6ef2d5fcd3dd
   m_configObjects: {}

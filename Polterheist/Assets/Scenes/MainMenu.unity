@@ -1355,7 +1355,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1602600088432948739, guid: a2b945a10a54ce84888edbe329faadd1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Main
+      value: Three Rooms
       objectReference: {fileID: 0}
     - target: {fileID: 1602600088432948739, guid: a2b945a10a54ce84888edbe329faadd1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName

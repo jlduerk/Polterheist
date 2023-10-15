@@ -88,5 +88,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 194de93dfb1650b459504423232f5540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMenu: 0
-  duration: 2.5
+  duration: 1.5
