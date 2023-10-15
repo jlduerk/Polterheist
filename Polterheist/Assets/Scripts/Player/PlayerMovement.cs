@@ -49,7 +49,7 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private void Update() {
-        if (movementVector != Vector3.zero) {
+        if (movementVector != Vector3.zero && !GameManager.Instance.Paused) {
             transform.rotation = Quaternion.LookRotation(-movementVector);
         }
     }

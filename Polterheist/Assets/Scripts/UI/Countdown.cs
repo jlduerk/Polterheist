@@ -45,6 +45,7 @@ public class Countdown : MonoBehaviour
         }
         else if (countdownNum == 0)
         {
+            StartGame();
             CountdownText.text = "O";
             AudioManager.Instance.Play("CountdownGo");
             GoAnimation();
@@ -76,8 +77,7 @@ public class Countdown : MonoBehaviour
             .AppendCallback(StartGame);
     }
 
-    private void StartGame()
-    {
+    private void StartGame() {
         GameManager.Instance.gameFlowManager.BeginRound();
     }
 
