@@ -465,6 +465,7 @@ GameObject:
   - component: {fileID: 2214028829423756172}
   - component: {fileID: 195169488650813363}
   - component: {fileID: 8796743559984552420}
+  - component: {fileID: 5363939486067256790}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -534,6 +535,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5363939486067256790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2650731816972332477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2c0a47c01faa3c40b600f1e66702a25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuItemsContainer: {fileID: 1494094069580634031}
+  menuItems: []
 --- !u!1 &2918664974702276169
 GameObject:
   m_ObjectHideFlags: 0
@@ -544,7 +559,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1761999139358332884}
   - component: {fileID: 7468338859634481448}
-  - component: {fileID: 7978532326993720180}
   m_Layer: 5
   m_Name: Game Over Panel
   m_TagString: Untagged
@@ -595,20 +609,6 @@ MonoBehaviour:
   blueGhostDefeat: {fileID: 21300000, guid: ff4d67f07aac6e94a8cd02543d5eef3b, type: 3}
   redGhostVictory: {fileID: 21300000, guid: 7bd1fb5855519a745b860bec30908059, type: 3}
   redGhostDefeat: {fileID: 21300000, guid: 5c6f37518028dbf438120d03e718687a, type: 3}
---- !u!114 &7978532326993720180
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2918664974702276169}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2c0a47c01faa3c40b600f1e66702a25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  menuItemsContainer: {fileID: 1494094069580634031}
-  menuItems: []
 --- !u!1 &3476740479450110703
 GameObject:
   m_ObjectHideFlags: 0
