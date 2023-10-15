@@ -496,6 +496,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2128688373690862862, guid: 2960084a3e441f940a3242ef20a9e6f3, type: 3}
+      propertyPath: wiggleSlantMultiplier
+      value: 5.12
+      objectReference: {fileID: 0}
     - target: {fileID: 3816136930357827420, guid: 2960084a3e441f940a3242ef20a9e6f3, type: 3}
       propertyPath: m_AngularDrag
       value: 1.44
