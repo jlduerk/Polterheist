@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 [System.Serializable]
@@ -23,6 +24,7 @@ public class DebugManager : MonoBehaviour {
     public bool enableDebugManager;
     public DebugKey[] debugKeys;
     private const string MAIN_MENU_SCENE_NAME = "MainMenu";
+    EventSystem eventSystem;
     
     void Awake()  {
         // check if the instance already exists and destroy the new instance if it does
@@ -34,6 +36,7 @@ public class DebugManager : MonoBehaviour {
         instance = this;
         // prevent the instance from being destroyed when loading new scenes
         DontDestroyOnLoad(this.gameObject);
+        
     }
 
     private void Update() {
@@ -53,6 +56,8 @@ public class DebugManager : MonoBehaviour {
                 ResetGame();
                 break;
         }
+
+        Debug.Log(EventSystem.current.currentSelectedGameObject);
     }
 
     

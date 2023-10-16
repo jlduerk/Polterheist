@@ -9,9 +9,16 @@ public class ScoreManager : MonoBehaviour
     private List<Zone> BZones;
     private GameManager gameManager;
 
+    public ParticleSystem winningTeamBackground;
+    private ParticleSystemRenderer renderer;
+    public Material noTeamWinningMaterial;
+    public Material blueTeamWinningMaterial;
+    public Material redTeamWinningMaterial;
+
     public int ScoreA;
     public int ScoreB;
-
+    private TeamData.Team previousWinningTeam = TeamData.Team.White;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +33,14 @@ public class ScoreManager : MonoBehaviour
         AZones = new List<Zone>();
         BZones = new List<Zone>();
         GetZones();
+
+        if (winningTeamBackground == null) {
+            Debug.LogError($"WinningTeamBackground ParticleSystem not assigned to ScoreManager!", gameObject);
+            return;
+        }
+        winningTeamBackground.Play();
+        renderer = winningTeamBackground.GetComponent<ParticleSystemRenderer>();
+        renderer.material = noTeamWinningMaterial;
     }
 
     void FixedUpdate()
@@ -34,6 +49,7 @@ public class ScoreManager : MonoBehaviour
         {
             ScoreA = CalculateScore(EZone.ZoneA);
             ScoreB = CalculateScore(EZone.ZoneB);
+            TelegraphWinningTeamState();
         }
     }
 
@@ -103,5 +119,34 @@ public class ScoreManager : MonoBehaviour
 
             }
         }
+    }
+
+    private void TelegraphWinningTeamState() {
+        TeamData.Team currentWinningTeam;
+        if (ScoreA == ScoreB) {
+            currentWinningTeam = TeamData.Team.White;
+        }
+        else if (ScoreA > ScoreB) {
+            currentWinningTeam = TeamData.Team.Blue;
+        }
+        else {
+            currentWinningTeam = TeamData.Team.Red;
+        }
+
+        if (currentWinningTeam != previousWinningTeam) {
+            switch (currentWinningTeam) {
+                case TeamData.Team.Blue:
+                    renderer.material = blueTeamWinningMaterial;
+                    break;
+                case TeamData.Team.Red:
+                    renderer.material = redTeamWinningMaterial;
+                    break;
+                case TeamData.Team.White:
+                    renderer.material = noTeamWinningMaterial;
+                    break;
+            }
+        }
+
+        previousWinningTeam = currentWinningTeam;
     }
 }

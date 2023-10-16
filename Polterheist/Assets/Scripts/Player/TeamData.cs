@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Polterheist/TeamData", fileName = "New TeamData")]
 public class TeamData : ScriptableObject {
     public enum Team {
+        White = 0,
         Red = 1,
         Blue = 2,
         Green = 3,
