@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 837432550100879140}
   m_Layer: 6
   m_Name: small_potted_plant_4
-  m_TagString: Untagged
+  m_TagString: Possessable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

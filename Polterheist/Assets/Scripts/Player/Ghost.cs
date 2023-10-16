@@ -10,7 +10,7 @@ public class Ghost : MonoBehaviour {
     private const string SHADER_SLANTDIR_REFERENCE = "_SlantDir";
     public float wiggleSlantMultiplier = 0.5f;
     private const string SHADER_WIGGLE_SPEED_REFERENCE = "_WiggleSpeed";
-    
+
     private static readonly int wiggleSlant = Shader.PropertyToID(SHADER_SLANTDIR_REFERENCE);
     private static readonly int wiggleSpeed = Shader.PropertyToID(SHADER_WIGGLE_SPEED_REFERENCE);
     

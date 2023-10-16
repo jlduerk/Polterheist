@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour {
     private PlayerInputManager playerInputManager;
     public int playerCount;
     public Transform[] playerSpawnPoints;
+    [HideInInspector] public List<PlayerInput> players = new List<PlayerInput>();
 
     public ScoreManager scoreManager;
     public GameFlowManager gameFlowManager;
@@ -83,8 +84,7 @@ public class GameManager : MonoBehaviour {
     public void StartGame() {
         GameStartEvent.Invoke();
     }
-
-    List<PlayerInput> players = new List<PlayerInput>();
+    
     public void RegisterPlayer(PlayerInput playerInput) {
         int counterModulo = playerCount % teamDatas.Length;
         playerInput.gameObject.GetComponent<PlayerPossession>().TeamDataInit(teamDatas[counterModulo]);

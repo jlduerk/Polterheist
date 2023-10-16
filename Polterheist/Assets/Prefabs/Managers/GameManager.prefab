@@ -46,8 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 3
   easeType: 6
-  backgroundParticle: {fileID: 0}
-  defaultColor: {r: 0.05, g: 0.05, b: 0.05, a: 1}
+  backgroundParticle: {fileID: 5871156611294696640, guid: 255adb466d5d3eb49b568d40f1bdd8f4, type: 3}
+  defaultColor: {r: 0.078431375, g: 0.078431375, b: 0.078431375, a: 1}
   blueTeamWinningColor: {r: 0.042007834, g: 0.042007834, b: 0.1509434, a: 1}
   redTeamWinningColor: {r: 0.13207549, g: 0.02305091, b: 0.02305091, a: 1}
   ScoreA: 0
@@ -225,6 +225,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: efba2d66c024a37458625cb4d6647486, type: 2}
   playerCount: 0
   playerSpawnPoints: []
+  players: []
   scoreManager: {fileID: 8961509993627465454}
   gameFlowManager: {fileID: 1543514385563990086}
   GameInProgress: 0

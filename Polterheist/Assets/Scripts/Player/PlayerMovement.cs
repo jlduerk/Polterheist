@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour {
     public Material invisibleMaterial;
+    public GameObject spawnEffectPrefab;
+    private ParticleSystem spawnEffect;
     private PlayerInput playerInputComponent = null;
     private Rigidbody playerRigidbody;
     private const string MOVEMENT_INPUT_ID = "Move";
@@ -88,5 +90,20 @@ public class PlayerMovement : MonoBehaviour {
 
         hasJoined = true;
         GameManager.Instance.RegisterPlayer(playerInputComponent);
+        SpawnEffect(transform);
+    }
+    
+    public void SpawnEffect(Transform spawnTransform) {
+        if (!spawnEffectPrefab) {
+            Debug.LogError($"No spawnEffectPrefab assigned!");
+            return;
+        }
+        if (spawnEffect) {
+            spawnEffect.Play();
+            return;
+        }
+
+        spawnEffect = Instantiate(spawnEffectPrefab, spawnTransform.position, Quaternion.identity, spawnTransform).GetComponent<ParticleSystem>();
+        spawnEffect.Play();
     }
 }

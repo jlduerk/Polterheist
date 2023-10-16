@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 131717728733572350}
   m_Layer: 0
   m_Name: PossessableSpawnerContainer
-  m_TagString: Untagged
+  m_TagString: Possessable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,3 +77,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   possessableSet: {fileID: 0}
+  respawnOffset: {x: 0, y: 3, z: 0}
+  spawnEffectPrefab: {fileID: 6282658935554073280, guid: 255adb466d5d3eb49b568d40f1bdd8f4, type: 3}

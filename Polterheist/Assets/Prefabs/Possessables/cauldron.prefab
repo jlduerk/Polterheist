@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 5926051789800390734}
   m_Layer: 6
   m_Name: cauldron
-  m_TagString: Untagged
+  m_TagString: Possessable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
