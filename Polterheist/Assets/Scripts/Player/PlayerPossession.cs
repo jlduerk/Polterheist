@@ -103,7 +103,7 @@ public class PlayerPossession : MonoBehaviour {
             Debug.Log("Nice try. that dont do shit");
         }
         
-        AudioManager.Instance.Play(possessSFX);
+        //AudioManager.Instance.Play(possessSFX);
     }
 
 
