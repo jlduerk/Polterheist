@@ -103,7 +103,6 @@ public class Possessable : MonoBehaviour
 
     public void Haunt()
     {
-        Debug.Log("HAUNT NOWf");
         OnHaunt.Invoke(this, possessedBy);
     }
 

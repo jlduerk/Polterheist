@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour {
         Init();
     }
 
-    private void Init() {
+    public void Init() {
         playerInputComponent = GetComponent<PlayerInput>();
         playerRigidbody = GetComponent<Rigidbody>();
 

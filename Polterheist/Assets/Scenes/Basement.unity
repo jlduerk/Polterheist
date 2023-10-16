@@ -1482,6 +1482,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1925608769}
     m_Modifications:
+    - target: {fileID: 1335296932488820172, guid: d5e24e8bc9bd1ca4e9749368010f477d, type: 3}
+      propertyPath: OnHaunt.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1335296932488820172, guid: d5e24e8bc9bd1ca4e9749368010f477d, type: 3}
+      propertyPath: OnHaunt.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 708677777}
+    - target: {fileID: 1335296932488820172, guid: d5e24e8bc9bd1ca4e9749368010f477d, type: 3}
+      propertyPath: OnHaunt.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1335296932488820172, guid: d5e24e8bc9bd1ca4e9749368010f477d, type: 3}
+      propertyPath: OnHaunt.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnHauntTable
+      objectReference: {fileID: 0}
+    - target: {fileID: 1335296932488820172, guid: d5e24e8bc9bd1ca4e9749368010f477d, type: 3}
+      propertyPath: OnHaunt.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Haunting, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1335296932488820172, guid: d5e24e8bc9bd1ca4e9749368010f477d, type: 3}
+      propertyPath: OnHaunt.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3665526474737897724, guid: d5e24e8bc9bd1ca4e9749368010f477d, type: 3}
       propertyPath: m_Name
       value: couch
@@ -1536,6 +1560,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7150656168075673433, guid: d5e24e8bc9bd1ca4e9749368010f477d, type: 3}
   m_PrefabInstance: {fileID: 708677775}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &708677777 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4666236189007058070, guid: d5e24e8bc9bd1ca4e9749368010f477d, type: 3}
+  m_PrefabInstance: {fileID: 708677775}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfcf038d31a19604bab37c101b76d172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &715628136 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 650447638074255637, guid: 34ede6d2827909945ba1db54b366e8b6, type: 3}

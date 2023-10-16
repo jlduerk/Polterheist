@@ -90,7 +90,6 @@ public class PlayerPossession : MonoBehaviour {
     {
         if (currPossessable)
         { 
-            AudioManager.Instance.Play(hauntSFX);
             currPossessable.Haunt();
         }
         else
@@ -98,7 +97,7 @@ public class PlayerPossession : MonoBehaviour {
             Debug.Log("Nice try. that dont do shit");
         }
         
-        AudioManager.Instance.Play(possessSFX);
+        //AudioManager.Instance.Play(possessSFX);
     }
 
 
