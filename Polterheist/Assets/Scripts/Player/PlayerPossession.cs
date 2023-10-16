@@ -151,7 +151,7 @@ public class PlayerPossession : MonoBehaviour {
     #region Team Data
     public void TeamDataInit(TeamData teamDataToAssign) {
         teamData = teamDataToAssign;
-        renderer.material.SetColor("_Color", teamData.teamColor);
+        renderer.material.SetColor("_Color", teamData.teamColor * UnityEngine.Random.Range(.6f, 1.0f));
     }
     #endregion
 }
