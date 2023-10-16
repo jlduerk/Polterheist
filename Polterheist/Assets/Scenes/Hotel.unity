@@ -223,9 +223,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8603339840771121511, guid: 0c7611658567c8a448275d07d03e8374, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0c7611658567c8a448275d07d03e8374, type: 3}
       propertyPath: m_Name
       value: Structure_Wall_Straight_Base
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0c7611658567c8a448275d07d03e8374, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -301,6 +309,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedZone
       objectReference: {fileID: 0}
+    - target: {fileID: 5688279689732136467, guid: 7ca2f9915246f7740a5665b411d9f216, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 097b01fbe16d7f34892fbe7e2c18efc6, type: 2}
     - target: {fileID: 6510746886575702210, guid: 7ca2f9915246f7740a5665b411d9f216, type: 3}
       propertyPath: thisZone
       value: 2
@@ -644,7 +656,7 @@ GameObject:
   - component: {fileID: 189306751}
   - component: {fileID: 189306750}
   - component: {fileID: 189306749}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -746,7 +758,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 232848013}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1278,7 +1290,7 @@ GameObject:
   - component: {fileID: 359928831}
   - component: {fileID: 359928830}
   - component: {fileID: 359928829}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1383,7 +1395,7 @@ GameObject:
   - component: {fileID: 388727825}
   - component: {fileID: 388727824}
   - component: {fileID: 388727823}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1551,7 +1563,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 438083989}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1588,7 +1600,7 @@ GameObject:
   - component: {fileID: 463812698}
   - component: {fileID: 463812697}
   - component: {fileID: 463812696}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1811,9 +1823,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8603339840771121511, guid: 5e480325806a9f04a9d55eded8815150, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5e480325806a9f04a9d55eded8815150, type: 3}
       propertyPath: m_Name
       value: Structure_Wall_Doorway (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5e480325806a9f04a9d55eded8815150, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1881,9 +1901,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8603339840771121511, guid: d94cac96f03b3b64eb0237051c0ba3c0, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d94cac96f03b3b64eb0237051c0ba3c0, type: 3}
       propertyPath: m_Name
       value: Structure_Wall_Straight_Top
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d94cac96f03b3b64eb0237051c0ba3c0, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1904,7 +1932,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 507232603}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2206,7 +2234,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 586526820}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2462,7 +2490,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 641436663}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2572,9 +2600,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8603339840771121511, guid: 0c7611658567c8a448275d07d03e8374, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0c7611658567c8a448275d07d03e8374, type: 3}
       propertyPath: m_Name
       value: Structure_Wall_Straight_Base
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0c7611658567c8a448275d07d03e8374, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2598,7 +2634,7 @@ GameObject:
   - component: {fileID: 774332772}
   - component: {fileID: 774332771}
   - component: {fileID: 774332770}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Barrier Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2747,9 +2783,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8603339840771121511, guid: d94cac96f03b3b64eb0237051c0ba3c0, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d94cac96f03b3b64eb0237051c0ba3c0, type: 3}
       propertyPath: m_Name
       value: Structure_Wall_Straight_Top
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d94cac96f03b3b64eb0237051c0ba3c0, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3077,9 +3121,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8603339840771121511, guid: 5e480325806a9f04a9d55eded8815150, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5e480325806a9f04a9d55eded8815150, type: 3}
       propertyPath: m_Name
       value: Structure_Wall_Doorway (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5e480325806a9f04a9d55eded8815150, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3239,9 +3291,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8603339840771121511, guid: 0c7611658567c8a448275d07d03e8374, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0c7611658567c8a448275d07d03e8374, type: 3}
       propertyPath: m_Name
       value: Structure_Wall_Straight_Base
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0c7611658567c8a448275d07d03e8374, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3480,7 +3540,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 922023188}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3653,7 +3713,7 @@ GameObject:
   - component: {fileID: 965557485}
   - component: {fileID: 965557484}
   - component: {fileID: 965557483}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3860,9 +3920,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8603339840771121511, guid: 0c7611658567c8a448275d07d03e8374, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0c7611658567c8a448275d07d03e8374, type: 3}
       propertyPath: m_Name
       value: Structure_Wall_Straight_Base
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0c7611658567c8a448275d07d03e8374, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4272,9 +4340,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8603339840771121511, guid: d94cac96f03b3b64eb0237051c0ba3c0, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d94cac96f03b3b64eb0237051c0ba3c0, type: 3}
       propertyPath: m_Name
       value: Structure_Wall_Straight_Top
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d94cac96f03b3b64eb0237051c0ba3c0, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4550,7 +4626,7 @@ GameObject:
   - component: {fileID: 1104652793}
   - component: {fileID: 1104652792}
   - component: {fileID: 1104652791}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4799,9 +4875,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8603339840771121511, guid: 0c7611658567c8a448275d07d03e8374, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0c7611658567c8a448275d07d03e8374, type: 3}
       propertyPath: m_Name
       value: Structure_Wall_Straight_Base
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0c7611658567c8a448275d07d03e8374, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4873,9 +4957,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8603339840771121511, guid: 5e480325806a9f04a9d55eded8815150, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5e480325806a9f04a9d55eded8815150, type: 3}
       propertyPath: m_Name
       value: Structure_Wall_Doorway (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5e480325806a9f04a9d55eded8815150, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4943,9 +5035,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8603339840771121511, guid: d94cac96f03b3b64eb0237051c0ba3c0, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d94cac96f03b3b64eb0237051c0ba3c0, type: 3}
       propertyPath: m_Name
       value: Structure_Wall_Straight_Top
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d94cac96f03b3b64eb0237051c0ba3c0, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5251,9 +5351,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8603339840771121511, guid: 0c7611658567c8a448275d07d03e8374, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0c7611658567c8a448275d07d03e8374, type: 3}
       propertyPath: m_Name
       value: Structure_Wall_Straight_Base
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0c7611658567c8a448275d07d03e8374, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5317,9 +5425,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8603339840771121511, guid: 0c7611658567c8a448275d07d03e8374, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0c7611658567c8a448275d07d03e8374, type: 3}
       propertyPath: m_Name
       value: Structure_Wall_Straight_Base
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0c7611658567c8a448275d07d03e8374, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5395,6 +5511,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlueZone
       objectReference: {fileID: 0}
+    - target: {fileID: 5688279689732136467, guid: 7ca2f9915246f7740a5665b411d9f216, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0604191a799aacb409f6ca6eba4e8523, type: 2}
     - target: {fileID: 6510746886575702210, guid: 7ca2f9915246f7740a5665b411d9f216, type: 3}
       propertyPath: thisZone
       value: 1
@@ -5740,9 +5860,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8603339840771121511, guid: d94cac96f03b3b64eb0237051c0ba3c0, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d94cac96f03b3b64eb0237051c0ba3c0, type: 3}
       propertyPath: m_Name
       value: Structure_Wall_Straight_Top
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d94cac96f03b3b64eb0237051c0ba3c0, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5766,7 +5894,7 @@ GameObject:
   - component: {fileID: 1417862717}
   - component: {fileID: 1417862716}
   - component: {fileID: 1417862715}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6001,7 +6129,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1508162598}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6094,9 +6222,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8603339840771121511, guid: d94cac96f03b3b64eb0237051c0ba3c0, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d94cac96f03b3b64eb0237051c0ba3c0, type: 3}
       propertyPath: m_Name
       value: Structure_Wall_Straight_Top
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d94cac96f03b3b64eb0237051c0ba3c0, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6164,9 +6300,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8603339840771121511, guid: d94cac96f03b3b64eb0237051c0ba3c0, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d94cac96f03b3b64eb0237051c0ba3c0, type: 3}
       propertyPath: m_Name
       value: Structure_Wall_Straight_Top
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d94cac96f03b3b64eb0237051c0ba3c0, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6253,7 +6397,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1627763384}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6334,9 +6478,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8603339840771121511, guid: d94cac96f03b3b64eb0237051c0ba3c0, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d94cac96f03b3b64eb0237051c0ba3c0, type: 3}
       propertyPath: m_Name
       value: Structure_Wall_Straight_Top
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d94cac96f03b3b64eb0237051c0ba3c0, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6462,9 +6614,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8603339840771121511, guid: 0c7611658567c8a448275d07d03e8374, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0c7611658567c8a448275d07d03e8374, type: 3}
       propertyPath: m_Name
       value: Structure_Wall_Straight_Base
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0c7611658567c8a448275d07d03e8374, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6890,9 +7050,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8603339840771121511, guid: 0c7611658567c8a448275d07d03e8374, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0c7611658567c8a448275d07d03e8374, type: 3}
       propertyPath: m_Name
       value: Structure_Wall_Straight_Base
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0c7611658567c8a448275d07d03e8374, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7026,9 +7194,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8603339840771121511, guid: d94cac96f03b3b64eb0237051c0ba3c0, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d94cac96f03b3b64eb0237051c0ba3c0, type: 3}
       propertyPath: m_Name
       value: Structure_Wall_Straight_Top
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d94cac96f03b3b64eb0237051c0ba3c0, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7237,9 +7413,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8603339840771121511, guid: 5e480325806a9f04a9d55eded8815150, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5e480325806a9f04a9d55eded8815150, type: 3}
       propertyPath: m_Name
       value: Structure_Wall_Doorway (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5e480325806a9f04a9d55eded8815150, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7311,9 +7495,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8603339840771121511, guid: 5e480325806a9f04a9d55eded8815150, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5e480325806a9f04a9d55eded8815150, type: 3}
       propertyPath: m_Name
       value: Structure_Wall_Doorway (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5e480325806a9f04a9d55eded8815150, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7337,7 +7529,7 @@ GameObject:
   - component: {fileID: 1856579343}
   - component: {fileID: 1856579342}
   - component: {fileID: 1856579341}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7567,7 +7759,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1873757324}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7673,7 +7865,7 @@ GameObject:
   - component: {fileID: 1913396013}
   - component: {fileID: 1913396012}
   - component: {fileID: 1913396011}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7954,7 +8146,7 @@ GameObject:
   - component: {fileID: 1950048927}
   - component: {fileID: 1950048926}
   - component: {fileID: 1950048925}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Barrier Front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8566,9 +8758,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8603339840771121511, guid: 5e480325806a9f04a9d55eded8815150, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5e480325806a9f04a9d55eded8815150, type: 3}
       propertyPath: m_Name
       value: Structure_Wall_Doorway
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5e480325806a9f04a9d55eded8815150, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8874,7 +9074,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2087628541}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

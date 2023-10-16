@@ -187,6 +187,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedZone
       objectReference: {fileID: 0}
+    - target: {fileID: 5688279689732136467, guid: 7ca2f9915246f7740a5665b411d9f216, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 097b01fbe16d7f34892fbe7e2c18efc6, type: 2}
     - target: {fileID: 6510746886575702210, guid: 7ca2f9915246f7740a5665b411d9f216, type: 3}
       propertyPath: thisZone
       value: 2
@@ -503,7 +507,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 357230665}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -954,7 +958,7 @@ GameObject:
   - component: {fileID: 774332772}
   - component: {fileID: 774332771}
   - component: {fileID: 774332770}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Barrier4 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2076,6 +2080,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlueZone
       objectReference: {fileID: 0}
+    - target: {fileID: 5688279689732136467, guid: 7ca2f9915246f7740a5665b411d9f216, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0604191a799aacb409f6ca6eba4e8523, type: 2}
     - target: {fileID: 6510746886575702210, guid: 7ca2f9915246f7740a5665b411d9f216, type: 3}
       propertyPath: thisZone
       value: 1
@@ -2232,7 +2240,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1816744166}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2520,7 +2528,7 @@ GameObject:
   - component: {fileID: 1950048927}
   - component: {fileID: 1950048926}
   - component: {fileID: 1950048925}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Barrier4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
