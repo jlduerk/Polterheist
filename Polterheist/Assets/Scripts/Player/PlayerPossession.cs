@@ -27,6 +27,9 @@ public class PlayerPossession : MonoBehaviour {
 
     private const string POSSESSION_INPUT_ID = "Possess";
     private const string HAUNT_INPUT_ID = "Haunt";
+    public string possessSFX = "Possess";
+    public string unPossessSFX = "Unpossess";
+    public string hauntSFX = "Haunt";
 
 
     private void Start()
@@ -86,13 +89,16 @@ public class PlayerPossession : MonoBehaviour {
     public void OnHauntButtonPressed()
     {
         if (currentlyPossessing)
-        {
-           currentlyPossessing.Haunt();
+        { 
+            AudioManager.Instance.Play(hauntSFX); 
+            currentlyPossessing.Haunt();
         }
         else
         {
             Debug.Log("Nice try. that dont do shit");
         }
+        
+        AudioManager.Instance.Play(possessSFX);
     }
 
 
@@ -128,6 +134,8 @@ public class PlayerPossession : MonoBehaviour {
             possessableDetector.ClearPossiblePossessables();
             ghost.dropShadow.gameObject.SetActive(false);
         }
+        
+        AudioManager.Instance.Play(possessSFX);
     }
 
 
@@ -139,6 +147,8 @@ public class PlayerPossession : MonoBehaviour {
             playerMovement.speed = ghostSpeed;
             ghost.dropShadow.gameObject.SetActive(true);
         }
+        
+        AudioManager.Instance.Play(unPossessSFX);
     }
     #endregion Possession Callbacks
 

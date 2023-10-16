@@ -84,10 +84,37 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: MenuMusic
     clip: {fileID: 8300000, guid: 4be93e035cef3b14fa7246f57c2125a7, type: 3}
-    volume: 1
+    volume: 0.15
     volumeVariance: 0
     pitch: 1
-    pitchVariance: 0.138
+    pitchVariance: 0
     loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Possess
+    clip: {fileID: 8300000, guid: 268db9a99b75a1f4f90f3609ae61d30d, type: 3}
+    volume: 0.15
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Unpossess
+    clip: {fileID: 8300000, guid: 476a66d1c733d5a4e94cb2e83fb89e2f, type: 3}
+    volume: 0.15
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Haunt
+    clip: {fileID: 8300000, guid: 91d2ca17f4e15b44fa88de726124fd72, type: 3}
+    volume: 0.15
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}

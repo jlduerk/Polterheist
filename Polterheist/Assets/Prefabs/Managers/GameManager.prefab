@@ -49,7 +49,7 @@ MonoBehaviour:
   backgroundParticle: {fileID: 5871156611294696640, guid: 255adb466d5d3eb49b568d40f1bdd8f4, type: 3}
   defaultColor: {r: 0.078431375, g: 0.078431375, b: 0.078431375, a: 1}
   blueTeamWinningColor: {r: 0.042007834, g: 0.042007834, b: 0.1509434, a: 1}
-  redTeamWinningColor: {r: 0.13207549, g: 0.02305091, b: 0.02305091, a: 1}
+  redTeamWinningColor: {r: 0.18039216, g: 0.03137255, b: 0.03137255, a: 1}
   ScoreA: 0
   ScoreB: 0
 --- !u!1 &4665546095510929516
