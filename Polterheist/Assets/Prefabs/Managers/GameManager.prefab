@@ -48,7 +48,7 @@ MonoBehaviour:
   easeType: 6
   backgroundParticle: {fileID: 0}
   defaultColor: {r: 0.05, g: 0.05, b: 0.05, a: 1}
-  blueTeamWinningColor: {r: 0.03137255, g: 0.03137255, b: 0.09803922, a: 1}
+  blueTeamWinningColor: {r: 0.042007834, g: 0.042007834, b: 0.1509434, a: 1}
   redTeamWinningColor: {r: 0.13207549, g: 0.02305091, b: 0.02305091, a: 1}
   ScoreA: 0
   ScoreB: 0
