@@ -883,7 +883,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1602600088432948739, guid: a2b945a10a54ce84888edbe329faadd1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Attic
+      value: Basement
       objectReference: {fileID: 0}
     - target: {fileID: 1602600088432948739, guid: a2b945a10a54ce84888edbe329faadd1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
@@ -979,7 +979,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3799771567891391368, guid: a2b945a10a54ce84888edbe329faadd1, type: 3}
       propertyPath: m_text
-      value: ATTIC
+      value: BASEMENT
       objectReference: {fileID: 0}
     - target: {fileID: 3799771567891391368, guid: a2b945a10a54ce84888edbe329faadd1, type: 3}
       propertyPath: m_fontSize
@@ -15943,6 +15943,10 @@ PrefabInstance:
     - target: {fileID: 7854437722492409359, guid: ef96f6397d2c3e147a7ba5169c77328a, type: 3}
       propertyPath: sounds.Array.data[4].volume
       value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7854437722492409359, guid: ef96f6397d2c3e147a7ba5169c77328a, type: 3}
+      propertyPath: sounds.Array.data[4].pitchVariance
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8816113372369975337, guid: ef96f6397d2c3e147a7ba5169c77328a, type: 3}
       propertyPath: m_Name

@@ -2176,7 +2176,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
     "m_ObjectId": "b084cabc0f9548089e468bf1360e51e6",
     "m_Id": 0,
-    "m_DisplayName": "Shadow Color",
+    "m_DisplayName": "Color",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -2713,10 +2713,10 @@
     "m_Guid": {
         "m_GuidSerialized": "f2962df7-9c64-4aaf-a0c6-a4130d5d5780"
     },
-    "m_Name": "Shadow Color",
+    "m_Name": "Color",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Shadow Color",
-    "m_DefaultReferenceName": "_Shadow_Color",
+    "m_RefNameGeneratedByDisplayName": "Color",
+    "m_DefaultReferenceName": "_Color",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
@@ -2733,7 +2733,7 @@
         "a": 0.0
     },
     "isMainColor": false,
-    "m_ColorMode": 1
+    "m_ColorMode": 0
 }
 
 {

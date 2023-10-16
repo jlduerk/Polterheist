@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 703ffab8577f90c40b6513fc7021cc7d
   - enabled: 1
-    path: Assets/Scenes/Attic.unity
+    path: Assets/Scenes/Basement.unity
     guid: 5e3e6f1323bbfef4693459f1279207ca
   - enabled: 1
     path: Assets/Scenes/Mansion.unity

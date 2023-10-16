@@ -66,13 +66,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Apature: -0.28
-    - _Dissolve_Amount: 1.15
+    - _Apature: -0.100000024
+    - _Dissolve_Amount: 0.19999999
     - _Dissolve_Scale: 2
     - _Dissolve_Speed: 0.2
     - _Invert: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _Shadow_Color: {r: 0, g: 0, b: 0, a: 0}
+    - _Color: {r: 0, g: 0, b: 0, a: 0}
+    - _Shadow_Color: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []

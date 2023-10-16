@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e4585d764f60bf458a0f886166ac816, type: 3}
-  m_Name: AtticPossessableSet
+  m_Name: BasementPossessableSet
   m_EditorClassIdentifier: 
   possessables:
   - {fileID: 6922818318107183608, guid: e1abb6b78abec324793fb02ccabcb643, type: 3}

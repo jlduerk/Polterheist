@@ -44,10 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ef91431d6f7ebc409f5bd34cc2948c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  winningTeamBackground: {fileID: 0}
-  noTeamWinningMaterial: {fileID: 2100000, guid: 580191aeaf67e8748819019c24184e3e, type: 2}
-  blueTeamWinningMaterial: {fileID: 2100000, guid: 059b34436dd17364dae5bbf0ee7f4265, type: 2}
-  redTeamWinningMaterial: {fileID: 2100000, guid: 8b58c7724dd10e841935a7319b12a3f4, type: 2}
+  duration: 3
+  easeType: 6
+  backgroundParticle: {fileID: 0}
+  defaultColor: {r: 0.05, g: 0.05, b: 0.05, a: 1}
+  blueTeamWinningColor: {r: 0.03137255, g: 0.03137255, b: 0.09803922, a: 1}
+  redTeamWinningColor: {r: 0.13207549, g: 0.02305091, b: 0.02305091, a: 1}
   ScoreA: 0
   ScoreB: 0
 --- !u!1 &4665546095510929516

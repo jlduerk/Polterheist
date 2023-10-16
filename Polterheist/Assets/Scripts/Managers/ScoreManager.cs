@@ -1,55 +1,59 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class ScoreManager : MonoBehaviour
-{
+public class ScoreManager : MonoBehaviour {
+    private GameManager gameManager;
+
     private Zone[] allZones;
     private List<Zone> AZones;
     private List<Zone> BZones;
-    private GameManager gameManager;
 
-    public ParticleSystem winningTeamBackground;
+    [Header("Background Attributes")] 
+    public float duration;
+    public Ease easeType = Ease.Linear;
+    public ParticleSystem backgroundParticle;
     private ParticleSystemRenderer renderer;
-    public Material noTeamWinningMaterial;
-    public Material blueTeamWinningMaterial;
-    public Material redTeamWinningMaterial;
+    private Material particleMaterial;
+    public Color defaultColor;
+    public Color blueTeamWinningColor;
+    public Color redTeamWinningColor;
+    private const float SATURATION_MAGNITUDE = 1;
 
     public int ScoreA;
     public int ScoreB;
-    private TeamData.Team previousWinningTeam = TeamData.Team.White;
+    private TeamData.Team previousWinningTeam;
     
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         gameManager = GameManager.Instance;
 
         Init();
     }
 
-    public void Init()
-    {
+    public void Init() {
         // Initialize zone lists
         AZones = new List<Zone>();
         BZones = new List<Zone>();
         GetZones();
 
-        if (winningTeamBackground == null) {
+        if (backgroundParticle == null) {
             Debug.LogError($"WinningTeamBackground ParticleSystem not assigned to ScoreManager!", gameObject);
             return;
         }
-        winningTeamBackground.Play();
-        renderer = winningTeamBackground.GetComponent<ParticleSystemRenderer>();
-        renderer.material = noTeamWinningMaterial;
+        backgroundParticle.Play();
+        particleMaterial = backgroundParticle.GetComponent<ParticleSystemRenderer>().material;
+        particleMaterial.color = defaultColor;
     }
 
-    void FixedUpdate()
-    {
-        if (gameManager.GameInProgress) // Only do scoring when game has started
-        {
+    void FixedUpdate() {
+        if (gameManager.GameInProgress) {// Only do scoring when game has started
             ScoreA = CalculateScore(EZone.ZoneA);
             ScoreB = CalculateScore(EZone.ZoneB);
-            TelegraphWinningTeamState();
+            int scoreDifference = Mathf.Abs(ScoreA - ScoreB);
+            TeamWinningColorHelper(scoreDifference);
         }
     }
 
@@ -121,7 +125,8 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    private void TelegraphWinningTeamState() {
+    private void TeamWinningColorHelper(int scoreDifference) {
+        //team (color)
         TeamData.Team currentWinningTeam;
         if (ScoreA == ScoreB) {
             currentWinningTeam = TeamData.Team.White;
@@ -132,21 +137,22 @@ public class ScoreManager : MonoBehaviour
         else {
             currentWinningTeam = TeamData.Team.Red;
         }
-
-        if (currentWinningTeam != previousWinningTeam) {
+        if (previousWinningTeam != currentWinningTeam) {
+            Color winningTeamColor = defaultColor;
             switch (currentWinningTeam) {
                 case TeamData.Team.Blue:
-                    renderer.material = blueTeamWinningMaterial;
+                    winningTeamColor = blueTeamWinningColor;
                     break;
                 case TeamData.Team.Red:
-                    renderer.material = redTeamWinningMaterial;
+                    winningTeamColor = redTeamWinningColor;
                     break;
                 case TeamData.Team.White:
-                    renderer.material = noTeamWinningMaterial;
+                    winningTeamColor = defaultColor;
                     break;
             }
+            
+            particleMaterial.DOColor(winningTeamColor, duration).SetEase(easeType);
         }
-
         previousWinningTeam = currentWinningTeam;
     }
 }

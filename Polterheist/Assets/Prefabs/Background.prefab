@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6467609664597357749}
   - component: {fileID: 4581665611440335922}
   m_Layer: 0
-  m_Name: WinningTeamBackground
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
