@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8900931305103573765}
   - component: {fileID: 6276938660868676941}
   - component: {fileID: 6710067381645627510}
+  - component: {fileID: -2550877700560711048}
   m_Layer: 6
   m_Name: table_round
   m_TagString: Possessable
@@ -187,3 +188,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intensity: 20
+--- !u!114 &-2550877700560711048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5089563940360845089}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0.45288134, g: 0, b: 1, a: 1}
+  outlineWidth: 4.3
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []

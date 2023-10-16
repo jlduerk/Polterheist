@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(Outline))]
 public class Possessable : MonoBehaviour
 {
     // How many points a team will get from this possessable in their zone
@@ -25,6 +27,7 @@ public class Possessable : MonoBehaviour
 
     private MeshRenderer renderer;
     private Material defaultMaterial;
+    private Outline outline;
     public bool IsPossessed => possessedBy != null;
     private void Start()
     {
@@ -32,6 +35,8 @@ public class Possessable : MonoBehaviour
         rbManager = GetComponent<PossessableRBManager>();
         renderer = GetComponentInChildren<MeshRenderer>();
         defaultMaterial = renderer.material;
+        outline = gameObject.GetComponent<Outline>();
+        SetUnPossessedEffect();
     }
 
 
@@ -88,7 +93,7 @@ public class Possessable : MonoBehaviour
         possessedBy = null;
     }
 
-    public void SetColor(Material material) {
+    private void OverrideMaterial(Material material) {
         if (material == null) {
             renderer.material = defaultMaterial;
             return;
@@ -100,5 +105,31 @@ public class Possessable : MonoBehaviour
     {
         Debug.Log("HAUNT NOWf");
         OnHaunt.Invoke(this, possessedBy);
+    }
+
+    public Outline GetOutline()
+    {
+        return outline;
+    }
+    private void SetOutline(bool enabled, Color color, float thickness)
+    {
+        outline.enabled = enabled;
+        outline.OutlineColor = color;
+        outline.OutlineWidth = thickness;
+    }
+    public void SetPossessedEffect(Color playerColor, bool outlineEnabled, float outlineThickness, Material materialOverride)
+    {
+        SetOutline(outlineEnabled, playerColor, outlineThickness);
+        OverrideMaterial(materialOverride);
+    }
+
+    public void SetPossessedEffect(Color playerColor)
+    {
+        SetOutline(true, playerColor, 6);
+    }
+
+    public void SetUnPossessedEffect()
+    {
+        SetOutline(false, Color.black, 0);
     }
 }

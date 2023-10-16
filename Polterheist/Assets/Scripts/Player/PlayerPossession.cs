@@ -18,7 +18,7 @@ public class PlayerPossession : MonoBehaviour {
     public UnityAction<Possessable, PlayerPossession> OnPossessionEndAction;
 
 
-    public Possessable currentlyPossessing;
+    public Possessable currPossessable;
     private PlayerMovement playerMovement;
     private Ghost ghost;
 
@@ -73,7 +73,7 @@ public class PlayerPossession : MonoBehaviour {
 
     public void OnPossessButtonPressed()
     {
-        if (currentlyPossessing)
+        if (currPossessable)
         {
             Unpossess();
             return;
@@ -111,13 +111,14 @@ public class PlayerPossession : MonoBehaviour {
 
     public void Unpossess()
     {
-        if (!currentlyPossessing)
+        if (!currPossessable)
             return;
 
         renderer.material.SetFloat("_Opacity", 1);
 
-        currentlyPossessing.SetColor(null);
-        currentlyPossessing.Eject();
+        currPossessable.SetUnPossessedEffect();
+        ;
+        currPossessable.Eject();
     }
     #endregion Possession Actions
 
@@ -127,10 +128,10 @@ public class PlayerPossession : MonoBehaviour {
     {
         if (possessor == this)
         {
-            currentlyPossessing = possessable;
+            currPossessable = possessable;
             playerMovement.speed /= possessable.gameObject.GetComponent<Rigidbody>().mass;
             renderer.material.SetFloat("_Opacity", .5f);
-            currentlyPossessing.SetColor(teamData.teamMaterial);
+            currPossessable.SetPossessedEffect(teamData.teamColor);
             possessableDetector.ClearPossiblePossessables();
             ghost.dropShadow.gameObject.SetActive(false);
         }
@@ -143,7 +144,7 @@ public class PlayerPossession : MonoBehaviour {
     {
         if (possessor == this)
         {
-            currentlyPossessing = null;
+            currPossessable = null;
             playerMovement.speed = ghostSpeed;
             ghost.dropShadow.gameObject.SetActive(true);
         }

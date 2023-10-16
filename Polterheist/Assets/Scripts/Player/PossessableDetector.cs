@@ -15,9 +15,10 @@ public class PossessableDetector : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Possessable possessable = other.gameObject.GetComponentInParent<Possessable>();
-        if (playerPossession.currentlyPossessing || !possessable || possessable.IsPossessed || possiblePossessables.Contains(possessable))
+        if (playerPossession.currPossessable || !possessable || possessable.IsPossessed || possiblePossessables.Contains(possessable))
             return;
 
+        ClearPossiblePossessables();
         possiblePossessables.Add(possessable);
         OnAddPossiblePossessable(possessable);
         Debug.Log("Touching Possessable: " + possessable.gameObject.name);
@@ -26,7 +27,7 @@ public class PossessableDetector : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         Possessable possessable = other.gameObject.GetComponentInParent<Possessable>();
-        if (playerPossession.currentlyPossessing || !possessable || !possiblePossessables.Contains(possessable))
+        if (playerPossession.currPossessable || !possessable || !possiblePossessables.Contains(possessable))
             return;
 
         possiblePossessables.Remove(possessable);
@@ -54,7 +55,7 @@ public class PossessableDetector : MonoBehaviour
     {
         for (int i = 0;  i < possiblePossessables.Count; i++)
         {
-            if (possiblePossessables[i] == playerPossession.currentlyPossessing)
+            if (possiblePossessables[i] == playerPossession.currPossessable)
                 continue;
 
             OnRemovePossiblePossessable(possiblePossessables[i]);
@@ -65,11 +66,12 @@ public class PossessableDetector : MonoBehaviour
 
     private void OnAddPossiblePossessable(Possessable possessable)
     {
-        possessable.SetColor(playerPossession.teamData.teamMaterialHover);
+        possessable.SetPossessedEffect(playerPossession.teamData.teamColor);
     }
 
     private void OnRemovePossiblePossessable(Possessable possessable)
     {
-        possessable.SetColor(null);
+        possessable.SetUnPossessedEffect();
+
     }
 }

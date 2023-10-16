@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5345248682378491383}
   - component: {fileID: 4728944119010960683}
   - component: {fileID: 3737402208784209088}
+  - component: {fileID: -6579245421257498279}
   m_Layer: 6
   m_Name: small_potted_plant_5
   m_TagString: Possessable
@@ -186,3 +187,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intensity: 20
+--- !u!114 &-6579245421257498279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5725601018765291751}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0.45288134, g: 0, b: 1, a: 1}
+  outlineWidth: 4.3
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
