@@ -11,9 +11,9 @@ public class PauseMenu : MenuContainer {
     public float unPauseDuration;
     public Ease unPauseEase;
 
-    public override void StartButton(InputAction.CallbackContext context) {
+    public override void StartAction(InputAction.CallbackContext context) {
         PauseToggle();
-        base.StartButton(context);
+        base.StartAction(context);
     }
 
     public void PauseToggle() {

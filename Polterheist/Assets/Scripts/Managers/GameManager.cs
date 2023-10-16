@@ -10,8 +10,8 @@ public class GameManager : MonoBehaviour {
         get { return instance; }
         private set { }
     }
-    public bool allowSinglePlayer;
     public TeamData[] teamDatas;
+    private bool singlePlayerAllowed;
 
     private PlayerInputManager playerInputManager;
     public int playerCount;
@@ -37,6 +37,10 @@ public class GameManager : MonoBehaviour {
         instance = this;
 
         playerInputManager = FindObjectOfType<PlayerInputManager>();
+        
+#if UNITY_EDITOR
+        singlePlayerAllowed = true;
+#endif
     }
 
     private void Start()
@@ -89,7 +93,7 @@ public class GameManager : MonoBehaviour {
         players.Add(playerInput);
         playerInput.gameObject.transform.position = playerSpawnPoints[players.Count - 1].position;
 
-        if (allowSinglePlayer) {
+        if (singlePlayerAllowed) {
             gameFlowManager.StartCountdown();
             return;
         }

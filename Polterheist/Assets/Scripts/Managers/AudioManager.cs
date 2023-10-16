@@ -2,8 +2,7 @@ using UnityEngine.Audio;
 using System;
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
-{
+public class AudioManager : MonoBehaviour {
     private static AudioManager instance;
     public static AudioManager Instance {
         get { return instance; }
@@ -13,8 +12,7 @@ public class AudioManager : MonoBehaviour
 
 	public Sound[] sounds;
 
-	void Awake()
-	{
+	void Awake() {
         // check if the instance already exists and destroy the new instance if it does
         if (instance != null && instance != this) {
             Destroy(this.gameObject);
@@ -25,8 +23,7 @@ public class AudioManager : MonoBehaviour
         // prevent the instance from being destroyed when loading new scenes
         DontDestroyOnLoad(this.gameObject);
 
-        foreach (Sound s in sounds)
-		{
+        foreach (Sound s in sounds) {
 			s.source = gameObject.AddComponent<AudioSource>();
 			s.source.clip = s.clip;
 			s.source.loop = s.loop;
@@ -35,11 +32,9 @@ public class AudioManager : MonoBehaviour
 		}
 	}
 
-	public void Play(string sound)
-	{
+	public void Play(string sound) {
 		Sound s = Array.Find(sounds, item => item.name == sound);
-		if (s == null)
-		{
+		if (s == null) {
 			Debug.LogWarning("Sound: " + name + " not found!");
 			return;
 		}

@@ -8,21 +8,23 @@ using DG.Tweening;
 public class MenuContainer : MonoBehaviour {
     private PlayerInputActions inputActions;
     protected EventSystem eventSystem;
+    private bool initialized;
 
     [Header("MenuItem Attributes")]
     public Transform menuItemsContainer;
     public List<MenuItem> menuItems;
 
     private CanvasGroup canvasGroup;
-    [Header("Fade Attributes")]
+    [Header("Fade Attributes")] 
     public float fadeInDuration;
     public Ease fadeInEase;
     public float fadeOutDuration;
     public Ease fadeOutEase;
+    public bool cancelCanClose;
+    public MenuContainer openContainerOnCancel;
 
     private void Start() {
         Init();
-        InitInput();
     }
 
     private void OnDisable() {
@@ -46,16 +48,19 @@ public class MenuContainer : MonoBehaviour {
 
         canvasGroup = GetComponent<CanvasGroup>();
         FadeMenu(IsEnabled());
+
+        InitInput();
+        initialized = true;
     }
 
     private void InitInput() {
         inputActions = new PlayerInputActions();
         inputActions.UI.Enable();
         inputActions.UI.Confirm.performed += ConfirmAction;
-        inputActions.UI.StartButton.performed += StartButton;
+        inputActions.UI.StartButton.performed += StartAction;
+        inputActions.UI.Cancel.performed += CancelAction;
 
         eventSystem = EventSystem.current;
-        GameObject defaultSelectable = gameObject;
         if (menuItems.Count == 0 || menuItems[0] == null) {
             Debug.LogWarning("No Menu Items in the menuItems list!");
             return;
@@ -75,17 +80,25 @@ public class MenuContainer : MonoBehaviour {
         eventSystem.currentSelectedGameObject.GetComponent<MenuItem>().DoAction();
     }
 
-    public virtual void StartButton(InputAction.CallbackContext context) { }
+    public virtual void StartAction(InputAction.CallbackContext context) { }
+
+    public virtual void CancelAction(InputAction.CallbackContext context) {
+        if (cancelCanClose) {
+            FadeMenu(false);
+            if (openContainerOnCancel) {
+                openContainerOnCancel.FadeMenu(true);
+            }
+        }
+    }
 
     public void FadeMenu(bool enable) {
+        ToggleMenuItems(enable);
         if (enable) {
-            DOTween.To(()=> canvasGroup.alpha, x=> canvasGroup.alpha = x, 1, fadeInDuration).SetEase(fadeInEase).SetUpdate(true);
+            DOTween.To(()=> canvasGroup.alpha, x=> canvasGroup.alpha = x, 1, fadeInDuration).SetEase(fadeInEase).SetUpdate(true).OnComplete(SelectFirstMenuItem);
         }
         else {
             DOTween.To(()=> canvasGroup.alpha, x=> canvasGroup.alpha = x, 0, fadeOutDuration).SetEase(fadeOutEase).SetUpdate(true);
         }
-
-        ToggleMenuItems(enable);
     }
 
     public bool IsEnabled() {
@@ -98,6 +111,16 @@ public class MenuContainer : MonoBehaviour {
     public void ToggleMenuItems(bool enabled) {
         foreach (MenuItem menuItem in menuItems) {
             menuItem.EnableToggle(enabled);
+            if (menuItem.IsEnabled()) {
+                menuItem.UnHighlight();
+            }
         }
+    }
+
+    private void SelectFirstMenuItem() {
+        if (!initialized) {
+            Init();
+        }
+        eventSystem.SetSelectedGameObject(menuItems[0].gameObject);
     }
 }
