@@ -120,10 +120,11 @@ public class MenuContainer : MonoBehaviour {
         }
     }
 
-    private void SelectFirstMenuItem() {
+    protected void SelectFirstMenuItem() {
         if (eventSystem == null) {
             eventSystem = EventSystem.current;
         }
+        menuItems[0].Highlight();
         eventSystem.SetSelectedGameObject(menuItems[0].gameObject);
     }
 }
