@@ -19,10 +19,15 @@ public class SceneTransition : MonoBehaviour {
     private static readonly int DissolveAmount = Shader.PropertyToID(SHADER_DISSOLVE_AMOUNT_REFERENCE);
     private Material material;
     private const string MAIN_MENU_NAME = "MainMenu";
+    private const string MAIN_MENU_MUSIC_NAME = "MenuMusic";
+    private const float MAIN_MENU_MUSIC_DELAY = 1f;
 
     private void Start() {
         if (SceneManager.GetActiveScene().name != MAIN_MENU_NAME) {
             GameManager.Instance.OnLevelOpened();
+        }
+        else {
+            AudioManager.Instance.Play(MAIN_MENU_MUSIC_NAME, MAIN_MENU_MUSIC_DELAY);
         }
 
         material = GetComponent<Image>().material;

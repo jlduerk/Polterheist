@@ -35,6 +35,7 @@ public class MenuContainer : MonoBehaviour {
     }
 
     private void Init() {
+        //menu items
         menuItems = new List<MenuItem>();
         foreach (Transform child in menuItemsContainer) {
             MenuItem menuItem = child.GetComponent<MenuItem>();
@@ -46,27 +47,25 @@ public class MenuContainer : MonoBehaviour {
             menuItems.Add(menuItem);
         }
 
+        //fades
         canvasGroup = GetComponent<CanvasGroup>();
         FadeMenu(IsEnabled());
 
-        InitInput();
-        initialized = true;
-    }
-
-    private void InitInput() {
+        //input
         inputActions = new PlayerInputActions();
         inputActions.UI.Enable();
         inputActions.UI.Confirm.performed += ConfirmAction;
         inputActions.UI.StartButton.performed += StartAction;
         inputActions.UI.Cancel.performed += CancelAction;
-
         eventSystem = EventSystem.current;
         if (menuItems.Count == 0 || menuItems[0] == null) {
             Debug.LogWarning("No Menu Items in the menuItems list!");
             return;
         }
         
-        eventSystem.SetSelectedGameObject(menuItems[0].gameObject);
+        //ready
+        SelectFirstMenuItem();
+        initialized = true;
     }
     
     public void ConfirmAction(InputAction.CallbackContext context) {
@@ -94,7 +93,7 @@ public class MenuContainer : MonoBehaviour {
     public void FadeMenu(bool enable) {
         ToggleMenuItems(enable);
         if (enable) {
-            DOTween.To(()=> canvasGroup.alpha, x=> canvasGroup.alpha = x, 1, fadeInDuration).SetEase(fadeInEase).SetUpdate(true).OnComplete(SelectFirstMenuItem);
+            DOTween.To(()=> canvasGroup.alpha, x=> canvasGroup.alpha = x, 1, fadeInDuration).SetEase(fadeInEase).SetUpdate(true);
         }
         else {
             DOTween.To(()=> canvasGroup.alpha, x=> canvasGroup.alpha = x, 0, fadeOutDuration).SetEase(fadeOutEase).SetUpdate(true);
@@ -115,11 +114,15 @@ public class MenuContainer : MonoBehaviour {
                 menuItem.UnHighlight();
             }
         }
+
+        if (enabled) {
+            SelectFirstMenuItem();
+        }
     }
 
     private void SelectFirstMenuItem() {
-        if (!initialized) {
-            Init();
+        if (eventSystem == null) {
+            eventSystem = EventSystem.current;
         }
         eventSystem.SetSelectedGameObject(menuItems[0].gameObject);
     }

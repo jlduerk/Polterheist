@@ -1,5 +1,7 @@
+using MEC;
 using UnityEngine.Audio;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour {
@@ -32,11 +34,17 @@ public class AudioManager : MonoBehaviour {
 		}
 	}
 
-	public void Play(string sound) {
+	public void Play(string sound, float delay = 0) {
+		Timing.RunCoroutine(_PlayDelay(sound, delay));
+	}
+
+	private IEnumerator<float> _PlayDelay(string sound, float delay) {
+		yield return Timing.WaitForSeconds(delay);
+		
 		Sound s = Array.Find(sounds, item => item.name == sound);
 		if (s == null) {
 			Debug.LogWarning("Sound: " + name + " not found!");
-			return;
+			yield break;
 		}
 
 		s.source.volume = s.volume * (1f + UnityEngine.Random.Range(-s.volumeVariance / 2f, s.volumeVariance / 2f));
@@ -44,5 +52,4 @@ public class AudioManager : MonoBehaviour {
 
 		s.source.Play();
 	}
-
 }
