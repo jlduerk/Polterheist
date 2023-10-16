@@ -162,6 +162,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   rbManager: {fileID: 0}
+  possessingPlayers: []
 --- !u!114 &1322776382363690258
 MonoBehaviour:
   m_ObjectHideFlags: 0
