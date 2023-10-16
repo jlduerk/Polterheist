@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e4585d764f60bf458a0f886166ac816, type: 3}
+  m_Name: MansionPossessableSet
+  m_EditorClassIdentifier: 
+  possessables:
+  - {fileID: 1335296932488820172, guid: d5e24e8bc9bd1ca4e9749368010f477d, type: 3}
+  - {fileID: 1046180962671775364, guid: 90306198295a0db459803b1874466c40, type: 3}
+  - {fileID: 1271248950678759996, guid: 26962bda8d612ec42a1129d6db351cc6, type: 3}
+  - {fileID: 1083388282532743406, guid: 87329dd1f8a5dc741a6630bd7f03aba1, type: 3}
+  - {fileID: 68530049018512232, guid: ed679f83c011234438dc735950a875fb, type: 3}
+  - {fileID: 714903935964992780, guid: f0dfcb34d33e3b84c98b490d4e5b5913, type: 3}
+  - {fileID: 3421595956809906733, guid: be9e2b20e122f2e44a7901ee1865be4c, type: 3}
+  - {fileID: 8956958742540351627, guid: a1a6554022e693a428c45828ff1eb3f6, type: 3}

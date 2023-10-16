@@ -20,6 +20,7 @@ public class PlayerPossession : MonoBehaviour {
 
     public Possessable currentlyPossessing;
     private PlayerMovement playerMovement;
+    private Ghost ghost;
 
     private PlayerInput playerInputComponent = null;
     private float ghostSpeed;
@@ -33,6 +34,8 @@ public class PlayerPossession : MonoBehaviour {
         playerInputComponent = GetComponent<PlayerInput>();
         playerInputComponent.onActionTriggered += HandleInput;
 
+        ghost = GetComponentInChildren<Ghost>();
+        
         // Attach possession begin/end events to respective UnityActions
         OnPossessionBeginAction += OnPossessionBegin;
         OnPossessionEndAction += OnPossessionEnd;
@@ -123,6 +126,7 @@ public class PlayerPossession : MonoBehaviour {
             renderer.material.SetFloat("_Opacity", .5f);
             currentlyPossessing.SetColor(teamData.teamMaterial);
             possessableDetector.ClearPossiblePossessables();
+            ghost.dropShadow.gameObject.SetActive(false);
         }
     }
 
@@ -133,6 +137,7 @@ public class PlayerPossession : MonoBehaviour {
         {
             currentlyPossessing = null;
             playerMovement.speed = ghostSpeed;
+            ghost.dropShadow.gameObject.SetActive(true);
         }
     }
     #endregion Possession Callbacks

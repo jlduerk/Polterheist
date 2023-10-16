@@ -2189,7 +2189,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1540111600}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
@@ -15942,7 +15942,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7854437722492409359, guid: ef96f6397d2c3e147a7ba5169c77328a, type: 3}
       propertyPath: sounds.Array.data[4].volume
-      value: 0.25
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 8816113372369975337, guid: ef96f6397d2c3e147a7ba5169c77328a, type: 3}
       propertyPath: m_Name

@@ -37,8 +37,7 @@ public class Ghost : MonoBehaviour {
     }
 
     private void DropShadow() {
-        if (!dropShadow) {
-            Debug.LogWarning($"No dropShadow Particle System reference on {name}!", gameObject);
+        if (!dropShadow || !dropShadow.gameObject.activeInHierarchy) {
             return;
         }
         

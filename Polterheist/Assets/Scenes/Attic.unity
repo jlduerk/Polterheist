@@ -679,7 +679,7 @@ GameObject:
   m_Layer: 0
   m_Name: SpawnPoint (7)
   m_TagString: SpawnPoint
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1063,7 +1063,7 @@ GameObject:
   m_Layer: 0
   m_Name: SpawnPoint (5)
   m_TagString: SpawnPoint
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1094,7 +1094,7 @@ GameObject:
   m_Layer: 0
   m_Name: SpawnPoint (6)
   m_TagString: SpawnPoint
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1121,6 +1121,54 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1969274239}
     m_Modifications:
+    - target: {fileID: 800021162814941206, guid: 36bc516ab24451348aa556ffddbf966f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 800021162814941206, guid: 36bc516ab24451348aa556ffddbf966f, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 800021162814941206, guid: 36bc516ab24451348aa556ffddbf966f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 800021162814941206, guid: 36bc516ab24451348aa556ffddbf966f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 800021162814941206, guid: 36bc516ab24451348aa556ffddbf966f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 800021162814941206, guid: 36bc516ab24451348aa556ffddbf966f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6547910385763320280, guid: 36bc516ab24451348aa556ffddbf966f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6547910385763320280, guid: 36bc516ab24451348aa556ffddbf966f, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6547910385763320280, guid: 36bc516ab24451348aa556ffddbf966f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6547910385763320280, guid: 36bc516ab24451348aa556ffddbf966f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6547910385763320280, guid: 36bc516ab24451348aa556ffddbf966f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6547910385763320280, guid: 36bc516ab24451348aa556ffddbf966f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6618138815560466578, guid: 36bc516ab24451348aa556ffddbf966f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1725,7 +1773,7 @@ GameObject:
   m_Layer: 0
   m_Name: SpawnPoint (3)
   m_TagString: SpawnPoint
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1756,7 +1804,7 @@ GameObject:
   m_Layer: 0
   m_Name: SpawnPoint (2)
   m_TagString: SpawnPoint
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2497,7 +2545,7 @@ GameObject:
   m_Layer: 0
   m_Name: SpawnPoint (4)
   m_TagString: SpawnPoint
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2880,6 +2928,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 131717728733572350, guid: e5a44564f207831408cac1fb4c07d4c3, type: 3}
+      propertyPath: possessableSet
+      value: 
+      objectReference: {fileID: 11400000, guid: e3b848482d23c5b4ca1e8ba77945e36c, type: 2}
+    - target: {fileID: 131717728733572350, guid: e5a44564f207831408cac1fb4c07d4c3, type: 3}
       propertyPath: possessablePool.Array.size
       value: 5
       objectReference: {fileID: 0}
@@ -2949,7 +3001,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6349720195605763099, guid: e5a44564f207831408cac1fb4c07d4c3, type: 3}
       propertyPath: m_Name
-      value: SpawnPointsContainer
+      value: PossessableSpawnerContainer
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
