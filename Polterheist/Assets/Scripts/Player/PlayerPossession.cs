@@ -88,10 +88,10 @@ public class PlayerPossession : MonoBehaviour {
 
     public void OnHauntButtonPressed()
     {
-        if (currentlyPossessing)
+        if (currPossessable)
         { 
-            AudioManager.Instance.Play(hauntSFX); 
-            currentlyPossessing.Haunt();
+            AudioManager.Instance.Play(hauntSFX);
+            currPossessable.Haunt();
         }
         else
         {

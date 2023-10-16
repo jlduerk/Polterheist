@@ -119,7 +119,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.2
+  m_Radius: 0.97113657
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5180244362500880748
 GameObject:
@@ -176,7 +176,10 @@ MonoBehaviour:
   renderer: {fileID: 4076965277503824768}
   possessableAttachPoint: {x: 0, y: 0, z: 0}
   possessableDetector: {fileID: 8228207624677498279}
-  currentlyPossessing: {fileID: 0}
+  currPossessable: {fileID: 0}
+  possessSFX: Possess
+  unPossessSFX: Unpossess
+  hauntSFX: Haunt
 --- !u!114 &2944065220258524602
 MonoBehaviour:
   m_ObjectHideFlags: 0
