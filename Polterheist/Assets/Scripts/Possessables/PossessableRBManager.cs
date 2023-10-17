@@ -59,6 +59,6 @@ public class PossessableRBManager : MonoBehaviour
         if (!springJoint)
             return;
         springJoints.Remove(playerID);
-        Destroy(GetComponent<SpringJoint>());
+        Destroy(springJoint);
     }
 }
