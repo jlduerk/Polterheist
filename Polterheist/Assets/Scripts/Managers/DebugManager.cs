@@ -22,6 +22,7 @@ public class DebugManager : MonoBehaviour {
     }
 
     public bool enableDebugManager;
+    public bool showCursor;
     public DebugKey[] debugKeys;
     private const string MAIN_MENU_SCENE_NAME = "MainMenu";
     EventSystem eventSystem;
@@ -37,6 +38,10 @@ public class DebugManager : MonoBehaviour {
         // prevent the instance from being destroyed when loading new scenes
         DontDestroyOnLoad(this.gameObject);
         
+    }
+
+    private void Start() {
+        ShowCursor();
     }
 
     private void Update() {
@@ -65,7 +70,10 @@ public class DebugManager : MonoBehaviour {
     private void ResetGame() {
         SceneManager.LoadScene(MAIN_MENU_SCENE_NAME);
     }
-    
+
+    private void ShowCursor() {
+        Cursor.visible = showCursor;
+    }
     //ADD MORE DEBUG COMMANDS HERE
     #endregion
 }

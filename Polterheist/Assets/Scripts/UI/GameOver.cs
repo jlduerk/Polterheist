@@ -6,11 +6,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// THIS SCRIPT NEEDS A REFACTOR IN THE FUTURE IN ORDER TO FOLLOW THE MENUCONTAINER PARADIGM CORRECTLY
+/// </summary>
 public class GameOver : MonoBehaviour
 {
     private GameManager gameManager;
 
-    [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private MenuContainer gameOverPanel;
     [SerializeField] private TextMeshProUGUI victoryText;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TeamData teamA;
@@ -26,13 +29,12 @@ public class GameOver : MonoBehaviour
     [SerializeField] private string winText = "vict0ry!";
     [SerializeField] private string drawText = "Draw!";
     private const string MAIN_MENU_SCENE_NAME = "MainMenu";
-    
+
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameManager.Instance;
         gameManager.GameEndEvent.AddListener(OnGameEnd);
-        gameOverPanel.SetActive(false);
     }
 
     void OnGameEnd()
@@ -59,11 +61,13 @@ public class GameOver : MonoBehaviour
             redGhost.sprite = redGhostVictory;
         }
 
-        gameOverPanel.SetActive(true);
-
+        gameOverPanel.FadeMenu(true);
     }
 
     public void Continue() {
+        if (!gameOverPanel.IsEnabled()) {
+            return;
+        }
         UICommands.LoadScene(MAIN_MENU_SCENE_NAME);
     }
 }

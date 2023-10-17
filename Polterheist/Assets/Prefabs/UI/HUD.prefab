@@ -466,6 +466,7 @@ GameObject:
   - component: {fileID: 195169488650813363}
   - component: {fileID: 8796743559984552420}
   - component: {fileID: 5363939486067256790}
+  - component: {fileID: 8613522767753106877}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -548,7 +549,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuItemsContainer: {fileID: 1494094069580634031}
-  menuItems: []
+  menuItems:
+  - {fileID: 5162530295710899164}
+  fadeInDuration: 0
+  fadeInEase: 0
+  fadeOutDuration: 0
+  fadeOutEase: 0
+  cancelCanClose: 0
+  openContainerOnCancel: {fileID: 0}
+--- !u!225 &8613522767753106877
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2650731816972332477}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2918664974702276169
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,7 +618,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad65e0d9f0ecd344a96edf124511d780, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverPanel: {fileID: 2650731816972332477}
+  gameOverPanel: {fileID: 5363939486067256790}
   victoryText: {fileID: 7717293586724604355}
   scoreText: {fileID: 4941411894661383642}
   teamA: {fileID: 11400000, guid: efba2d66c024a37458625cb4d6647486, type: 2}
@@ -609,6 +629,8 @@ MonoBehaviour:
   blueGhostDefeat: {fileID: 21300000, guid: ff4d67f07aac6e94a8cd02543d5eef3b, type: 3}
   redGhostVictory: {fileID: 21300000, guid: 7bd1fb5855519a745b860bec30908059, type: 3}
   redGhostDefeat: {fileID: 21300000, guid: 5c6f37518028dbf438120d03e718687a, type: 3}
+  winText: vict0ry!
+  drawText: Draw!
 --- !u!1 &3476740479450110703
 GameObject:
   m_ObjectHideFlags: 0
@@ -870,7 +892,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 33.85
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1570,6 +1592,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2b945a10a54ce84888edbe329faadd1, type: 3}
+--- !u!114 &5162530295710899164 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 390068939762804192, guid: a2b945a10a54ce84888edbe329faadd1, type: 3}
+  m_PrefabInstance: {fileID: 4813556705247100476}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29aa6147e182fa94c9270736364814fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &7973162799403832612 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3200771821853010712, guid: a2b945a10a54ce84888edbe329faadd1, type: 3}
