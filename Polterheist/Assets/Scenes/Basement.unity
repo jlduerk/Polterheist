@@ -1496,7 +1496,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1335296932488820172, guid: d5e24e8bc9bd1ca4e9749368010f477d, type: 3}
       propertyPath: OnHaunt.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnHauntTable
+      value: OnDefaultHaunt
       objectReference: {fileID: 0}
     - target: {fileID: 1335296932488820172, guid: d5e24e8bc9bd1ca4e9749368010f477d, type: 3}
       propertyPath: OnHaunt.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
