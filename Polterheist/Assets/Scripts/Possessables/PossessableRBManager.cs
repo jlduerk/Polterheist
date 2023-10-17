@@ -9,7 +9,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PossessableRBManager : MonoBehaviour
 {
-    private SpringJoint springJoint = null;
+    private Dictionary<string, SpringJoint> springJoints = new Dictionary<string, SpringJoint>();
+
     private Rigidbody rb = null;
     public Rigidbody possessableRigidBody {
         get { return rb; }
@@ -20,20 +21,22 @@ public class PossessableRBManager : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    private Rigidbody GetSpringAttachedRB()
+    private SpringJoint GetSpringAttached(string playerID)
     {
-        if (!springJoint)
+        SpringJoint joint = null;
+        if (!springJoints.TryGetValue(playerID, out joint))
             return null;
 
-        return springJoint.connectedBody;
+        return joint;
     }
 
 
     // Create and attach spring joint to given rigidbody
-    public void AttachSpringTo(Rigidbody rb, Vector3 anchorPoint)
+    public void AttachSpringTo(Rigidbody rb, string playerID, Vector3 anchorPoint)
     {
         // Don't attach something else if already attached
-        if (GetSpringAttachedRB())
+        SpringJoint springJoint = GetSpringAttached(playerID);
+        if (springJoint)
             return;
 
         springJoint = gameObject.AddComponent<SpringJoint>();
@@ -42,6 +45,7 @@ public class PossessableRBManager : MonoBehaviour
         springJoint.connectedAnchor = anchorPoint;
         springJoint.maxDistance = 0.25f;
         springJoint.spring = 20;
+        springJoints.Add(playerID, springJoint);
 
         // TODO: Find appropriate spring strength
         // TODO: Might want to reduce gravity for possessables, so they don't drag as much
@@ -49,12 +53,12 @@ public class PossessableRBManager : MonoBehaviour
 
 
     // Destroy the current spring joint, if it exists
-    public void DetachSpring()
+    public void DetachSpring(string playerID)
     {
+        SpringJoint springJoint = GetSpringAttached(playerID);
         if (!springJoint)
             return;
-
+        springJoints.Remove(playerID);
         Destroy(GetComponent<SpringJoint>());
-        springJoint = null;
     }
 }
