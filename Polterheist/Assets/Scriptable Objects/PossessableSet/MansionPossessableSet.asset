@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: MansionPossessableSet
   m_EditorClassIdentifier: 
   possessables:
-  - {fileID: 1335296932488820172, guid: d5e24e8bc9bd1ca4e9749368010f477d, type: 3}
   - {fileID: 1046180962671775364, guid: 90306198295a0db459803b1874466c40, type: 3}
-  - {fileID: 1271248950678759996, guid: 26962bda8d612ec42a1129d6db351cc6, type: 3}
-  - {fileID: 1083388282532743406, guid: 87329dd1f8a5dc741a6630bd7f03aba1, type: 3}
-  - {fileID: 68530049018512232, guid: ed679f83c011234438dc735950a875fb, type: 3}
+  - {fileID: 4705389434794913406, guid: d13c2503ce6b25d45b0bf581e757cb80, type: 3}
   - {fileID: 714903935964992780, guid: f0dfcb34d33e3b84c98b490d4e5b5913, type: 3}
   - {fileID: 3421595956809906733, guid: be9e2b20e122f2e44a7901ee1865be4c, type: 3}
   - {fileID: 8956958742540351627, guid: a1a6554022e693a428c45828ff1eb3f6, type: 3}
+  - {fileID: 2312453672919086677, guid: 3c75959e0dd22e245b48f1a08b0402e1, type: 3}
+  - {fileID: 7967952689258964343, guid: 67bd658961478d7448c6ac9fc8cb12b2, type: 3}
+  - {fileID: 8061509858604516906, guid: fa193f32e7b32994c926112fea3ddba9, type: 3}
+  - {fileID: 7705259838750637678, guid: 85bdc7c3470c2024f9e7138ab9216ae8, type: 3}
