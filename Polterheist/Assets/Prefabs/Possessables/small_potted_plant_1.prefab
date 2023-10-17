@@ -152,6 +152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ScoreValue: 1
   WasScored: 0
+  orbDistortionPrefab: {fileID: 1449395747621008913, guid: ac30a6f0c35e2e2498e9b05fffa23f10, type: 3}
   OnPossessionBegin:
     m_PersistentCalls:
       m_Calls: []
@@ -174,6 +175,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   rbManager: {fileID: 0}
+  possessingPlayers: []
 --- !u!114 &1927525885129560935
 MonoBehaviour:
   m_ObjectHideFlags: 0
