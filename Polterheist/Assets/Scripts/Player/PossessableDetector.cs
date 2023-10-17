@@ -15,7 +15,7 @@ public class PossessableDetector : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Possessable possessable = other.gameObject.GetComponentInParent<Possessable>();
-        if (playerPossession.currPossessable || !possessable || possessable.IsPossessed || possiblePossessables.Contains(possessable))
+        if (playerPossession.currPossessable || !possessable || !possessable.CanBePossessed() || possiblePossessables.Contains(possessable))
             return;
 
         ClearPossiblePossessables();

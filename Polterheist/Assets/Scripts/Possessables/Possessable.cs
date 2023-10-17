@@ -10,6 +10,7 @@ public class Possessable : MonoBehaviour
 {
     // How many points a team will get from this possessable in their zone
     public int ScoreValue = 1;
+    public static bool limitToOnePossession = false;
 
     // When counting score, used to ensure we don't count a possessable twice
     public bool WasScored = false;
@@ -23,12 +24,13 @@ public class Possessable : MonoBehaviour
     // Handles Rigidbody logic, such as spring joints
     [HideInInspector] public PossessableRBManager rbManager = null;
 
-    private PlayerPossession possessedBy = null;
+    //now there is a list of possessingPlayers, for each, add a spring joint connected to a player ID
+    public List<PlayerPossession> possessingPlayers = new List<PlayerPossession>();
 
     private MeshRenderer renderer;
     private Material defaultMaterial;
     private Outline outline;
-    public bool IsPossessed => possessedBy != null;
+    private bool IsPossessed => possessingPlayers.Count > 0;
     private void Start()
     {
         // PossessableRBManager is optional - but get a reference to it if it's there
@@ -44,7 +46,11 @@ public class Possessable : MonoBehaviour
     public bool CanBePossessed()
     {
         // TODO: may want to be able to "lock" possessables, for some reason
-        return !IsPossessed;
+        if(limitToOnePossession)
+        {
+            return !IsPossessed;
+        }
+        return true; // This allows any number of players to possess a given object
     }
 
 
@@ -56,41 +62,40 @@ public class Possessable : MonoBehaviour
             return false;
 
         // Store player and have it listen for possession events
-        possessedBy = player;
-        OnPossessionBegin.AddListener(possessedBy.OnPossessionBeginAction);
-        OnPossessionEnd.AddListener(possessedBy.OnPossessionEndAction);
+        possessingPlayers.Add(player);
+        OnPossessionBegin.AddListener(player.OnPossessionBeginAction);
+        OnPossessionEnd.AddListener(player.OnPossessionEndAction);
 
 
-        OnPossessionBegin.Invoke(this, possessedBy);
+        OnPossessionBegin.Invoke(this, player);
 
-        Debug.Log(possessedBy.gameObject.name + " started possessing " + this.gameObject.name, this);
+        Debug.Log(player.gameObject.name + " started possessing " + this.gameObject.name, this);
 
         // Create the spring joint
         // TODO: Maybe the rbManager could just listen to OnPossessionBegin/End
         if (rbManager)
-            rbManager.AttachSpringTo(player.GetPlayerRB(), player.PossessableAttachPoint);
+            rbManager.AttachSpringTo(player.GetPlayerRB(), player.playerID, player.PossessableAttachPoint);
 
         return true;
     }
 
 
     // Un-possess this object
-    public void Eject()
+    public void Eject(PlayerPossession player)
     {
         if (IsPossessed)
         {
-            OnPossessionEnd.Invoke(this, possessedBy);
+            possessingPlayers.Remove(player);
+            OnPossessionEnd.Invoke(this, player);
 
-            OnPossessionBegin.RemoveListener(possessedBy.OnPossessionBeginAction);
-            OnPossessionEnd.RemoveListener(possessedBy.OnPossessionEndAction);
+            OnPossessionBegin.RemoveListener(player.OnPossessionBeginAction);
+            OnPossessionEnd.RemoveListener(player.OnPossessionEndAction);
 
-            Debug.Log(possessedBy.gameObject.name + " stopped possessing " + this.gameObject.name, this);
+            Debug.Log(player.gameObject.name + " stopped possessing " + this.gameObject.name, this);
         }
 
         if (rbManager)
-            rbManager.DetachSpring();
-
-        possessedBy = null;
+            rbManager.DetachSpring(player.playerID);
     }
 
     private void OverrideMaterial(Material material) {
@@ -101,9 +106,9 @@ public class Possessable : MonoBehaviour
         renderer.material = material;
     }
 
-    public void Haunt()
+    public void Haunt(PlayerPossession player)
     {
-        OnHaunt.Invoke(this, possessedBy);
+        OnHaunt.Invoke(this, player);
     }
 
     public Outline GetOutline()

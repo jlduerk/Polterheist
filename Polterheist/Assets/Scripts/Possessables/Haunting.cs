@@ -63,10 +63,6 @@ public class Haunting : MonoBehaviour {
                 }
             }
         }
-        else
-        {
-            Debug.Log("NOPE");
-        }
     }
 
     private IEnumerator<float> _defualtHauntTimer()

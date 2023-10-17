@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -30,6 +31,9 @@ public class PlayerPossession : MonoBehaviour {
     public string possessSFX = "Possess";
     public string unPossessSFX = "Unpossess";
     public string hauntSFX = "Haunt";
+    public string playerID = "";
+    const string glyphs = "abcdefghijklmnopqrstuvwxyz0123456789";
+
 
 
     private void Start()
@@ -45,6 +49,7 @@ public class PlayerPossession : MonoBehaviour {
 
         playerMovement = GetComponent<PlayerMovement>();
         ghostSpeed = playerMovement.speed;
+        playerID = makeHash();
     }
 
     private void OnDisable() {
@@ -90,7 +95,7 @@ public class PlayerPossession : MonoBehaviour {
     {
         if (currPossessable)
         { 
-            currPossessable.Haunt();
+            currPossessable.Haunt(this);
         }
         else
         {
@@ -117,7 +122,7 @@ public class PlayerPossession : MonoBehaviour {
 
         currPossessable.SetUnPossessedEffect();
         ;
-        currPossessable.Eject();
+        currPossessable.Eject(this);
     }
     #endregion Possession Actions
 
@@ -164,6 +169,16 @@ public class PlayerPossession : MonoBehaviour {
     #endregion Getters
 
     #region Team Data
+    private string makeHash()
+    {
+        int charAmount = UnityEngine.Random.Range(8, 14);
+        string result = "";
+        for (int i = 0; i < charAmount; i++)
+        {
+            result += glyphs[UnityEngine.Random.Range(0, glyphs.Length)];
+        }
+        return result;
+    }
     public void TeamDataInit(TeamData teamDataToAssign) {
         teamData = teamDataToAssign;
         renderer.material.SetColor("_Color", teamData.teamColor * UnityEngine.Random.Range(.6f, 1.0f));
