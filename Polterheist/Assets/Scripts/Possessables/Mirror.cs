@@ -23,6 +23,7 @@ public class Mirror : MonoBehaviour {
     public Material hauntedMaterial;
     public GameObject hauntVFXPrefab;
     private ParticleSystem hauntVFX;
+    public ParticleSystem hauntSuckVFX;
     
     public Rigidbody possessableRidgidBody;
     public float pushBackIntensity = 100;
@@ -85,10 +86,10 @@ public class Mirror : MonoBehaviour {
             matchingMirror.transform.position + matchingMirror.transform.forward * spitOutForce;
     }
 
-    private void TeleportPossessable(Transform possessableTransform) {
-        possessableTransform.parent.transform.position =
+    private void TeleportPossessable(Transform objectToTeleport) {
+        Debug.Log(objectToTeleport.name);
+        objectToTeleport.parent.transform.position =
             matchingMirror.transform.position + matchingMirror.transform.forward * spitOutForce;
-        possessableTransform.GetComponent<Rigidbody>().AddForce(matchingMirror.transform.forward * spitOutForce, ForceMode.VelocityChange);
     }
 
     private void TeleportPlayerFX(PlayerMovement player) {
@@ -121,11 +122,13 @@ public class Mirror : MonoBehaviour {
     }
     private IEnumerator<float> _Haunt() {
         isHaunted = true;
+        hauntSuckVFX.Play();
         HauntEffect();
         renderer.material = hauntedMaterial;
         yield return Timing.WaitForSeconds(hauntDuration);
         collider.radius = starterColliderRadius;
         Vector3 starterCenter = new Vector3(0, 0, starterOffset);
+        hauntSuckVFX.Stop();
         collider.center = starterCenter;
         renderer.material = startingMaterial;
         isHaunted = false;

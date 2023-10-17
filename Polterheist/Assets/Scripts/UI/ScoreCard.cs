@@ -16,6 +16,7 @@ public class ScoreCard : MonoBehaviour
 
     [SerializeField] private float MoveTweenY = 161f;
     [SerializeField] private float MoveTweenDuration = 1f;
+    public float screenHeightMultiplier = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -30,16 +31,17 @@ public class ScoreCard : MonoBehaviour
 
     }
 
-    void GameStartTween()
-    {
+    void GameStartTween() {
+        float screenHeightScalar = Screen.height / screenHeightMultiplier;
         Sequence mySequence = DOTween.Sequence();
-        mySequence.Append(transform.DOMoveY(MoveTweenY, MoveTweenDuration));
+        mySequence.Append(transform.DOMoveY(MoveTweenY + screenHeightScalar, MoveTweenDuration));
     }
 
     void GameEndTween()
     {
         Sequence mySequence = DOTween.Sequence();
-        mySequence.Append(transform.DOMoveY(-MoveTweenY, MoveTweenDuration));
+        float screenHeightScalar = Screen.height / screenHeightMultiplier;
+        mySequence.Append(transform.DOMoveY(-MoveTweenY + screenHeightScalar, MoveTweenDuration));
     }
 
     void FixedUpdate()

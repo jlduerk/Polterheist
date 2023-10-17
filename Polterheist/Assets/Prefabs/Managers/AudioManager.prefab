@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mixerGroup: {fileID: 0}
+  songTransitionDuration: 0
   sounds:
   - name: Countdown
     clip: {fileID: 8300000, guid: a824db3a907c4c047831fa3218671a0c, type: 3}
@@ -134,5 +135,23 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.138
     loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: MansionMusic
+    clip: {fileID: 8300000, guid: 7e633f78aa078d14ea5ef7dc57993605, type: 3}
+    volume: 0.15
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: HotelMusic
+    clip: {fileID: 8300000, guid: 111ecc9d61db257419c6de3f6362a555, type: 3}
+    volume: 0.15
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
