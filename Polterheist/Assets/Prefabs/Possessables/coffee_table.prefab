@@ -202,6 +202,7 @@ MonoBehaviour:
   defaultHauntCooldown: 2
   hauntSFX: Haunt
   HauntLaunchForce: 500
+  HauntEffectRadius: 3
 --- !u!114 &-108027620908037319
 MonoBehaviour:
   m_ObjectHideFlags: 0

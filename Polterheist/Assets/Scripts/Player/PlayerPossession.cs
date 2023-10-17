@@ -95,7 +95,6 @@ public class PlayerPossession : MonoBehaviour {
     {
         if (currPossessable)
         { 
-            AudioManager.Instance.Play(hauntSFX);
             currPossessable.Haunt(this);
         }
         else

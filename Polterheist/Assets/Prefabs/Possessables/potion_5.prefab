@@ -160,7 +160,19 @@ MonoBehaviour:
       m_Calls: []
   OnHaunt:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2563911562785504123}
+        m_TargetAssemblyTypeName: Haunting, Assembly-CSharp
+        m_MethodName: OnDefaultHaunt
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   rbManager: {fileID: 0}
 --- !u!114 &1314297298334747396
 MonoBehaviour:
@@ -186,7 +198,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfcf038d31a19604bab37c101b76d172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intensity: 20
+  pushBackIntensity: 50
+  defaultHauntCooldown: 2
+  hauntSFX: Haunt
+  HauntLaunchForce: 300
+  HauntEffectRadius: 3
 --- !u!114 &6041399598166326274
 MonoBehaviour:
   m_ObjectHideFlags: 0
