@@ -108,7 +108,6 @@ public class Possessable : MonoBehaviour
 
     public void Haunt(PlayerPossession player)
     {
-        Debug.Log("HAUNT NOWf");
         OnHaunt.Invoke(this, player);
     }
 
