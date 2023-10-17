@@ -137,7 +137,7 @@ public class Possessable : MonoBehaviour
     {
         distortionOrb.GetComponent<Renderer>().material.SetFloat("Strength", 0.0f);
         DG.Tweening.Sequence orbSequence = DOTween.Sequence();
-        orbSequence.Insert(0.0f, distortionOrb.transform.DOScale(2.0f, 0.25f));
+        orbSequence.Insert(0.0f, distortionOrb.transform.DOScale(3.0f, 0.25f));
         orbSequence.Insert(0.0f, distortionOrb.GetComponent<Renderer>().material.DOFloat(1.0f, "Strength", 0.25f));
         orbSequence.Insert(0.25f, distortionOrb.transform.DOScale(0.0f, 0.4f));
         SetOutline(true, getAveragePlayerColor(), perPlayerOutlineWidth * (hoveringPlayers.Count + possessingPlayers.Count));
@@ -147,7 +147,7 @@ public class Possessable : MonoBehaviour
     {
         distortionOrb.GetComponent<Renderer>().material.SetFloat("Strength", 1.0f);
         DG.Tweening.Sequence orbSequence = DOTween.Sequence();
-        orbSequence.Insert(0.0f, distortionOrb.transform.DOScale(2.0f, 0.25f));
+        orbSequence.Insert(0.0f, distortionOrb.transform.DOScale(3.0f, 0.25f));
         orbSequence.Insert(0.0f, distortionOrb.GetComponent<Renderer>().material.DOFloat(0.0f, "Strength", 0.25f));
         orbSequence.Insert(0.25f, distortionOrb.transform.DOScale(0.0f, 0.4f));
         SetOutline(true, getAveragePlayerColor(), perPlayerOutlineWidth * (hoveringPlayers.Count + possessingPlayers.Count));
