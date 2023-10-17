@@ -88,7 +88,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfcf038d31a19604bab37c101b76d172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intensity: 20
+  pushBackIntensity: 150
+  defaultHauntCooldown: 2
+  hauntSFX: Haunt
+  HauntLaunchForce: 300
+  HauntEffectRadius: 3
 --- !u!114 &1355785218304044320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,6 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ScoreValue: 1
   WasScored: 0
+  orbDistortionPrefab: {fileID: 0}
   OnPossessionBegin:
     m_PersistentCalls:
       m_Calls: []

@@ -110,7 +110,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: Haunt
-    clip: {fileID: 8300000, guid: 91d2ca17f4e15b44fa88de726124fd72, type: 3}
+    clip: {fileID: 8300000, guid: c3d9128dcebdaf645b8c6367531035bb, type: 3}
     volume: 0.7
     volumeVariance: 0
     pitch: 1

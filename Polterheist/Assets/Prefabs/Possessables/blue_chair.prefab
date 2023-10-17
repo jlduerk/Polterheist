@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfcf038d31a19604bab37c101b76d172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pushBackIntensity: 50
+  pushBackIntensity: 150
   defaultHauntCooldown: 2
   hauntSFX: Haunt
   HauntLaunchForce: 300
