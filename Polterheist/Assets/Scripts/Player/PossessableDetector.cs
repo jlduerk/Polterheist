@@ -66,12 +66,14 @@ public class PossessableDetector : MonoBehaviour
 
     private void OnAddPossiblePossessable(Possessable possessable)
     {
-        possessable.SetPossessedEffect(playerPossession.teamData.teamColor);
+        possessable.hoveringPlayers.Add(playerPossession);
+        possessable.SetHoverEffect();
     }
 
     private void OnRemovePossiblePossessable(Possessable possessable)
     {
-        possessable.SetUnPossessedEffect();
+        possessable.hoveringPlayers.Remove(playerPossession);
+        possessable.SetUnHoverEffect();
 
     }
 }

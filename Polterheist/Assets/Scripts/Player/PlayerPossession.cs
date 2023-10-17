@@ -117,11 +117,7 @@ public class PlayerPossession : MonoBehaviour {
     {
         if (!currPossessable)
             return;
-
         renderer.material.SetFloat("_Opacity", 1);
-
-        currPossessable.SetUnPossessedEffect();
-        ;
         currPossessable.Eject(this);
     }
     #endregion Possession Actions
@@ -135,7 +131,6 @@ public class PlayerPossession : MonoBehaviour {
             currPossessable = possessable;
             playerMovement.speed /= possessable.gameObject.GetComponent<Rigidbody>().mass;
             renderer.material.SetFloat("_Opacity", .5f);
-            currPossessable.SetPossessedEffect(teamData.teamColor);
             possessableDetector.ClearPossiblePossessables();
             ghost.dropShadow.gameObject.SetActive(false);
         }
