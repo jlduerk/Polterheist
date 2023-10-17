@@ -31,8 +31,7 @@ public class Possessable : MonoBehaviour
     //now there is a list of possessingPlayers, for each, add a spring joint connected to a player ID
     public List<PlayerPossession> possessingPlayers = new List<PlayerPossession>();
     public List<PlayerPossession> hoveringPlayers = new List<PlayerPossession>();
-
-
+    
     private MeshRenderer renderer;
     private Material defaultMaterial;
     private Outline outline;
@@ -145,11 +144,11 @@ public class Possessable : MonoBehaviour
 
     public void SetUnPossessedEffect()
     {
-        distortionOrb.GetComponent<Renderer>().material.SetFloat("Strength", 1.0f);
-        DG.Tweening.Sequence orbSequence = DOTween.Sequence();
-        orbSequence.Insert(0.0f, distortionOrb.transform.DOScale(3.0f, 0.25f));
-        orbSequence.Insert(0.0f, distortionOrb.GetComponent<Renderer>().material.DOFloat(0.0f, "Strength", 0.25f));
-        orbSequence.Insert(0.25f, distortionOrb.transform.DOScale(0.0f, 0.4f));
+        // distortionOrb.GetComponent<Renderer>().material.SetFloat("Strength", 1.0f);
+        // DG.Tweening.Sequence orbSequence = DOTween.Sequence();
+        // orbSequence.Insert(0.0f, distortionOrb.transform.DOScale(3.0f, 0.25f));
+        // orbSequence.Insert(0.0f, distortionOrb.GetComponent<Renderer>().material.DOFloat(0.0f, "Strength", 0.25f));
+        // orbSequence.Insert(0.25f, distortionOrb.transform.DOScale(0.0f, 0.4f));
         SetOutline(true, getAveragePlayerColor(), perPlayerOutlineWidth * (hoveringPlayers.Count + possessingPlayers.Count));
     }
 

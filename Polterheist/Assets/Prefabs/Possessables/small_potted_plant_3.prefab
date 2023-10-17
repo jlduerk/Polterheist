@@ -176,6 +176,7 @@ MonoBehaviour:
         m_CallState: 2
   rbManager: {fileID: 0}
   possessingPlayers: []
+  hoveringPlayers: []
 --- !u!114 &835337482309415354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,6 +206,7 @@ MonoBehaviour:
   hauntSFX: Haunt
   HauntLaunchForce: 300
   HauntEffectRadius: 3
+  hauntVFXPrefab: {fileID: 6282658935554073280, guid: 121f0ba8a973c6548b488f9a5fbda848, type: 3}
 --- !u!114 &-3812210845667426294
 MonoBehaviour:
   m_ObjectHideFlags: 0

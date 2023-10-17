@@ -10,6 +10,9 @@ public class Haunting : MonoBehaviour {
     public string hauntSFX = "Haunt";
     public float HauntLaunchForce = 300;
     public float HauntEffectRadius = 3;
+    
+    public GameObject hauntVFXPrefab;
+    private ParticleSystem hauntVFX;
 
     private Rigidbody possessableRidgidBody;
     private CoroutineHandle defualtHauntTimer;
@@ -20,6 +23,16 @@ public class Haunting : MonoBehaviour {
     private void Init()
     {
         possessableRidgidBody = GetComponent<Rigidbody>();
+    }
+    
+    public void HauntEffect() {
+        if (hauntVFX) {
+            hauntVFX.Play();
+            return;
+        }
+
+        hauntVFX = Instantiate(hauntVFXPrefab, transform.position, Quaternion.identity, transform).GetComponent<ParticleSystem>();
+        hauntVFX.Play();
     }
 
     public void OnHauntTable(Possessable possessable, PlayerPossession possessor)
@@ -34,7 +47,7 @@ public class Haunting : MonoBehaviour {
                 Vector3 awayVec = (hitCollider.transform.position - possessable.transform.position).normalized;
                 Vector3 forceVec = new Vector3(awayVec.x, 1, awayVec.z);
                 hitCollider.attachedRigidbody.AddForce(forceVec * pushBackIntensity);
-                Debug.Log("adding explosioin force to " + hitCollider.gameObject.name);
+                //Debug.Log("adding explosioin force to " + hitCollider.gameObject.name);
 
             }
         }
@@ -46,7 +59,8 @@ public class Haunting : MonoBehaviour {
         {
             AudioManager.Instance.Play(hauntSFX);
             defualtHauntTimer = Timing.RunCoroutine(_defualtHauntTimer());
-            Debug.Log($"{possessable.name} HAUNTED");
+            //Debug.Log($"{possessable.name} HAUNTED");
+            HauntEffect();
 
             Vector3 upForce = new Vector3(1, HauntLaunchForce, 1);
             possessableRidgidBody.AddForce(upForce);

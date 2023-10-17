@@ -60,7 +60,7 @@ Rigidbody:
   m_Mass: 2
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_CenterOfMass: {x: 0, y: -1, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
   m_IncludeLayers:
@@ -69,7 +69,7 @@ Rigidbody:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_ImplicitCom: 1
+  m_ImplicitCom: 0
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -93,6 +93,7 @@ MonoBehaviour:
   hauntSFX: Haunt
   HauntLaunchForce: 300
   HauntEffectRadius: 3
+  hauntVFXPrefab: {fileID: 6282658935554073280, guid: 121f0ba8a973c6548b488f9a5fbda848, type: 3}
 --- !u!114 &1355785218304044320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,13 +136,13 @@ MonoBehaviour:
   OnHaunt:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1439128832723344354, guid: 87329dd1f8a5dc741a6630bd7f03aba1, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 5595027728324928539}
+        m_TargetAssemblyTypeName: Mirror, Assembly-CSharp
+        m_MethodName: Haunt
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -149,6 +150,7 @@ MonoBehaviour:
         m_CallState: 2
   rbManager: {fileID: 0}
   possessingPlayers: []
+  hoveringPlayers: []
 --- !u!1 &3688549881097495559
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,9 +311,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.01
-  m_Height: 2.58
+  m_Height: 0.35
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: 2}
 --- !u!114 &5595027728324928539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,6 +331,16 @@ MonoBehaviour:
   matchingMirror: {fileID: 0}
   mirrorLinked: 0
   teleportVFXPrefab: {fileID: 6282658935554073280, guid: 915c0db6e0dd987468f26040fb551618, type: 3}
+  hauntDuration: 2
+  renderer: {fileID: 8893645544980008329}
+  hauntedMaterial: {fileID: 2100000, guid: f69bed8dd52012940a123cae2ddfbc03, type: 2}
+  hauntVFXPrefab: {fileID: 6282658935554073280, guid: 121f0ba8a973c6548b488f9a5fbda848, type: 3}
+  possessableRidgidBody: {fileID: 7447874238195197461}
+  pushBackIntensity: 75
+  HauntLaunchForce: 200
+  HauntEffectExtents: {x: 4, y: 4, z: 4}
+  hauntedColliderRadius: 1.2
+  hauntedColliderOffset: 5
 --- !u!1 &4823092520575984217
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,5 +372,59 @@ Transform:
   m_Children:
   - {fileID: 7974514857262925900}
   - {fileID: 8215716185118633545}
+  - {fileID: 8436650409175982404}
   m_Father: {fileID: 5426560274136682411}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8378952959688362345
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8436650409175982404}
+  - component: {fileID: 4161421856826221809}
+  m_Layer: 6
+  m_Name: BaseCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8436650409175982404
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8378952959688362345}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.00059232, y: -0.0028982, z: -0.00010424}
+  m_LocalScale: {x: 1.0354, y: 1.0354, z: 1.0354}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8200241158441243393}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4161421856826221809
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8378952959688362345}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.7924313, y: 0.20210733, z: 0.6549034}
+  m_Center: {x: -0.016753286, y: 0.08197378, z: 0.0029484034}
