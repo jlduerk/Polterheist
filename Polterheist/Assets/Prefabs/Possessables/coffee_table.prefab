@@ -152,6 +152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ScoreValue: 1
   WasScored: 0
+  orbDistortionPrefab: {fileID: 1449395747621008913, guid: ac30a6f0c35e2e2498e9b05fffa23f10, type: 3}
   OnPossessionBegin:
     m_PersistentCalls:
       m_Calls: []
@@ -174,6 +175,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   rbManager: {fileID: 0}
+  possessingPlayers: []
 --- !u!114 &863534394891819528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,6 +204,7 @@ MonoBehaviour:
   defaultHauntCooldown: 2
   hauntSFX: Haunt
   HauntLaunchForce: 500
+  HauntEffectRadius: 3
 --- !u!114 &-108027620908037319
 MonoBehaviour:
   m_ObjectHideFlags: 0

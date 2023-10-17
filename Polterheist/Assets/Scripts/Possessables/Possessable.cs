@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using DG.Tweening;
 
 [RequireComponent(typeof(Outline))]
 public class Possessable : MonoBehaviour
@@ -14,6 +15,9 @@ public class Possessable : MonoBehaviour
 
     // When counting score, used to ensure we don't count a possessable twice
     public bool WasScored = false;
+
+    [SerializeField] private GameObject orbDistortionPrefab = null;
+    private GameObject distortionOrb;
 
     // Events to signal when something has become possessed
     [SerializeField] private UnityEvent<Possessable, PlayerPossession> OnPossessionBegin = new UnityEvent<Possessable, PlayerPossession>();
@@ -38,6 +42,8 @@ public class Possessable : MonoBehaviour
         renderer = GetComponentInChildren<MeshRenderer>();
         defaultMaterial = renderer.material;
         outline = gameObject.GetComponent<Outline>();
+        distortionOrb = Instantiate(orbDistortionPrefab, transform);
+        distortionOrb.transform.localScale = Vector3.zero;
         SetUnPossessedEffect();
     }
 
@@ -130,10 +136,22 @@ public class Possessable : MonoBehaviour
     public void SetPossessedEffect(Color playerColor)
     {
         SetOutline(true, playerColor, 6);
+
+        distortionOrb.GetComponent<Renderer>().material.SetFloat("Strength", 0.0f);
+        DG.Tweening.Sequence orbSequence = DOTween.Sequence();
+        orbSequence.Insert(0.0f, distortionOrb.transform.DOScale(2.0f, 0.25f));
+        orbSequence.Insert(0.0f, distortionOrb.GetComponent<Renderer>().material.DOFloat(1.0f, "Strength", 0.25f));
+        orbSequence.Insert(0.25f, distortionOrb.transform.DOScale(0.0f, 0.4f));
     }
 
     public void SetUnPossessedEffect()
     {
         SetOutline(false, Color.black, 0);
+
+        distortionOrb.GetComponent<Renderer>().material.SetFloat("Strength", 1.0f);
+        DG.Tweening.Sequence orbSequence = DOTween.Sequence();
+        orbSequence.Insert(0.0f, distortionOrb.transform.DOScale(2.0f, 0.25f));
+        orbSequence.Insert(0.0f, distortionOrb.GetComponent<Renderer>().material.DOFloat(0.0f, "Strength", 0.25f));
+        orbSequence.Insert(0.25f, distortionOrb.transform.DOScale(0.0f, 0.4f));
     }
 }
