@@ -18,4 +18,5 @@ public class TeamData : ScriptableObject {
     public Material teamMaterialPossess;
     public EZone teamZone;
     public Color teamColor;
+    [ColorUsageAttribute(true, true)] public Color playerColor;
 }

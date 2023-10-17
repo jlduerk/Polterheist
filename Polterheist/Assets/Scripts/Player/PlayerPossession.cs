@@ -174,9 +174,27 @@ public class PlayerPossession : MonoBehaviour {
         }
         return result;
     }
+
+    static int redPlayerNum = 0;
+    static int bluePlayerNum = 0;
     public void TeamDataInit(TeamData teamDataToAssign) {
         teamData = teamDataToAssign;
-        renderer.material.SetColor("_Color", teamData.teamColor * UnityEngine.Random.Range(.6f, 1.0f));
+        Color randomPlayerColor = teamDataToAssign.playerColor;
+        if (teamData.team == TeamData.Team.Blue) {
+            bluePlayerNum++;
+            randomPlayerColor.g += bluePlayerNum%2 * .4f;
+            Debug.Log("BLUE TEAM");
+        }
+        else if(teamData.team == TeamData.Team.Red)
+        {
+            redPlayerNum++;
+            randomPlayerColor.g += redPlayerNum%2 * .2f;
+            Debug.Log("red TEAM");
+
+        }
+        Debug.Log("BLUE TEAM");
+
+        renderer.material.SetColor("_Color", randomPlayerColor);
     }
     #endregion
 }
