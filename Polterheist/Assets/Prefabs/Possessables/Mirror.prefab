@@ -57,7 +57,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 107880392791191640}
   serializedVersion: 4
-  m_Mass: 3
+  m_Mass: 2
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 3225168229197950765}
   - component: {fileID: 5595027728324928539}
   m_Layer: 6
-  m_Name: Capsule
+  m_Name: TeleportGlass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -283,7 +283,7 @@ Transform:
   m_GameObject: {fileID: 4684603984589883160}
   serializedVersion: 2
   m_LocalRotation: {x: -0.041466102, y: -0, z: -0, w: 0.99913996}
-  m_LocalPosition: {x: 0, y: 1.8, z: 0.17}
+  m_LocalPosition: {x: 0, y: 1.421, z: 0.027}
   m_LocalScale: {x: 0.4898, y: 0.5476104, z: 0.110959955}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -308,8 +308,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.22
-  m_Height: 4.11
+  m_Radius: 0.01
+  m_Height: 2.58
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5595027728324928539
@@ -325,9 +325,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleportSFX: Teleport
-  spitOutForce: 3
+  spitOutForce: 2
   matchingMirror: {fileID: 0}
   mirrorLinked: 0
+  teleportVFXPrefab: {fileID: 6282658935554073280, guid: 915c0db6e0dd987468f26040fb551618, type: 3}
 --- !u!1 &4823092520575984217
 GameObject:
   m_ObjectHideFlags: 0

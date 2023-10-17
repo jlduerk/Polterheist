@@ -8,10 +8,12 @@ public class Mirror : MonoBehaviour {
     private const string PLAYER_TAG = "Player";
     private const string POSSESSABLE_TAG = "Possessable";
     public string teleportSFX = "Teleport";
-    public float spitOutForce = 3;
+    public float spitOutForce = 2;
     public Mirror matchingMirror;
     [HideInInspector] public bool mirrorLinked;
-    
+    public GameObject teleportVFXPrefab;
+    private ParticleSystem teleportVFX;
+
     private void Start() {
         FindMirrorToLinkWith();
     }
@@ -48,9 +50,23 @@ public class Mirror : MonoBehaviour {
         // }
     }
 
+    //the get components here are not ideal but done due to time crunch and avoiding merge conflicts
     private void TeleportPlayer(Transform objectToTeleport) {
+        //if player has a possessable, they cannot enter the mirror
+        if (objectToTeleport.GetComponentInParent<PlayerPossession>().currPossessable) {
+            return;
+        }
+        TeleportFX(objectToTeleport.GetComponentInParent<PlayerMovement>());
         objectToTeleport.parent.transform.position =
-            matchingMirror.transform.position + matchingMirror.transform.forward * spitOutForce; //forward;
-        //objectToTeleport.parent.GetComponent<Rigidbody>().AddForce(matchingMirror.transform.forward * spitOutForce, ForceMode.Impulse);
+            matchingMirror.transform.position + matchingMirror.transform.forward * spitOutForce;
+    }
+
+    private void TeleportFX(PlayerMovement player) {
+        AudioManager.Instance.Play(teleportSFX);
+        if (!teleportVFX) {
+            teleportVFX = Instantiate(teleportVFXPrefab, transform).GetComponent<ParticleSystem>();
+        }
+        teleportVFX.Play();
+        player.SpawnEffect(player.transform);
     }
 }
