@@ -13,7 +13,7 @@ public class KillPlane : MonoBehaviour {
         possessableSpawner = FindObjectOfType<PossessableSpawner>();
     }
 
-    private void OnTriggerEnter(Collider other) {
+    private void OnTriggerExit(Collider other) {
         if (other.CompareTag(POSSESSABLE_TAG)) {
             if (!possessableSpawner) {
                 return;
@@ -33,5 +33,11 @@ public class KillPlane : MonoBehaviour {
                 return;
             }
         }
+    }
+
+    void OnDrawGizmos() {
+        Gizmos.color = Color.green;
+        //Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
+        Gizmos.DrawWireCube(transform.position, transform.localScale);
     }
 }

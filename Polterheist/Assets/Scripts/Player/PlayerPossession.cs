@@ -132,7 +132,7 @@ public class PlayerPossession : MonoBehaviour {
             playerMovement.speed /= possessable.gameObject.GetComponent<Rigidbody>().mass;
             renderer.material.SetFloat("_Opacity", .5f);
             possessableDetector.ClearPossiblePossessables();
-            ghost.dropShadow.gameObject.SetActive(false);
+            //ghost.dropShadow.gameObject.SetActive(false);
         }
         
         AudioManager.Instance.Play(possessSFX);
@@ -145,7 +145,7 @@ public class PlayerPossession : MonoBehaviour {
         {
             currPossessable = null;
             playerMovement.speed = ghostSpeed;
-            ghost.dropShadow.gameObject.SetActive(true);
+            //ghost.dropShadow.gameObject.SetActive(true);
         }
         
         AudioManager.Instance.Play(unPossessSFX);
