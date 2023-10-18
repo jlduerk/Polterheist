@@ -4,6 +4,9 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Serialization;
 
+/// <summary>
+/// NEEDS REFACTORING FOR PERFORMANCE
+/// </summary>
 public class ScoreManager : MonoBehaviour {
     private GameManager gameManager;
 
@@ -25,6 +28,8 @@ public class ScoreManager : MonoBehaviour {
     public int ScoreA;
     public int ScoreB;
     private TeamData.Team previousWinningTeam;
+    private int previousScoreA;
+    private int previousScoreB;
     
     // Start is called before the first frame update
     void Start() {
@@ -51,12 +56,31 @@ public class ScoreManager : MonoBehaviour {
     void FixedUpdate() {
         if (gameManager.GameInProgress) {// Only do scoring when game has started
             ScoreA = CalculateScore(EZone.ZoneA);
+            NewScoreFX(previousScoreA, ScoreA);
+            previousScoreA = ScoreA;
+
             ScoreB = CalculateScore(EZone.ZoneB);
+            NewScoreFX(previousScoreB, ScoreB);
+            previousScoreB = ScoreB;
+
             int scoreDifference = Mathf.Abs(ScoreA - ScoreB);
             TeamWinningColorHelper(scoreDifference);
         }
     }
 
+    private void NewScoreFX(float previousScore, float currentScore) {
+        if (previousScore == currentScore) {
+            return;
+        }
+        else if (previousScore > currentScore) {
+            AudioManager.Instance.Play("PointEarned");
+        }
+        else {
+            AudioManager.Instance.Play("PointLost");
+        }
+    }
+
+    //REFACTOR THIS IN THE FUTURE
     // Calculates a zone's score
     private int CalculateScore(EZone zone)
     {

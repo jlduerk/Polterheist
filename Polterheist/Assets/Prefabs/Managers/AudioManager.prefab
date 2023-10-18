@@ -138,7 +138,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: MansionMusic
-    clip: {fileID: 8300000, guid: 7e633f78aa078d14ea5ef7dc57993605, type: 3}
+    clip: {fileID: 8300000, guid: b90715cb1fa172f40bf1a4a6bc34ba2c, type: 3}
     volume: 0.15
     volumeVariance: 0
     pitch: 1
@@ -147,11 +147,29 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: HotelMusic
-    clip: {fileID: 8300000, guid: 111ecc9d61db257419c6de3f6362a555, type: 3}
+    clip: {fileID: 8300000, guid: cadde78a37a225646ad4bdc358e44d6a, type: 3}
     volume: 0.15
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
     loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: PointEarned
+    clip: {fileID: 8300000, guid: 8b9ed07f73dad104ba9b46271660ec47, type: 3}
+    volume: 0.15
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: PointLost
+    clip: {fileID: 8300000, guid: af4435a8a83cd894996ed2ffe2042118, type: 3}
+    volume: 0.15
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}

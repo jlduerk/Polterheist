@@ -12,6 +12,7 @@ public class Zone : MonoBehaviour
     public int maxPossessablesInLevel = 100;
 
     public Collider[] possessableColliders;
+    public ScoreTMP scoreTMPPrefab;
 
     private void Start()
     {
@@ -49,6 +50,20 @@ public class Zone : MonoBehaviour
         }
 
         return score;
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if (other.CompareTag("Possessable")) {
+            Possessable possessable = other.GetComponentInParent<Possessable>();
+            Instantiate(scoreTMPPrefab, other.transform.position, other.transform.rotation).EarnPoint(possessable.ScoreValue);
+        }
+    }
+
+    private void OnTriggerExit(Collider other) {
+        if (other.CompareTag("Possessable")) {
+            Possessable possessable = other.GetComponentInParent<Possessable>();
+            Instantiate(scoreTMPPrefab, other.transform.position, other.transform.rotation).EarnPoint(possessable.ScoreValue);
+        }
     }
 
     //Draw the Box Overlap as a gizmo to show where it currently is testing. Click the Gizmos button to see this
