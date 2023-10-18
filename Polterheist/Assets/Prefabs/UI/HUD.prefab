@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 00:00
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7433e9f120082c240a38a1d6fc74f3b5, type: 2}
-  m_sharedMaterial: {fileID: -3210772663045600243, guid: 7433e9f120082c240a38a1d6fc74f3b5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 50c1f53ca87bcc7408287cedc8b827ab, type: 2}
+  m_sharedMaterial: {fileID: -3210772663045600243, guid: 50c1f53ca87bcc7408287cedc8b827ab, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -990,7 +990,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 68.35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1535,6 +1535,18 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 40.2
       objectReference: {fileID: 0}
+    - target: {fileID: 9160004034189723684, guid: 0517972caa4a0d140821b60751818cf1, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 50c1f53ca87bcc7408287cedc8b827ab, type: 2}
+    - target: {fileID: 9160004034189723684, guid: 0517972caa4a0d140821b60751818cf1, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -3210772663045600243, guid: 50c1f53ca87bcc7408287cedc8b827ab, type: 2}
+    - target: {fileID: 9160004034189723684, guid: 0517972caa4a0d140821b60751818cf1, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1829,6 +1841,18 @@ PrefabInstance:
     - target: {fileID: 9160004034189723684, guid: 0517972caa4a0d140821b60751818cf1, type: 3}
       propertyPath: m_fontSize
       value: 40.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9160004034189723684, guid: 0517972caa4a0d140821b60751818cf1, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 50c1f53ca87bcc7408287cedc8b827ab, type: 2}
+    - target: {fileID: 9160004034189723684, guid: 0517972caa4a0d140821b60751818cf1, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -3210772663045600243, guid: 50c1f53ca87bcc7408287cedc8b827ab, type: 2}
+    - target: {fileID: 9160004034189723684, guid: 0517972caa4a0d140821b60751818cf1, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
