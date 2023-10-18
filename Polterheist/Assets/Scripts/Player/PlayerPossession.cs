@@ -183,6 +183,7 @@ public class PlayerPossession : MonoBehaviour {
         if (teamData.team == TeamData.Team.Blue) {
             bluePlayerNum++;
             randomPlayerColor.g += bluePlayerNum%2 * .4f;
+            randomPlayerColor.r -= bluePlayerNum % 2 * .2f;
             Debug.Log("BLUE TEAM");
         }
         else if(teamData.team == TeamData.Team.Red)
