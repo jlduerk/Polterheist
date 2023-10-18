@@ -25,7 +25,7 @@ public class AudioManager : MonoBehaviour {
         // set the instance to this object if it doesn't exist
         instance = this;
         // prevent the instance from being destroyed when loading new scenes
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
 
         foreach (Sound s in sounds) {
 			s.source = gameObject.AddComponent<AudioSource>();
