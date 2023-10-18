@@ -34,6 +34,7 @@ public class ScoreTMP : MonoBehaviour {
     }
 
     private void DestroyMe() {
-        Destroy(gameObject);
+        // This script is placed on the child of the prefab
+        Destroy(transform.parent.gameObject);
     }
 }

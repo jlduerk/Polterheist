@@ -71,7 +71,7 @@ Material:
     - _OutlineSoftness: 0
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
-    - _OutlineWidth: 0
+    - _OutlineWidth: 0.6
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
     - _ScaleRatioA: 0.8333333
@@ -169,9 +169,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: GhostPumpkinsThickOutline
   m_EditorClassIdentifier: 
-  hashCode: 2131425568
+  hashCode: 1067178301
   material: {fileID: -3210772663045600243}
-  materialHashCode: -1759758592
+  materialHashCode: 1355266557
   m_Version: 1.1.0
   m_SourceFontFileGUID: 9307a8e48905dad45ac71a6d6e88e881
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 9307a8e48905dad45ac71a6d6e88e881, type: 3}

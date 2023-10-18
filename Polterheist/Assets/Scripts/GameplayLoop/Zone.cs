@@ -12,7 +12,7 @@ public class Zone : MonoBehaviour
     public int maxPossessablesInLevel = 100;
 
     public Collider[] possessableColliders;
-    public ScoreTMP scoreTMPPrefab;
+    public GameObject scoreTMPPrefab;
 
     private void Start()
     {
@@ -55,14 +55,14 @@ public class Zone : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Possessable")) {
             Possessable possessable = other.GetComponentInParent<Possessable>();
-            Instantiate(scoreTMPPrefab, other.transform.position, other.transform.rotation).EarnPoint(possessable.ScoreValue);
+            Instantiate(scoreTMPPrefab, other.transform.position, Quaternion.identity).GetComponentInChildren<ScoreTMP>().EarnPoint(possessable.ScoreValue);
         }
     }
 
     private void OnTriggerExit(Collider other) {
         if (other.CompareTag("Possessable")) {
             Possessable possessable = other.GetComponentInParent<Possessable>();
-            Instantiate(scoreTMPPrefab, other.transform.position, other.transform.rotation).EarnPoint(possessable.ScoreValue);
+            Instantiate(scoreTMPPrefab, other.transform.position, Quaternion.identity).GetComponentInChildren<ScoreTMP>().LosePoint(possessable.ScoreValue);
         }
     }
 

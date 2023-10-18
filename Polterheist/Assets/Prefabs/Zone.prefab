@@ -53,7 +53,7 @@ MonoBehaviour:
     m_Bits: 64
   maxPossessablesInLevel: 100
   possessableColliders: []
-  scoreTMPPrefab: {fileID: 5920487519440101795, guid: 171cf1d48c3d57e4db925cbcfb8a7b63, type: 3}
+  scoreTMPPrefab: {fileID: 4784260825853761785, guid: 171cf1d48c3d57e4db925cbcfb8a7b63, type: 3}
 --- !u!33 &1878256335280773811
 MeshFilter:
   m_ObjectHideFlags: 0
