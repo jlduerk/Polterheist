@@ -29,6 +29,7 @@ public class GameOver : MonoBehaviour
     [SerializeField] private string winText = "vict0ry!";
     [SerializeField] private string drawText = "Draw!";
     private const string MAIN_MENU_SCENE_NAME = "MainMenu";
+    public AudioSource music;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +40,9 @@ public class GameOver : MonoBehaviour
 
     void OnGameEnd()
     {
+        music.Stop();
+        AudioManager.Instance.Stop("GameOver");
+
         ScoreManager scoreManager = gameManager.scoreManager;
 
         scoreText.text = $"{scoreManager.ScoreA}-{scoreManager.ScoreB}";
