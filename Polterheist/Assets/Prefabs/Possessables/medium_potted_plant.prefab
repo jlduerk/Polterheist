@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d994d0dc665347c49955b42cf2aa5802, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScoreValue: 1
+  ScoreValue: 2
   WasScored: 0
   orbDistortionPrefab: {fileID: 1449395747621008913, guid: ac30a6f0c35e2e2498e9b05fffa23f10, type: 3}
   OnPossessionBegin:
