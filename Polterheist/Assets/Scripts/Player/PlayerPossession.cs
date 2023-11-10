@@ -31,15 +31,20 @@ public class PlayerPossession : MonoBehaviour {
     public string possessSFX = "Possess";
     public string unPossessSFX = "Unpossess";
     public string hauntSFX = "Haunt";
-    public string playerID = "";
-    const string glyphs = "abcdefghijklmnopqrstuvwxyz0123456789";
 
-
+    private string playerID;
+    public string PlayerID => playerID;
 
     private void Start()
     {
         playerInputComponent = GetComponent<PlayerInput>();
         playerInputComponent.onActionTriggered += HandleInput;
+
+        // Keep each "player" in the Input system (each given a player index) tied to one player ID
+        // This is intended to keep player-specific data the same between levels
+        int inputPlayerIndex = playerInputComponent.playerIndex;
+        PersistentPlayersManager.Instance.AddPlayer(inputPlayerIndex);
+        playerID = PersistentPlayersManager.Instance.GetDevicePlayerId(inputPlayerIndex);
 
         ghost = GetComponentInChildren<Ghost>();
         
@@ -49,7 +54,6 @@ public class PlayerPossession : MonoBehaviour {
 
         playerMovement = GetComponent<PlayerMovement>();
         ghostSpeed = playerMovement.speed;
-        playerID = makeHash();
     }
 
     private void OnDisable() {
@@ -164,16 +168,6 @@ public class PlayerPossession : MonoBehaviour {
     #endregion Getters
 
     #region Team Data
-    private string makeHash()
-    {
-        int charAmount = UnityEngine.Random.Range(8, 14);
-        string result = "";
-        for (int i = 0; i < charAmount; i++)
-        {
-            result += glyphs[UnityEngine.Random.Range(0, glyphs.Length)];
-        }
-        return result;
-    }
 
     static int redPlayerNum = 0;
     static int bluePlayerNum = 0;

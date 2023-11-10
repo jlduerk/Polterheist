@@ -83,7 +83,7 @@ public class Possessable : MonoBehaviour
         // Create the spring joint
         // TODO: Maybe the rbManager could just listen to OnPossessionBegin/End
         if (rbManager)
-            rbManager.AttachSpringTo(player.GetPlayerRB(), player.playerID, player.PossessableAttachPoint);
+            rbManager.AttachSpringTo(player.GetPlayerRB(), player.PlayerID, player.PossessableAttachPoint);
 
         return true;
     }
@@ -105,7 +105,7 @@ public class Possessable : MonoBehaviour
         }
 
         if (rbManager)
-            rbManager.DetachSpring(player.playerID);
+            rbManager.DetachSpring(player.PlayerID);
     }
 
     private void OverrideMaterial(Material material) {

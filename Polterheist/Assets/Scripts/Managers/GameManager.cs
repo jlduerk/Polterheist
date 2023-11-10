@@ -86,7 +86,11 @@ public class GameManager : MonoBehaviour {
     }
     
     public void RegisterPlayer(PlayerInput playerInput) {
-        int counterModulo = playerCount % teamDatas.Length;
+
+        // TODO: THIS IS TEMPORARY AND SHOULD BE REPLACED WITH AN ACTUAL TEAM SELECTION METHOD
+        int counterModulo = playerInput.playerIndex % teamDatas.Length;
+        
+        
         playerInput.gameObject.GetComponent<PlayerPossession>().TeamDataInit(teamDatas[counterModulo]);
         playerCount++;
 
