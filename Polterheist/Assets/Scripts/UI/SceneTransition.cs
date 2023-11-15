@@ -9,8 +9,9 @@ using UnityEngine.UI;
 
 public class SceneTransition : MonoBehaviour {
     public float duration = 3;
+    public float delay;
     public const float DISSOLVE_TRANSITION_DURATION = 0.2f;
-    public const float DELAY = 0;
+    public const float SCENE_CHANGE_DELAY = 0;
     private const float DISSOLVE_AMOUNT_CLOSED = 1.15f;
     private const float DISSOLVE_AMOUNT_OPEN = 0.2f;
     private const string SHADER_APATURE_REFERENCE = "_Apature";
@@ -38,7 +39,7 @@ public class SceneTransition : MonoBehaviour {
 
         material.SetFloat(DissolveAmount, DISSOLVE_AMOUNT_CLOSED);
         material.SetFloat(Apature, 1.5f);
-        Invoke("SceneStartTransition", 0);
+        Invoke("SceneStartTransition", delay);
     }
 
     private void SceneStartTransition() {
@@ -64,7 +65,7 @@ public class SceneTransition : MonoBehaviour {
     }
 
     private IEnumerator<float> _SceneChangeDelay(string sceneChange) {
-        yield return Timing.WaitForSeconds(DELAY);
+        yield return Timing.WaitForSeconds(SCENE_CHANGE_DELAY);
         DOTween.Clear();
         SceneManager.LoadScene(sceneChange);
 
@@ -75,7 +76,7 @@ public class SceneTransition : MonoBehaviour {
     }
 
     private IEnumerator<float> _QuitSceneChangeDelay() {
-        yield return Timing.WaitForSeconds(DELAY);
+        yield return Timing.WaitForSeconds(SCENE_CHANGE_DELAY);
         Application.Quit();
     }
 

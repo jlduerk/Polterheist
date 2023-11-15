@@ -1,8 +1,12 @@
+using System;
 using System.Collections;
+using DG.Tweening;
 using System.Collections.Generic;
+using MEC;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour {
     private static GameManager instance;
@@ -29,7 +33,11 @@ public class GameManager : MonoBehaviour {
 
     public GameObject[] hats;
     private List<GameObject> availableHats = new List<GameObject>();
+    private CoroutineHandle howToPlayCoroutine;
+    public float howToPlayDuration = 5;
     public GameObject howToPlayPrompt;
+    private bool howToPlayDone;
+    private bool countdownStarted;
 
     #region Monobehavior
     private void Awake() {
@@ -52,12 +60,36 @@ public class GameManager : MonoBehaviour {
     {
         if (GameStartEvent == null) GameStartEvent = new UnityEvent();
         if (GameEndEvent == null) GameEndEvent = new UnityEvent();
+        howToPlayPrompt.SetActive(true);
 
         GameStartEvent.AddListener(OnGameStarted);
         GameEndEvent.AddListener(OnGameEnded);
 
         availableHats.AddRange(hats);
+
+        howToPlayCoroutine = Timing.RunCoroutine(_HowToPlay());
     }
+
+    private void Update() {
+        if (!howToPlayDone || countdownStarted) {
+            return;
+        }
+        if (singlePlayerAllowed && playerCount > 0) {
+            gameFlowManager.StartCountdown();
+            countdownStarted = true;
+            return;
+        }
+        if (playerCount >= 2) {
+            gameFlowManager.StartCountdown();
+            countdownStarted = true;
+            return;
+        }
+    }
+
+    private void OnDestroy() {
+        Timing.KillCoroutines(howToPlayCoroutine);
+    }
+
     #endregion
 
     public TeamData GetTeamData(TeamData.Team teamToRequest) {
@@ -100,20 +132,20 @@ public class GameManager : MonoBehaviour {
         playerInput.gameObject.transform.position = playerSpawnPoints[players.Count - 1].position;
         PlayerPossession playerPossession = playerInput.GetComponent<PlayerPossession>();
         RandomizeHat(playerPossession);
-
-        if (singlePlayerAllowed) {
-            gameFlowManager.StartCountdown();
-            return;
-        }
-        if (playerCount >= 2) {
-            gameFlowManager.StartCountdown();
-        }
     }
 
     private void RandomizeHat(PlayerPossession playerPossession) {
         int rand = Random.Range(0, availableHats.Count);
         GameObject hatToSpawn = availableHats[rand];
         availableHats.Remove(hatToSpawn);
-        Instantiate(hatToSpawn, playerPossession.GetHatAttachPoint());
+        GameObject spawnedHat = Instantiate(hatToSpawn, playerPossession.GetHatAttachPoint());
+        Ghost ghost = playerPossession.GetComponentInChildren<Ghost>();
+        ghost.hatRenderer = spawnedHat.GetComponent<Renderer>(); 
+    }
+
+    private IEnumerator<float> _HowToPlay() {
+        yield return Timing.WaitForSeconds(howToPlayDuration);
+        howToPlayPrompt.SetActive(false);
+        howToPlayDone = true;
     }
 }

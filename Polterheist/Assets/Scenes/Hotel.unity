@@ -2705,8 +2705,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5644719042406468494, guid: 16c38ff70e3d7524699b985ffc962333, type: 3}
+      propertyPath: howToPlayPrompt
+      value: 
+      objectReference: {fileID: 1969274240}
+    - target: {fileID: 5644719042406468494, guid: 16c38ff70e3d7524699b985ffc962333, type: 3}
       propertyPath: allowSinglePlayer
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5644719042406468494, guid: 16c38ff70e3d7524699b985ffc962333, type: 3}
+      propertyPath: howToPlayDuration
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5644719042406468494, guid: 16c38ff70e3d7524699b985ffc962333, type: 3}
       propertyPath: playerSpawnPoints.Array.size
@@ -8678,6 +8686,10 @@ PrefabInstance:
       propertyPath: m_UiScaleMode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7024710557527768652, guid: 3dcb17298e1d68d4db5b28c04b0257cb, type: 3}
+      propertyPath: delay
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8148782965379203507, guid: 3dcb17298e1d68d4db5b28c04b0257cb, type: 3}
       propertyPath: m_Name
       value: HUD
@@ -8693,6 +8705,11 @@ PrefabInstance:
 --- !u!224 &1969274239 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5736718507535317627, guid: 3dcb17298e1d68d4db5b28c04b0257cb, type: 3}
+  m_PrefabInstance: {fileID: 1969274238}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1969274240 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1787240113084601467, guid: 3dcb17298e1d68d4db5b28c04b0257cb, type: 3}
   m_PrefabInstance: {fileID: 1969274238}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1969864248
