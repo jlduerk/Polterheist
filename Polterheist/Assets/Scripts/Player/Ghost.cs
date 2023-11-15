@@ -8,7 +8,6 @@ public class Ghost : MonoBehaviour {
     public Renderer renderer;
     private Material material;
     public Renderer hatRenderer;
-    private Material hatMaterial;
     private const string SHADER_SLANTDIR_REFERENCE = "_SlantDir";
     public float wiggleSlantMultiplier = 0.5f;
     private const string SHADER_WIGGLE_SPEED_REFERENCE = "_WiggleSpeed";
@@ -23,25 +22,21 @@ public class Ghost : MonoBehaviour {
     
     void Start() {
         material = renderer.material;
-        if(hatRenderer != null)
-        {
-            hatMaterial = hatRenderer.material;
-        }
     }
 
     void Update() {
         if(new Vector3(rb.velocity.x, 0, rb.velocity.z).magnitude > .2 ) {
             material.SetFloat(wiggleSpeed, 9);
-            if (hatMaterial != null)
+            if (hatRenderer != null)
             {
-                hatMaterial.SetFloat(wiggleSpeed, 9);
+                hatRenderer.material.SetFloat(wiggleSpeed, 9);
             }
         }
         else {
             material.SetFloat(wiggleSpeed, 3);
-            if (hatMaterial != null)
+            if (hatRenderer != null)
             {
-                hatMaterial.SetFloat(wiggleSpeed, 3);
+                hatRenderer.material.SetFloat(wiggleSpeed, 3);
             }
         }
         material.SetVector(wiggleSlant, rb.velocity * wiggleSlantMultiplier);
