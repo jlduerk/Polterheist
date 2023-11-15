@@ -124,20 +124,19 @@ public class GameManager : MonoBehaviour {
     }
     
     public void RegisterPlayer(PlayerInput playerInput) {
-        playerCount++;
         int counterModulo = playerInput.playerIndex % teamDatas.Length;
         playerInput.gameObject.GetComponent<PlayerPossession>().TeamDataInit(teamDatas[counterModulo]);
 
         players.Add(playerInput);
-        playerInput.gameObject.transform.position = playerSpawnPoints[players.Count - 1].position;
+        playerInput.gameObject.transform.position = playerSpawnPoints[playerInput.playerIndex].position;
         PlayerPossession playerPossession = playerInput.GetComponent<PlayerPossession>();
-        RandomizeHat(playerPossession);
+        GetHat(playerPossession, playerInput.playerIndex);
+        playerCount++;
     }
 
-    private void RandomizeHat(PlayerPossession playerPossession) {
-        int rand = Random.Range(0, availableHats.Count);
-        GameObject hatToSpawn = availableHats[rand];
-        availableHats.Remove(hatToSpawn);
+    private void GetHat(PlayerPossession playerPossession, int index) {
+        Debug.Log(index);
+        GameObject hatToSpawn = availableHats[index];
         GameObject spawnedHat = Instantiate(hatToSpawn, playerPossession.GetHatAttachPoint());
         Ghost ghost = playerPossession.GetComponentInChildren<Ghost>();
         ghost.hatRenderer = spawnedHat.GetComponent<Renderer>(); 

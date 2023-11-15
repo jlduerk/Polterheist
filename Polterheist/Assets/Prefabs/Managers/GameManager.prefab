@@ -240,7 +240,6 @@ MonoBehaviour:
   - {fileID: 3741717834583400564, guid: 1158a619ed3e2014f9af8ac7f689c727, type: 3}
   - {fileID: 3745228684828939936, guid: e2a06e79a9240724cac8f4239cc184c3, type: 3}
   - {fileID: 6403184553404476610, guid: 5a2e8cf4d8604704c826acf708e2e38b, type: 3}
-  - {fileID: 3417208422363931674, guid: 1d6701cbe82c7b84e9f0fce0f4157749, type: 3}
   - {fileID: 3170594162366993202, guid: e5cdf7f1b73528048bcb387fc8526cdb, type: 3}
   howToPlayDuration: 5
   howToPlayPrompt: {fileID: 0}
