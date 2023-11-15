@@ -197,9 +197,8 @@ public class PlayerPossession : MonoBehaviour {
 
 
     #region Hat Stuff
-    public void PutOnHat(Transform hat)
-    {
-        hat.transform.parent = hatAttachPoint;
+    public Transform GetHatAttachPoint() {
+        return hatAttachPoint;
     }
     #endregion
 

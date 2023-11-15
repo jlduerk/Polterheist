@@ -27,6 +27,10 @@ public class GameManager : MonoBehaviour {
     public UnityEvent GameStartEvent;
     public UnityEvent GameEndEvent;
 
+    public GameObject[] hats;
+    private List<GameObject> availableHats = new List<GameObject>();
+    public GameObject howToPlayPrompt;
+
     #region Monobehavior
     private void Awake() {
         // check if the instance already exists and destroy the new instance if it does
@@ -51,6 +55,8 @@ public class GameManager : MonoBehaviour {
 
         GameStartEvent.AddListener(OnGameStarted);
         GameEndEvent.AddListener(OnGameEnded);
+
+        availableHats.AddRange(hats);
     }
     #endregion
 
@@ -87,9 +93,13 @@ public class GameManager : MonoBehaviour {
     
     public void RegisterPlayer(PlayerInput playerInput) {
         playerCount++;
+        int counterModulo = playerInput.playerIndex % teamDatas.Length;
+        playerInput.gameObject.GetComponent<PlayerPossession>().TeamDataInit(teamDatas[counterModulo]);
 
         players.Add(playerInput);
         playerInput.gameObject.transform.position = playerSpawnPoints[players.Count - 1].position;
+        PlayerPossession playerPossession = playerInput.GetComponent<PlayerPossession>();
+        RandomizeHat(playerPossession);
 
         if (singlePlayerAllowed) {
             gameFlowManager.StartCountdown();
@@ -98,5 +108,12 @@ public class GameManager : MonoBehaviour {
         if (playerCount >= 2) {
             gameFlowManager.StartCountdown();
         }
+    }
+
+    private void RandomizeHat(PlayerPossession playerPossession) {
+        int rand = Random.Range(0, availableHats.Count);
+        GameObject hatToSpawn = availableHats[rand];
+        availableHats.Remove(hatToSpawn);
+        Instantiate(hatToSpawn, playerPossession.GetHatAttachPoint());
     }
 }
