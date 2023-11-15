@@ -13,8 +13,7 @@ public class PersistentPlayersManager : MonoBehaviour
         get { return instance; }
         private set { }
     }
-
-    private List<string> playerIds = new List<string>();
+    
     private Dictionary<int, string> devicePlayerIdMap = new Dictionary<int, string>();
 
     private const string playerIdGlyphs = "abcdefghijklmnopqrstuvwxyz0123456789";
@@ -43,10 +42,24 @@ public class PersistentPlayersManager : MonoBehaviour
 
         // Make new player ID if this is a new device
         string playerId = PlayerIdHash();
-        playerIds.Add(playerId);
         devicePlayerIdMap.Add(inputPlayerIndex, playerId);
 
         return true;
+    }
+
+    public bool RemovePlayer(int inputPlayerIndex) {
+        if (devicePlayerIdMap == null) {
+            return false;
+        }
+        return devicePlayerIdMap.Remove(inputPlayerIndex);
+    }
+
+    public int GetActivePlayerCount() {
+        if (devicePlayerIdMap == null) {
+            return 0;
+        }
+
+        return devicePlayerIdMap.Count;
     }
 
     // Get the player ID using the Input system's "player index" (one per player)

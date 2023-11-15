@@ -22,7 +22,6 @@ public class PlayerPossession : MonoBehaviour {
 
     public Possessable currPossessable;
     private PlayerMovement playerMovement;
-    private Ghost ghost;
 
     private PlayerInput playerInputComponent = null;
     private float ghostSpeed;
@@ -47,8 +46,6 @@ public class PlayerPossession : MonoBehaviour {
         PersistentPlayersManager.Instance.AddPlayer(inputPlayerIndex);
         playerID = PersistentPlayersManager.Instance.GetDevicePlayerId(inputPlayerIndex);
 
-        ghost = GetComponentInChildren<Ghost>();
-        
         // Attach possession begin/end events to respective UnityActions
         OnPossessionBeginAction += OnPossessionBegin;
         OnPossessionEndAction += OnPossessionEnd;
@@ -191,6 +188,10 @@ public class PlayerPossession : MonoBehaviour {
         Debug.Log("BLUE TEAM");
 
         renderer.material.SetColor("_Color", randomPlayerColor);
+    }
+
+    public PlayerMovement GetPlayerMovement() {
+        return playerMovement;
     }
     #endregion
 

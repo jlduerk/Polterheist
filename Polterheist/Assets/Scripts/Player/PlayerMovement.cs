@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour {
     public float jumpFloatSpeed = 5;
     private float jumpMultiplier = 1;
     private bool hasJoined;
+    private bool movementEnabled = true;
 
     private void Start() {
         Init();
@@ -32,7 +33,7 @@ public class PlayerMovement : MonoBehaviour {
 
     private void Movement(InputAction.CallbackContext context) {
         RegisterPlayer();
-        if (!GameManager.Instance.GameInProgress) {
+        if (!GameManager.Instance.GameInProgress || !movementEnabled) {
             return;
         }
         switch (context.action.name) {
@@ -51,6 +52,9 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private void Update() {
+        if (!movementEnabled) {
+            return;
+        }
         if (movementVector != Vector3.zero && !GameManager.Instance.Paused) {
             transform.rotation = Quaternion.LookRotation(-movementVector);
         }
@@ -69,7 +73,7 @@ public class PlayerMovement : MonoBehaviour {
             RegisterPlayer();
             newVelocity.y = jumpFloatSpeed;
         }
-        if (!GameManager.Instance.GameInProgress) {
+        if (!GameManager.Instance.GameInProgress || !movementEnabled) {
             return;
         }
         playerRigidbody.velocity = newVelocity;
@@ -105,5 +109,9 @@ public class PlayerMovement : MonoBehaviour {
 
         spawnEffect = Instantiate(spawnEffectPrefab, spawnTransform.position, Quaternion.identity, spawnTransform).GetComponent<ParticleSystem>();
         spawnEffect.Play();
+    }
+
+    public void TogglePlayerMovement(bool enable) {
+        movementEnabled = enable;
     }
 }
