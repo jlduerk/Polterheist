@@ -10,6 +10,7 @@ public class PlayerPossession : MonoBehaviour {
     public TeamData teamData;
     public MeshRenderer renderer;
 
+    [SerializeField] private Transform hatAttachPoint;
     [SerializeField] private Vector3 possessableAttachPoint;
     [SerializeField] private PossessableDetector possessableDetector;
 
@@ -192,4 +193,14 @@ public class PlayerPossession : MonoBehaviour {
         renderer.material.SetColor("_Color", randomPlayerColor);
     }
     #endregion
+
+
+    #region Hat Stuff
+    public void PutOnHat(Transform hat)
+    {
+        hat.transform.parent = hatAttachPoint;
+    }
+    #endregion
+
+
 }

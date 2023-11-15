@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1539240148888881250
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3695811330839043221}
+  m_Layer: 0
+  m_Name: HatLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3695811330839043221
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539240148888881250}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.86, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2945185437555644655}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2615170511428472743
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,6 +205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teamData: {fileID: 0}
   renderer: {fileID: 4076965277503824768}
+  hatAttachPoint: {fileID: 3695811330839043221}
   possessableAttachPoint: {x: 0, y: 0, z: 0}
   possessableDetector: {fileID: 8228207624677498279}
   currPossessable: {fileID: 0}
@@ -5163,7 +5195,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8b409f003e80a9540b2acc0f505ac283, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3695811330839043221}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8b409f003e80a9540b2acc0f505ac283, type: 3}
       insertIndex: -1
@@ -5189,6 +5224,7 @@ MonoBehaviour:
   rb: {fileID: 3816136930357827420}
   target: {fileID: 7886963989797212873}
   renderer: {fileID: 4076965277503824768}
+  hatRenderer: {fileID: 0}
   wiggleSlantMultiplier: 0.04
   groundLayer:
     serializedVersion: 2
