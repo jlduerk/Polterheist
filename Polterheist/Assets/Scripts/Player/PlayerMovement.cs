@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -15,10 +16,17 @@ public class PlayerMovement : MonoBehaviour {
     private Vector3 movementVector;
     private Vector3 newVelocity = new Vector3();
     public float speed = 2;
+    public float dashSpeedMultiplier = 5;
+    public float speedMultiplier = 1;
+    private float OGspeed;
+    private float DEFAULT_SPEED_MULTIPLIER = 1.0f;
     public float jumpFloatSpeed = 5;
     private float jumpMultiplier = 1;
     private bool hasJoined;
     private bool movementEnabled = true;
+    private const float DASH_SPEED = 50;
+    private bool isDashing = false;
+    public float dashDuration = 0.5f;
 
     private void Start() {
         Init();
@@ -29,11 +37,12 @@ public class PlayerMovement : MonoBehaviour {
         playerRigidbody = GetComponent<Rigidbody>();
 
         playerInputComponent.onActionTriggered += Movement;
+        OGspeed = speed;
     }
 
     private void Movement(InputAction.CallbackContext context) {
         RegisterPlayer();
-        if (!GameManager.Instance.GameInProgress || !movementEnabled) {
+        if (!GameManager.Instance.GameInProgress || !movementEnabled || isDashing) {
             return;
         }
         switch (context.action.name) {
@@ -66,9 +75,9 @@ public class PlayerMovement : MonoBehaviour {
             return;
         }
         
-        newVelocity.x = movementVector.x * speed;
+        newVelocity.x = movementVector.x * speed * speedMultiplier;
         newVelocity.y = playerRigidbody.velocity.y;
-        newVelocity.z = movementVector.z * speed;
+        newVelocity.z = movementVector.z * speed * speedMultiplier;
         if (playerInputComponent.actions[JUMP_INPUT_ID].IsPressed()) {
             RegisterPlayer();
             newVelocity.y = jumpFloatSpeed;
@@ -113,5 +122,21 @@ public class PlayerMovement : MonoBehaviour {
 
     public void TogglePlayerMovement(bool enable) {
         movementEnabled = enable;
+    }
+
+    public void Dash() {
+        // Crank up movement speed multiplier, and override movement direction
+        if (isDashing)
+            return;
+
+        isDashing = true;
+        speedMultiplier = dashSpeedMultiplier;
+        movementVector = -transform.forward;
+        DOTween.To(() => speedMultiplier, x => speedMultiplier = x, DEFAULT_SPEED_MULTIPLIER, dashDuration).OnComplete(EndDash);
+    }
+
+    public void EndDash() {
+        isDashing = false;
+        movementVector = Vector3.zero;
     }
 }

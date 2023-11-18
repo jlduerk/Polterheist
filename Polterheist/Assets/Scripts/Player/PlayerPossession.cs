@@ -102,7 +102,8 @@ public class PlayerPossession : MonoBehaviour {
         }
         else
         {
-            Debug.Log("Nice try. that dont do shit");
+            playerMovement.Dash();
+            //Debug.Log("Nice try. that dont do shit");
         }
         
         //AudioManager.Instance.Play(possessSFX);
