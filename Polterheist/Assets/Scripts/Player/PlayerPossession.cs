@@ -31,6 +31,7 @@ public class PlayerPossession : MonoBehaviour {
     public string possessSFX = "Possess";
     public string unPossessSFX = "Unpossess";
     public string hauntSFX = "Haunt";
+    private const int MAX_MASS = 5;
 
     private string playerID;
     public string PlayerID => playerID;
@@ -131,7 +132,7 @@ public class PlayerPossession : MonoBehaviour {
         if (possessor == this)
         {
             currPossessable = possessable;
-            playerMovement.speed /= possessable.gameObject.GetComponent<Rigidbody>().mass;
+            playerMovement.speed /= Mathf.Clamp(possessable.gameObject.GetComponent<Rigidbody>().mass, 1, MAX_MASS);
             renderer.material.SetFloat("_Opacity", .5f);
             possessableDetector.ClearPossiblePossessables();
             //ghost.dropShadow.gameObject.SetActive(false);

@@ -226,7 +226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   invisibleMaterial: {fileID: 0}
   spawnEffectPrefab: {fileID: 6282658935554073280, guid: 255adb466d5d3eb49b568d40f1bdd8f4, type: 3}
-  speed: 4
+  speed: 5.5
   jumpFloatSpeed: 3
 --- !u!114 &3653572165657622684
 MonoBehaviour:

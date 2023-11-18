@@ -2635,8 +2635,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialExtraDelay: 0
   eventDelays:
-  - 10
   - 5
+  - 10
   events:
   - m_PersistentCalls:
       m_Calls:
@@ -7099,8 +7099,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 7.54, z: 1}
+  m_Center: {x: 0, y: -3.31, z: 0}
 --- !u!23 &1735285813
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8963,8 +8963,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 7.54, z: 1}
+  m_Center: {x: 0, y: -3.31, z: 0}
 --- !u!23 &2010237097
 MeshRenderer:
   m_ObjectHideFlags: 0
