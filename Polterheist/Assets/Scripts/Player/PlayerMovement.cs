@@ -11,22 +11,24 @@ public class PlayerMovement : MonoBehaviour {
     private ParticleSystem spawnEffect;
     private PlayerInput playerInputComponent = null;
     private Rigidbody playerRigidbody;
-    private const string MOVEMENT_INPUT_ID = "Move";
-    private const string JUMP_INPUT_ID = "Jump";
     private Vector3 movementVector;
     private Vector3 newVelocity = new Vector3();
+    
+    private const string JUMP_INPUT_ID = "Jump";
+    private const string MOVEMENT_INPUT_ID = "Move";
+
     public float speed = 2;
-    public float dashSpeedMultiplier = 5;
     public float speedMultiplier = 1;
-    private float OGspeed;
-    private float DEFAULT_SPEED_MULTIPLIER = 1.0f;
     public float jumpFloatSpeed = 5;
     private float jumpMultiplier = 1;
-    private bool hasJoined;
-    private bool movementEnabled = true;
-    private const float DASH_SPEED = 50;
-    private bool isDashing = false;
     public float dashDuration = 0.5f;
+
+    private const float DASH_SPEED_MULTIPLIER = 5;
+    private const float DEFAULT_SPEED_MULTIPLIER = 1;
+    
+    private bool movementEnabled = true;
+    private bool isDashing = false;
+    private bool hasJoined;
 
     private void Start() {
         Init();
@@ -37,7 +39,6 @@ public class PlayerMovement : MonoBehaviour {
         playerRigidbody = GetComponent<Rigidbody>();
 
         playerInputComponent.onActionTriggered += Movement;
-        OGspeed = speed;
     }
 
     private void Movement(InputAction.CallbackContext context) {
@@ -130,9 +131,14 @@ public class PlayerMovement : MonoBehaviour {
             return;
 
         isDashing = true;
-        speedMultiplier = dashSpeedMultiplier;
+        speedMultiplier = DASH_SPEED_MULTIPLIER;
         movementVector = -transform.forward;
-        DOTween.To(() => speedMultiplier, x => speedMultiplier = x, DEFAULT_SPEED_MULTIPLIER, dashDuration).OnComplete(EndDash);
+        DOTween.To(
+            () => speedMultiplier,
+            x => speedMultiplier = x,
+            DEFAULT_SPEED_MULTIPLIER,
+            dashDuration
+        ).OnComplete(EndDash);
     }
 
     public void EndDash() {
