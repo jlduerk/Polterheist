@@ -18,7 +18,7 @@ public class Mirror : MonoBehaviour {
     private CoroutineHandle hauntCoroutine;
     public float hauntDuration = 5;
     private bool isHaunted;
-    public Renderer renderer;
+    public MeshRenderer meshRenderer;
     private Material startingMaterial;
     public Material hauntedMaterial;
     public GameObject hauntVFXPrefab;
@@ -29,7 +29,7 @@ public class Mirror : MonoBehaviour {
     public float pushBackIntensity = 100;
     public float HauntLaunchForce = 300;
     public Vector3 HauntEffectExtents = new Vector3(4,4,4);
-    private CapsuleCollider collider;
+    private CapsuleCollider mirrorCollider;
     private float starterColliderRadius;
     private float starterOffset;
     public float hauntedColliderRadius;
@@ -37,10 +37,10 @@ public class Mirror : MonoBehaviour {
 
     private void Start() {
         FindMirrorToLinkWith();
-        startingMaterial = renderer.materials[0];
-        collider = GetComponent<CapsuleCollider>();
-        starterColliderRadius = collider.radius;
-        starterOffset = collider.center.z;
+        startingMaterial = meshRenderer.materials[0];
+        mirrorCollider = GetComponent<CapsuleCollider>();
+        starterColliderRadius = mirrorCollider.radius;
+        starterOffset = mirrorCollider.center.z;
     }
 
     private void FindMirrorToLinkWith() {
@@ -124,13 +124,13 @@ public class Mirror : MonoBehaviour {
         isHaunted = true;
         hauntSuckVFX.Play();
         HauntEffect();
-        renderer.material = hauntedMaterial;
+        meshRenderer.material = hauntedMaterial;
         yield return Timing.WaitForSeconds(hauntDuration);
-        collider.radius = starterColliderRadius;
+        mirrorCollider.radius = starterColliderRadius;
         Vector3 starterCenter = new Vector3(0, 0, starterOffset);
         hauntSuckVFX.Stop();
-        collider.center = starterCenter;
-        renderer.material = startingMaterial;
+        mirrorCollider.center = starterCenter;
+        meshRenderer.material = startingMaterial;
         isHaunted = false;
     }
 
@@ -139,9 +139,9 @@ public class Mirror : MonoBehaviour {
             hauntVFX.Play();
             return;
         }
-        collider.radius = hauntedColliderRadius;
+        mirrorCollider.radius = hauntedColliderRadius;
         Vector3 returnedCenter = new Vector3(0, 0, hauntedColliderOffset);
-        collider.center = returnedCenter;
+        mirrorCollider.center = returnedCenter;
         hauntVFX = Instantiate(hauntVFXPrefab, transform.position, Quaternion.identity, transform).GetComponent<ParticleSystem>();
         hauntVFX.Play();
     }

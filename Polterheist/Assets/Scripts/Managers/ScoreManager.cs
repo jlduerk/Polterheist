@@ -18,7 +18,7 @@ public class ScoreManager : MonoBehaviour {
     public float duration;
     public Ease easeType = Ease.Linear;
     public ParticleSystem backgroundParticle;
-    private ParticleSystemRenderer renderer;
+    private ParticleSystemRenderer particleRenderer;
     private Material particleMaterial;
     public Color defaultColor;
     public Color blueTeamWinningColor;

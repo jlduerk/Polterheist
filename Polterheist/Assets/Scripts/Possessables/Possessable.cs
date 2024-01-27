@@ -32,7 +32,7 @@ public class Possessable : MonoBehaviour
     public List<PlayerPossession> possessingPlayers = new List<PlayerPossession>();
     public List<PlayerPossession> hoveringPlayers = new List<PlayerPossession>();
     
-    private MeshRenderer renderer;
+    private MeshRenderer meshRenderer;
     private Material defaultMaterial;
     private Outline outline;
     private int perPlayerOutlineWidth = 6;
@@ -41,8 +41,8 @@ public class Possessable : MonoBehaviour
     {
         // PossessableRBManager is optional - but get a reference to it if it's there
         rbManager = GetComponent<PossessableRBManager>();
-        renderer = GetComponentInChildren<MeshRenderer>();
-        defaultMaterial = renderer.material;
+        meshRenderer = GetComponentInChildren<MeshRenderer>();
+        defaultMaterial = meshRenderer.material;
         outline = gameObject.GetComponent<Outline>();
         distortionOrb = Instantiate(orbDistortionPrefab, transform);
         distortionOrb.transform.localScale = Vector3.zero;
@@ -110,10 +110,10 @@ public class Possessable : MonoBehaviour
 
     private void OverrideMaterial(Material material) {
         if (material == null) {
-            renderer.material = defaultMaterial;
+            meshRenderer.material = defaultMaterial;
             return;
         }
-        renderer.material = material;
+        meshRenderer.material = material;
     }
 
     public void Haunt(PlayerPossession player)

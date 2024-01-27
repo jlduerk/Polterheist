@@ -139,7 +139,7 @@ public class GameManager : MonoBehaviour {
         GameObject hatToSpawn = availableHats[index];
         GameObject spawnedHat = Instantiate(hatToSpawn, playerPossession.GetHatAttachPoint());
         Ghost ghost = playerPossession.GetComponentInChildren<Ghost>();
-        ghost.hatRenderer = spawnedHat.GetComponent<Renderer>(); 
+        ghost.hatMeshRenderer = spawnedHat.GetComponent<Renderer>(); 
     }
 
     private IEnumerator<float> _HowToPlay() {
