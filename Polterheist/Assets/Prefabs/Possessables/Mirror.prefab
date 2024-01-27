@@ -332,7 +332,7 @@ MonoBehaviour:
   mirrorLinked: 0
   teleportVFXPrefab: {fileID: 6282658935554073280, guid: 915c0db6e0dd987468f26040fb551618, type: 3}
   hauntDuration: 2
-  renderer: {fileID: 8893645544980008329}
+  meshRenderer: {fileID: 8893645544980008329}
   hauntedMaterial: {fileID: 2100000, guid: f69bed8dd52012940a123cae2ddfbc03, type: 2}
   hauntVFXPrefab: {fileID: 6282658935554073280, guid: 121f0ba8a973c6548b488f9a5fbda848, type: 3}
   hauntSuckVFX: {fileID: 4925859573574148312}
