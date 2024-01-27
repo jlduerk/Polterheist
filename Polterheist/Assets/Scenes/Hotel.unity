@@ -2713,10 +2713,6 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5644719042406468494, guid: 16c38ff70e3d7524699b985ffc962333, type: 3}
-      propertyPath: howToPlayDuration
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5644719042406468494, guid: 16c38ff70e3d7524699b985ffc962333, type: 3}
       propertyPath: playerSpawnPoints.Array.size
       value: 4
       objectReference: {fileID: 0}

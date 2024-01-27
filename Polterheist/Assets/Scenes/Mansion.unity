@@ -2943,10 +2943,6 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5644719042406468494, guid: 16c38ff70e3d7524699b985ffc962333, type: 3}
-      propertyPath: howToPlayDuration
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5644719042406468494, guid: 16c38ff70e3d7524699b985ffc962333, type: 3}
       propertyPath: playerSpawnPoints.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -8421,6 +8417,10 @@ PrefabInstance:
     - target: {fileID: 3227867969385637778, guid: 3dcb17298e1d68d4db5b28c04b0257cb, type: 3}
       propertyPath: timeRemaining
       value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 4135321434389663448, guid: 3dcb17298e1d68d4db5b28c04b0257cb, type: 3}
+      propertyPath: m_fontSize
+      value: 68.7
       objectReference: {fileID: 0}
     - target: {fileID: 4283229186142186867, guid: 3dcb17298e1d68d4db5b28c04b0257cb, type: 3}
       propertyPath: m_AnchorMax.y

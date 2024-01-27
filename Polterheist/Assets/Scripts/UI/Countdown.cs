@@ -28,7 +28,7 @@ public class Countdown : MonoBehaviour
             return;
         }
 
-        int soulCount = 2 - GameManager.Instance.playerCount;
+        int soulCount = 2 - PersistentPlayersManager.Instance.GetActivePlayerCount();
         string soulString = soulCount > 1 ? "s0uls" : "s0ul";
         CountdownText.text = $"Waiting f0r {soulCount.ToString()} {soulString}...";
     }

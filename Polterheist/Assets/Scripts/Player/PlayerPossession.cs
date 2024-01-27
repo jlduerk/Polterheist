@@ -35,17 +35,13 @@ public class PlayerPossession : MonoBehaviour {
 
     private string playerID;
     public string PlayerID => playerID;
+    public PlayerData PlayerData => PersistentPlayersManager.Instance.GetPlayerData(PlayerID);
+
 
     private void Start()
     {
         playerInputComponent = GetComponent<PlayerInput>();
         playerInputComponent.onActionTriggered += HandleInput;
-
-        // Keep each "player" in the Input system (each given a player index) tied to one player ID
-        // This is intended to keep player-specific data the same between levels
-        int inputPlayerIndex = playerInputComponent.playerIndex;
-        PersistentPlayersManager.Instance.AddPlayer(inputPlayerIndex);
-        playerID = PersistentPlayersManager.Instance.GetDevicePlayerId(inputPlayerIndex);
 
         // Attach possession begin/end events to respective UnityActions
         OnPossessionBeginAction += OnPossessionBegin;
@@ -167,27 +163,36 @@ public class PlayerPossession : MonoBehaviour {
     }
     #endregion Getters
 
-    #region Team Data
+    public void DressPlayer() {
+        TeamDataInit(PlayerData.teamData);
+        HatData hatData = PlayerData.hatData;
+        if (hatData) {
+            GameObject spawnedHat = Instantiate(hatData.hatPrefab, GetHatAttachPoint());
+            Ghost ghost = GetComponentInChildren<Ghost>();
+            ghost.hatRenderer = spawnedHat.GetComponent<Renderer>();
+        }
+    }
 
-    static int redPlayerNum = 0;
-    static int bluePlayerNum = 0;
+    public Transform GetHatAttachPoint() {
+        return hatAttachPoint;
+    }
+
+    public void AssignTeamData(TeamData teamDataToAssign) {
+        teamData = teamDataToAssign;
+    }
+
     public void TeamDataInit(TeamData teamDataToAssign) {
         teamData = teamDataToAssign;
         Color randomPlayerColor = teamDataToAssign.playerColor;
         if (teamData.team == TeamData.Team.Blue) {
-            bluePlayerNum++;
-            randomPlayerColor.g += bluePlayerNum%2 * .4f;
-            randomPlayerColor.r -= bluePlayerNum % 2 * .2f;
-            Debug.Log("BLUE TEAM");
+            randomPlayerColor.g += PlayerData.playerInputIndex % 2 * .4f;
+            randomPlayerColor.r -= PlayerData.playerInputIndex % 2 * .2f;
         }
         else if(teamData.team == TeamData.Team.Red)
         {
-            redPlayerNum++;
-            randomPlayerColor.g += redPlayerNum%2 * .2f;
-            Debug.Log("red TEAM");
+            randomPlayerColor.g += PlayerData.playerInputIndex % 2 * .2f;
 
         }
-        Debug.Log("BLUE TEAM");
 
         renderer.material.SetColor("_Color", randomPlayerColor);
     }
@@ -195,14 +200,8 @@ public class PlayerPossession : MonoBehaviour {
     public PlayerMovement GetPlayerMovement() {
         return playerMovement;
     }
-    #endregion
 
-
-    #region Hat Stuff
-    public Transform GetHatAttachPoint() {
-        return hatAttachPoint;
+    public void SetPlayerID(string id) {
+        playerID = id;
     }
-    #endregion
-
-
 }

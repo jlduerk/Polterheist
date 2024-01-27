@@ -24,10 +24,7 @@ public class SceneTransition : MonoBehaviour {
     private const float MAIN_MENU_MUSIC_DELAY = 1f;
 
     private void Start() {
-        if (SceneManager.GetActiveScene().name != MAIN_MENU_NAME) {
-            GameManager.Instance.OnLevelOpened();
-        }
-        else {
+        if (SceneManager.GetActiveScene().name == MAIN_MENU_NAME) {
             AudioManager.Instance.Play(MAIN_MENU_MUSIC_NAME, MAIN_MENU_MUSIC_DELAY);
         }
 

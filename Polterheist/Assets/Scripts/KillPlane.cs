@@ -27,8 +27,8 @@ public class KillPlane : MonoBehaviour {
     }
     
     public void RespawnPlayer(PlayerInput player) {
-        for (int i = 0; i < GameManager.Instance.players.Count; i++) {
-            if (player == GameManager.Instance.players[i]) {
+        for (int i = 0; i < PersistentPlayersManager.Instance.GetActivePlayerCount(); i++) {
+            if (player == PersistentPlayersManager.Instance.currentLevelData.playerInputs[i]) {
                 player.transform.position = GameManager.Instance.playerSpawnPoints[i].position;
                 return;
             }

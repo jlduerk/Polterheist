@@ -18,7 +18,8 @@ public class PauseMenu : MenuContainer {
 
     public void PauseToggle() {
         paused = !paused;
-        GameManager.Instance.Paused = paused;
+        Settings.PauseGame(paused);
+
         if (paused) {
             eventSystem.SetSelectedGameObject(menuItems[0].gameObject);
             DOTween.To(()=> Time.timeScale, x=> Time.timeScale = x, 0, pauseDuration).SetEase(pauseEase);

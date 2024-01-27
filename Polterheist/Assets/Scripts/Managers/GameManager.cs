@@ -14,25 +14,25 @@ public class GameManager : MonoBehaviour {
         get { return instance; }
         private set { }
     }
+    private const int MIN_PLAYERS = 2;
+    private const int DEBUG_MIN_PLAYERS = 1;
+
+
     public TeamData[] teamDatas;
     private bool singlePlayerAllowed;
 
     private PlayerInputManager playerInputManager;
-    public int playerCount;
     public Transform[] playerSpawnPoints;
-    [HideInInspector] public List<PlayerInput> players = new List<PlayerInput>();
 
     public ScoreManager scoreManager;
     public GameFlowManager gameFlowManager;
 
     public bool GameInProgress = false;
-    public bool Paused = false;
 
     public UnityEvent GameStartEvent;
     public UnityEvent GameEndEvent;
 
     public GameObject[] hats;
-    private List<GameObject> availableHats = new List<GameObject>();
     private CoroutineHandle howToPlayCoroutine;
     public float howToPlayDuration = 5;
     public GameObject howToPlayPrompt;
@@ -60,12 +60,14 @@ public class GameManager : MonoBehaviour {
     {
         if (GameStartEvent == null) GameStartEvent = new UnityEvent();
         if (GameEndEvent == null) GameEndEvent = new UnityEvent();
+
+        scoreManager.Init();
+        gameFlowManager.Init();
+
         howToPlayPrompt.SetActive(true);
 
         GameStartEvent.AddListener(OnGameStarted);
         GameEndEvent.AddListener(OnGameEnded);
-
-        availableHats.AddRange(hats);
 
         howToPlayCoroutine = Timing.RunCoroutine(_HowToPlay());
     }
@@ -74,12 +76,12 @@ public class GameManager : MonoBehaviour {
         if (!howToPlayDone || countdownStarted) {
             return;
         }
-        if (singlePlayerAllowed && playerCount > 0) {
+        if (singlePlayerAllowed && PersistentPlayersManager.Instance.currentLevelData.numPlayersReady >= DEBUG_MIN_PLAYERS) {
             gameFlowManager.StartCountdown();
             countdownStarted = true;
             return;
         }
-        if (playerCount >= 2) {
+        if (PersistentPlayersManager.Instance.currentLevelData.numPlayersReady >= MIN_PLAYERS) {
             gameFlowManager.StartCountdown();
             countdownStarted = true;
             return;
@@ -102,12 +104,6 @@ public class GameManager : MonoBehaviour {
         return null;
     }
 
-    public void OnLevelOpened()
-    {
-        scoreManager.Init();
-        gameFlowManager.Init();
-    }
-
     private void OnGameStarted()
     {
         Debug.Log("Game Started");
@@ -117,29 +113,14 @@ public class GameManager : MonoBehaviour {
     {
         Debug.Log("Game Ended");
         GameInProgress = false;
+        foreach (PlayerInput player in PersistentPlayersManager.Instance.currentLevelData.playerInputs) {
+            PlayerMovement playerMovement = player.GetComponent<PlayerMovement>();
+            playerMovement?.TogglePlayerMovement(false);
+        }
     }
 
     public void StartGame() {
         GameStartEvent.Invoke();
-    }
-    
-    public void RegisterPlayer(PlayerInput playerInput) {
-        int counterModulo = playerInput.playerIndex % teamDatas.Length;
-        playerInput.gameObject.GetComponent<PlayerPossession>().TeamDataInit(teamDatas[counterModulo]);
-
-        players.Add(playerInput);
-        playerInput.gameObject.transform.position = playerSpawnPoints[playerInput.playerIndex].position;
-        PlayerPossession playerPossession = playerInput.GetComponent<PlayerPossession>();
-        GetHat(playerPossession, playerInput.playerIndex);
-        playerCount++;
-    }
-
-    private void GetHat(PlayerPossession playerPossession, int index) {
-        Debug.Log(index);
-        GameObject hatToSpawn = availableHats[index];
-        GameObject spawnedHat = Instantiate(hatToSpawn, playerPossession.GetHatAttachPoint());
-        Ghost ghost = playerPossession.GetComponentInChildren<Ghost>();
-        ghost.hatRenderer = spawnedHat.GetComponent<Renderer>(); 
     }
 
     private IEnumerator<float> _HowToPlay() {

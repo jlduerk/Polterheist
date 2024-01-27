@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour {
     
     private bool movementEnabled = true;
     private bool isDashing = false;
-    private bool hasJoined;
+    private bool isReady;
 
     private void Start() {
         Init();
@@ -42,8 +42,7 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private void Movement(InputAction.CallbackContext context) {
-        RegisterPlayer();
-        if (!GameManager.Instance.GameInProgress || !movementEnabled || isDashing) {
+        if (!movementEnabled || isDashing) {
             return;
         }
         switch (context.action.name) {
@@ -65,7 +64,7 @@ public class PlayerMovement : MonoBehaviour {
         if (!movementEnabled) {
             return;
         }
-        if (movementVector != Vector3.zero && !GameManager.Instance.Paused) {
+        if (movementVector != Vector3.zero && !Settings.IsPaused) {
             transform.rotation = Quaternion.LookRotation(-movementVector);
         }
     }
@@ -80,10 +79,10 @@ public class PlayerMovement : MonoBehaviour {
         newVelocity.y = playerRigidbody.velocity.y;
         newVelocity.z = movementVector.z * speed * speedMultiplier;
         if (playerInputComponent.actions[JUMP_INPUT_ID].IsPressed()) {
-            RegisterPlayer();
+            SpawnGhost();
             newVelocity.y = jumpFloatSpeed;
         }
-        if (!GameManager.Instance.GameInProgress || !movementEnabled) {
+        if (!movementEnabled) {
             return;
         }
         playerRigidbody.velocity = newVelocity;
@@ -97,13 +96,15 @@ public class PlayerMovement : MonoBehaviour {
         jumpMultiplier = 1;
     }
 
-    private void RegisterPlayer() {
-        if (hasJoined) {
+    private void SpawnGhost() {
+        if (isReady) {
             return;
         }
 
-        hasJoined = true;
-        GameManager.Instance.RegisterPlayer(playerInputComponent);
+        PersistentPlayersManager.Instance.currentLevelData.numPlayersReady++;
+
+        playerInputComponent.gameObject.transform.position = PersistentPlayersManager.Instance.currentLevelData.spawnPoints[playerInputComponent.playerIndex].transform.position;
+        isReady = true;
         SpawnEffect(transform);
     }
     

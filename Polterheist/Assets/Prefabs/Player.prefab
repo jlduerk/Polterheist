@@ -203,7 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bb184eb576646f488e5bf71d91fa628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teamData: {fileID: 0}
+  teamData: {fileID: 11400000, guid: 536a8b086d0af3047a59d72e732d8378, type: 2}
   renderer: {fileID: 4076965277503824768}
   hatAttachPoint: {fileID: 3695811330839043221}
   possessableAttachPoint: {x: 0, y: 0, z: 0}
@@ -227,7 +227,6 @@ MonoBehaviour:
   invisibleMaterial: {fileID: 0}
   spawnEffectPrefab: {fileID: 6282658935554073280, guid: 255adb466d5d3eb49b568d40f1bdd8f4, type: 3}
   speed: 5.5
-  dashSpeedMultiplier: 5
   speedMultiplier: 1
   jumpFloatSpeed: 3
   dashDuration: 0.5
