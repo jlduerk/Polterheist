@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerPossession : MonoBehaviour {
     public TeamData teamData;
-    public MeshRenderer renderer;
+    public MeshRenderer meshRenderer;
 
     [SerializeField] private Transform hatAttachPoint;
     [SerializeField] private Vector3 possessableAttachPoint;
@@ -117,7 +117,7 @@ public class PlayerPossession : MonoBehaviour {
     {
         if (!currPossessable)
             return;
-        renderer.material.SetFloat("_Opacity", 1);
+        meshRenderer.material.SetFloat("_Opacity", 1);
         currPossessable.Eject(this);
     }
     #endregion Possession Actions
@@ -130,7 +130,7 @@ public class PlayerPossession : MonoBehaviour {
         {
             currPossessable = possessable;
             playerMovement.speed /= Mathf.Clamp(possessable.gameObject.GetComponent<Rigidbody>().mass, 1, MAX_MASS);
-            renderer.material.SetFloat("_Opacity", .5f);
+            meshRenderer.material.SetFloat("_Opacity", .5f);
             possessableDetector.ClearPossiblePossessables();
             //ghost.dropShadow.gameObject.SetActive(false);
         }
@@ -194,7 +194,7 @@ public class PlayerPossession : MonoBehaviour {
 
         }
 
-        renderer.material.SetColor("_Color", randomPlayerColor);
+        meshRenderer.material.SetColor("_Color", randomPlayerColor);
     }
 
     public PlayerMovement GetPlayerMovement() {

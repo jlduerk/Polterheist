@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Ghost : MonoBehaviour {
-    public Rigidbody rb;    
+    public Rigidbody rb;
     public Transform target;
-    public Renderer renderer;
-    private Material material;
-    public Renderer hatRenderer;
+    public MeshRenderer ghostMeshRenderer;
+    private Material ghostMaterial;
+    public MeshRenderer hatMeshRenderer;
     private const string SHADER_SLANTDIR_REFERENCE = "_SlantDir";
     public float wiggleSlantMultiplier = 0.5f;
     private const string SHADER_WIGGLE_SPEED_REFERENCE = "_WiggleSpeed";
@@ -21,25 +21,25 @@ public class Ghost : MonoBehaviour {
     private const int MAX_DROPSHADOW_DISTANCE = 100;
     
     void Start() {
-        material = renderer.material;
+        ghostMaterial = ghostMeshRenderer.material;
     }
 
     void Update() {
         if(new Vector3(rb.velocity.x, 0, rb.velocity.z).magnitude > .2 ) {
-            material.SetFloat(wiggleSpeed, 9);
-            if (hatRenderer != null)
+            ghostMaterial.SetFloat(wiggleSpeed, 9);
+            if (hatMeshRenderer != null)
             {
-                hatRenderer.material.SetFloat(wiggleSpeed, 9);
+                hatMeshRenderer.material.SetFloat(wiggleSpeed, 9);
             }
         }
         else {
-            material.SetFloat(wiggleSpeed, 3);
-            if (hatRenderer != null)
+            ghostMaterial.SetFloat(wiggleSpeed, 3);
+            if (hatMeshRenderer != null)
             {
-                hatRenderer.material.SetFloat(wiggleSpeed, 3);
+                hatMeshRenderer.material.SetFloat(wiggleSpeed, 3);
             }
         }
-        material.SetVector(wiggleSlant, rb.velocity * wiggleSlantMultiplier);
+        ghostMaterial.SetVector(wiggleSlant, rb.velocity * wiggleSlantMultiplier);
 
         DropShadow();
     }
