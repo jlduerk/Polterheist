@@ -204,7 +204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamData: {fileID: 11400000, guid: 536a8b086d0af3047a59d72e732d8378, type: 2}
-  renderer: {fileID: 4076965277503824768}
+  meshRenderer: {fileID: 0}
   hatAttachPoint: {fileID: 3695811330839043221}
   possessableAttachPoint: {x: 0, y: 0, z: 0}
   possessableDetector: {fileID: 8228207624677498279}
@@ -5225,8 +5225,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 3816136930357827420}
   target: {fileID: 7886963989797212873}
-  renderer: {fileID: 4076965277503824768}
-  hatRenderer: {fileID: 0}
+  ghostMeshRenderer: {fileID: 4076965277503824768}
+  hatMeshRenderer: {fileID: 0}
   wiggleSlantMultiplier: 0.04
   groundLayer:
     serializedVersion: 2
