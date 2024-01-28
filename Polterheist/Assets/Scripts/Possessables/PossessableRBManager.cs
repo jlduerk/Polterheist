@@ -10,6 +10,7 @@ using UnityEngine;
 public class PossessableRBManager : MonoBehaviour
 {
     private Dictionary<string, SpringJoint> springJoints = new Dictionary<string, SpringJoint>();
+    private Dictionary<string, LineRenderer> lineRenderers = new Dictionary<string, LineRenderer>();
 
     private Rigidbody rb = null;
     public Rigidbody possessableRigidBody {
@@ -21,6 +22,17 @@ public class PossessableRBManager : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
+    private void Update()
+    {
+        foreach (var line in lineRenderers)
+        {
+            SpringJoint joint = springJoints[line.Key];
+            Debug.Log(joint.currentForce.magnitude);
+            line.Value.startColor = Color.Lerp(Color.red, Color.white, joint.currentForce.magnitude/220);
+            line.Value.SetPositions(new Vector3[] { transform.position, joint.connectedBody.position });
+        }
+    }
+
     private SpringJoint GetSpringAttached(string playerID)
     {
         SpringJoint joint = null;
@@ -28,6 +40,15 @@ public class PossessableRBManager : MonoBehaviour
             return null;
 
         return joint;
+    }
+
+    private LineRenderer GetLineAttached(string playerID)
+    {
+        LineRenderer line = null;
+        if (!lineRenderers.TryGetValue(playerID, out line))
+            return null;
+
+        return line;
     }
 
 
@@ -47,6 +68,12 @@ public class PossessableRBManager : MonoBehaviour
         springJoint.spring = 20;
         springJoints.Add(playerID, springJoint);
 
+        LineRenderer lineRenderer = springJoint.connectedBody.gameObject.AddComponent<LineRenderer>();
+        lineRenderer.enabled = true;
+        lineRenderer.startColor = Color.red;
+        lineRenderer.startWidth = .3f;
+        lineRenderers.Add(playerID, lineRenderer);
+
         // TODO: Find appropriate spring strength
         // TODO: Might want to reduce gravity for possessables, so they don't drag as much
     }
@@ -60,5 +87,11 @@ public class PossessableRBManager : MonoBehaviour
             return;
         springJoints.Remove(playerID);
         Destroy(springJoint);
+
+        LineRenderer line = GetLineAttached(playerID);
+        if (!line)
+            return;
+        lineRenderers.Remove(playerID);
+        Destroy(line);
     }
 }
