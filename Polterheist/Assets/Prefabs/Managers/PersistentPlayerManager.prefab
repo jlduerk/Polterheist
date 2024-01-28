@@ -44,5 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edde7c04f02b2934d986851b1456b863, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hats: []
+  hats:
+  - {fileID: 11400000, guid: 8c70820e96343f74da70dcc6ffafe128, type: 2}
   defaultTeamData: {fileID: 11400000, guid: 536a8b086d0af3047a59d72e732d8378, type: 2}
