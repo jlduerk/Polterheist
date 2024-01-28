@@ -92,21 +92,34 @@ public class Possessable : MonoBehaviour
     // Un-possess this object
     public void Eject(PlayerPossession player)
     {
-        if (IsPossessed)
-        {
-            possessingPlayers.Remove(player);
-            SetUnPossessedEffect();
-            OnPossessionEnd.Invoke(this, player);
+        if (!possessingPlayers.Remove(player))
+            return;
 
-            OnPossessionBegin.RemoveListener(player.OnPossessionBeginAction);
-            OnPossessionEnd.RemoveListener(player.OnPossessionEndAction);
+        SetUnPossessedEffect();
+        OnPossessionEnd.Invoke(this, player);
 
-            Debug.Log(player.gameObject.name + " stopped possessing " + this.gameObject.name, this);
-        }
+        OnPossessionBegin.RemoveListener(player.OnPossessionBeginAction);
+        OnPossessionEnd.RemoveListener(player.OnPossessionEndAction);
+
+        Debug.Log(player.gameObject.name + " stopped possessing " + this.gameObject.name, this);
 
         if (rbManager)
             rbManager.DetachSpring(player.PlayerID);
     }
+
+    // Eject all the possessing players
+    public void EjectAll()
+    {
+        // Copy the list of possessors, since Eject will remove them from possessingPlayers
+        List<PlayerPossession> oldPossessors = new List<PlayerPossession>();
+        oldPossessors.AddRange(possessingPlayers);
+
+        foreach (PlayerPossession possessor in oldPossessors)
+        {
+            Eject(possessor);
+        }
+    }
+
 
     private void OverrideMaterial(Material material) {
         if (material == null) {
