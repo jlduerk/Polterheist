@@ -169,7 +169,7 @@ public class PlayerPossession : MonoBehaviour {
         if (hatData) {
             GameObject spawnedHat = Instantiate(hatData.hatPrefab, GetHatAttachPoint());
             Ghost ghost = GetComponentInChildren<Ghost>();
-            ghost.hatRenderer = spawnedHat.GetComponent<Renderer>();
+            ghost.hatMeshRenderer = spawnedHat.GetComponent<MeshRenderer>();
         }
     }
 
