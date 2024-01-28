@@ -107,6 +107,17 @@ public class Possessable : MonoBehaviour
             rbManager.DetachSpring(player.PlayerID);
     }
 
+    public void EjectbyID(string playerId)
+    {
+        foreach (var player in possessingPlayers)
+        {
+            if(player.PlayerID == playerId)
+            {
+                Eject(player);
+            }
+        }
+    }
+
     // Eject all the possessing players
     public void EjectAll()
     {

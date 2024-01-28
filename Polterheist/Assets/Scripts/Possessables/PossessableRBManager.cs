@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 /*
@@ -11,25 +12,47 @@ public class PossessableRBManager : MonoBehaviour
 {
     private Dictionary<string, SpringJoint> springJoints = new Dictionary<string, SpringJoint>();
     private Dictionary<string, LineRenderer> lineRenderers = new Dictionary<string, LineRenderer>();
+    public Material lineRendererMaterial;
 
     private Rigidbody rb = null;
-    public Rigidbody possessableRigidBody {
+    private Possessable posessable;
+
+    public Rigidbody possessableRigidBody
+    {
         get { return rb; }
         private set { }
     }
 
-    private void Start() {
+    private void Start()
+    {
         rb = GetComponent<Rigidbody>();
+        posessable = GetComponent<Possessable>();
     }
 
     private void Update()
     {
-        foreach (var line in lineRenderers)
+        int forLoopLength = lineRenderers.Count;
+        for (int i = 0; i < forLoopLength; i++)
         {
+            KeyValuePair<string, LineRenderer> line = lineRenderers.ElementAt(i);
             SpringJoint joint = springJoints[line.Key];
+
+            PlayerData playerData = PersistentPlayersManager.Instance.GetPlayerData(line.Key);
             Debug.Log(joint.currentForce.magnitude);
-            line.Value.startColor = Color.Lerp(Color.red, Color.white, joint.currentForce.magnitude/220);
+            line.Value.startColor = Color.Lerp(playerData.teamData.playerColor, Color.black, joint.currentForce.magnitude / 220);
+            line.Value.endColor = playerData.teamData.playerColor;
+
             line.Value.SetPositions(new Vector3[] { transform.position, joint.connectedBody.position });
+
+            // detach if fighting over object
+
+            //if (joint.currentForce.magnitude > 220 && springJoints.Count > 1)
+            //{
+            //    // particle effect
+            //    posessable.EjectbyID(line.Key);
+            //    return;
+            //}
+
         }
     }
 
@@ -59,6 +82,7 @@ public class PossessableRBManager : MonoBehaviour
         SpringJoint springJoint = GetSpringAttached(playerID);
         if (springJoint)
             return;
+        PlayerData playerData = PersistentPlayersManager.Instance.GetPlayerData(playerID);
 
         springJoint = gameObject.AddComponent<SpringJoint>();
         springJoint.connectedBody = rb;
@@ -70,7 +94,8 @@ public class PossessableRBManager : MonoBehaviour
 
         LineRenderer lineRenderer = springJoint.connectedBody.gameObject.AddComponent<LineRenderer>();
         lineRenderer.enabled = true;
-        lineRenderer.startColor = Color.red;
+        lineRenderer.material = lineRendererMaterial;
+        lineRenderer.startColor = playerData.teamData.playerColor;
         lineRenderer.startWidth = .3f;
         lineRenderers.Add(playerID, lineRenderer);
 
