@@ -190,15 +190,17 @@ public class Possessable : MonoBehaviour
         Color result = new Color(0, 0, 0);
         foreach (var player in possessingPlayers)
         {
-            result.r += player.teamData.teamColor.r;
-            result.g += player.teamData.teamColor.g;
-            result.b += player.teamData.teamColor.b;
+            Color playerTeamColor = player.TeamData.teamColor;
+            result.r += playerTeamColor.r;
+            result.g += playerTeamColor.g;
+            result.b += playerTeamColor.b;
         }
         foreach (var player in hoveringPlayers)
         {
-            result.r += player.teamData.teamColor.r;
-            result.g += player.teamData.teamColor.g;
-            result.b += player.teamData.teamColor.b;
+            Color playerTeamColor = player.TeamData.teamColor;
+            result.r += playerTeamColor.r;
+            result.g += playerTeamColor.g;
+            result.b += playerTeamColor.b;
         }
         result.r /= (hoveringPlayers.Count + possessingPlayers.Count);
         result.g /= (hoveringPlayers.Count + possessingPlayers.Count);

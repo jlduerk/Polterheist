@@ -46,4 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hats:
   - {fileID: 11400000, guid: 8c70820e96343f74da70dcc6ffafe128, type: 2}
-  defaultTeamData: {fileID: 11400000, guid: 536a8b086d0af3047a59d72e732d8378, type: 2}
+  teamDatas:
+  - {fileID: 11400000, guid: 536a8b086d0af3047a59d72e732d8378, type: 2}
+  - {fileID: 11400000, guid: 002711089a0be104c87572d343d09fb4, type: 2}
+  - {fileID: 11400000, guid: efba2d66c024a37458625cb4d6647486, type: 2}

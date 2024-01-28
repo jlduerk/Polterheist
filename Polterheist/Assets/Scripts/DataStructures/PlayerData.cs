@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerData {
     public HatData hatData;
-    public TeamData teamData;
+    public TeamData.Team team;
     public int playerInputIndex;
 
     public void PickupHat(HatData newHatData) {

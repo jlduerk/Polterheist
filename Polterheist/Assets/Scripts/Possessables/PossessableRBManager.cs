@@ -37,10 +37,10 @@ public class PossessableRBManager : MonoBehaviour
             KeyValuePair<string, LineRenderer> line = lineRenderers.ElementAt(i);
             SpringJoint joint = springJoints[line.Key];
 
-            PlayerData playerData = PersistentPlayersManager.Instance.GetPlayerData(line.Key);
+            TeamData playerTeamData = PersistentPlayersManager.Instance.GetPlayerTeamData(line.Key);
             Debug.Log(joint.currentForce.magnitude);
-            line.Value.startColor = Color.Lerp(playerData.teamData.playerColor, Color.black, joint.currentForce.magnitude / 220);
-            line.Value.endColor = playerData.teamData.playerColor;
+            line.Value.startColor = Color.Lerp(playerTeamData.playerColor, Color.black, joint.currentForce.magnitude / 220);
+            line.Value.endColor = playerTeamData.playerColor;
 
             line.Value.SetPositions(new Vector3[] { transform.position, joint.connectedBody.position });
 
@@ -82,7 +82,8 @@ public class PossessableRBManager : MonoBehaviour
         SpringJoint springJoint = GetSpringAttached(playerID);
         if (springJoint)
             return;
-        PlayerData playerData = PersistentPlayersManager.Instance.GetPlayerData(playerID);
+
+        TeamData playerTeamData = PersistentPlayersManager.Instance.GetPlayerTeamData(playerID);
 
         springJoint = gameObject.AddComponent<SpringJoint>();
         springJoint.connectedBody = rb;
@@ -95,7 +96,7 @@ public class PossessableRBManager : MonoBehaviour
         LineRenderer lineRenderer = springJoint.connectedBody.gameObject.AddComponent<LineRenderer>();
         lineRenderer.enabled = true;
         lineRenderer.material = lineRendererMaterial;
-        lineRenderer.startColor = playerData.teamData.playerColor;
+        lineRenderer.startColor = playerTeamData.playerColor;
         lineRenderer.startWidth = .3f;
         lineRenderers.Add(playerID, lineRenderer);
 

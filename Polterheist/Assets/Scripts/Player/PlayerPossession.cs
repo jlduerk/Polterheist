@@ -7,7 +7,6 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class PlayerPossession : MonoBehaviour {
-    public TeamData teamData;
     public MeshRenderer meshRenderer;
 
     [SerializeField] private Transform hatAttachPoint;
@@ -36,7 +35,7 @@ public class PlayerPossession : MonoBehaviour {
     private string playerID;
     public string PlayerID => playerID;
     public PlayerData PlayerData => PersistentPlayersManager.Instance.GetPlayerData(PlayerID);
-
+    public TeamData TeamData => PersistentPlayersManager.Instance.GetPlayerTeamData(PlayerID);
 
     private void Start()
     {
@@ -164,7 +163,7 @@ public class PlayerPossession : MonoBehaviour {
     #endregion Getters
 
     public void DressPlayer() {
-        TeamDataInit(PlayerData.teamData);
+        TeamDataInit(PlayerData.team);
         HatData hatData = PlayerData.hatData;
         if (hatData) {
             GameObject spawnedHat = Instantiate(hatData.hatPrefab, GetHatAttachPoint());
@@ -177,13 +176,13 @@ public class PlayerPossession : MonoBehaviour {
         return hatAttachPoint;
     }
 
-    public void AssignTeamData(TeamData teamDataToAssign) {
-        teamData = teamDataToAssign;
-    }
+    public void TeamDataInit(TeamData.Team newTeam) {
+        // Set the player's team
+        PersistentPlayersManager.Instance.SetPlayerTeam(playerID, newTeam);
 
-    public void TeamDataInit(TeamData teamDataToAssign) {
-        teamData = teamDataToAssign;
-        Color randomPlayerColor = teamDataToAssign.playerColor;
+        // Slightly adjust player material color based on team color
+        TeamData teamData = TeamData;
+        Color randomPlayerColor = teamData.playerColor;
         if (teamData.team == TeamData.Team.Blue) {
             randomPlayerColor.g += PlayerData.playerInputIndex % 2 * .4f;
             randomPlayerColor.r -= PlayerData.playerInputIndex % 2 * .2f;
@@ -191,7 +190,6 @@ public class PlayerPossession : MonoBehaviour {
         else if(teamData.team == TeamData.Team.Red)
         {
             randomPlayerColor.g += PlayerData.playerInputIndex % 2 * .2f;
-
         }
 
         meshRenderer.material.SetColor("_Color", randomPlayerColor);

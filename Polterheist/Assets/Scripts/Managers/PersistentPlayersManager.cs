@@ -35,7 +35,12 @@ public class PersistentPlayersManager : MonoBehaviour
     private const string playerIdGlyphs = "abcdefghijklmnopqrstuvwxyz0123456789";
     private Dictionary<string, PlayerData> playerDataDictionary = new Dictionary<string, PlayerData>();
     public HatData[] hats;
-    public TeamData defaultTeamData;
+
+    [SerializeField]
+    private TeamData[] teamDatas;
+    public Dictionary<TeamData.Team, TeamData> teamDataDictionary = new Dictionary<TeamData.Team, TeamData>();
+    public const TeamData.Team DEFAULT_TEAM = TeamData.Team.White;
+
     public CurrentLevelData currentLevelData {
         get {
             if (_currentLevelData == null) {
@@ -60,8 +65,15 @@ public class PersistentPlayersManager : MonoBehaviour
 
         SceneManager.sceneLoaded += OnSceneLoaded;
 
+        // TODO: This only works on root gameobjects! Has no effect if this gameobject is a child of GameManager, for instance
         // Prevent the instance from being destroyed when loading new scenes
         DontDestroyOnLoad(this.gameObject);
+
+        // Load the team data objects into a dictionary, using the team enum as the key
+        foreach(TeamData teamData in teamDatas)
+        {
+            teamDataDictionary.Add(teamData.team, teamData);
+        }
     }
 
     private void OnDisable() {
@@ -84,7 +96,7 @@ public class PersistentPlayersManager : MonoBehaviour
         string playerId = PlayerIdHash();
         devicePlayerIdMap.Add(playerInputIndex, playerId);
         PlayerData newPlayerData = new PlayerData();
-        newPlayerData.teamData = defaultTeamData;
+        newPlayerData.team = DEFAULT_TEAM;
         newPlayerData.playerInputIndex = playerInputIndex;
         playerDataDictionary.Add(playerId, newPlayerData);
 
@@ -104,6 +116,22 @@ public class PersistentPlayersManager : MonoBehaviour
 
     public PlayerData GetPlayerData(string playerID) {
         return playerDataDictionary[playerID];
+    }
+
+    public TeamData.Team GetPlayerTeam(string playerID) {
+        return GetPlayerData(playerID).team;
+    }
+
+    public void SetPlayerTeam(string playerID, TeamData.Team newTeam) {
+        playerDataDictionary[playerID].team = newTeam;
+    }
+
+    public TeamData GetTeamData(TeamData.Team team) {
+        return teamDataDictionary[team];
+    }
+
+    public TeamData GetPlayerTeamData(string playerID) {
+        return GetTeamData(GetPlayerTeam(playerID));
     }
 
     // Get the player ID using the Input system's "player index" (one per player)

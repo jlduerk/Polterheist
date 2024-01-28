@@ -5,25 +5,21 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class TeamSelectPortal : MonoBehaviour {
-    public TeamData neutralTeam;
-    public TeamData team;
+    public TeamData.Team teamToAssign;
     public GameObject enterPortalFXPrefab;
     private ParticleSystem enterPortalFX;
     public GameObject exitPortalFXPrefab;
     private ParticleSystem exitPortalFX;
-    private MeshRenderer renderer;
+    private MeshRenderer meshRenderer;
     private int playerCount;
 
     private void Start() {
-        renderer = GetComponent<MeshRenderer>();
-        if (renderer == null) {
+        meshRenderer = GetComponent<MeshRenderer>();
+        if (meshRenderer == null) {
             Debug.LogError("No MeshRenderer found on Portal object!", gameObject);
         }
-        if (team == null) {
-            Debug.LogError("No TeamData assigned for Portal object!", gameObject);
-        }
 
-        renderer.material = team.portalMaterial;
+        meshRenderer.material = PersistentPlayersManager.Instance.GetTeamData(teamToAssign).portalMaterial;
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -36,14 +32,14 @@ public class TeamSelectPortal : MonoBehaviour {
 
     private void EnterPortal(PlayerPossession player) {
         PlayEnterPortalFX();
-        player.gameObject.GetComponent<PlayerPossession>().TeamDataInit(team);
+        player.gameObject.GetComponent<PlayerPossession>().TeamDataInit(teamToAssign);
         player.GetPlayerMovement().TogglePlayerMovement(true);
         playerCount++;
     }
 
     public void ExitPortal(PlayerPossession player) {
         PlayExitPortalFX();
-        player.gameObject.GetComponent<PlayerPossession>().TeamDataInit(neutralTeam);
+        player.gameObject.GetComponent<PlayerPossession>().TeamDataInit(PersistentPlayersManager.DEFAULT_TEAM);
         player.GetPlayerMovement().TogglePlayerMovement(false);
         playerCount--;
     }
