@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour {
     private const float DASH_SPEED_MULTIPLIER = 5;
     private const float DEFAULT_SPEED_MULTIPLIER = 1;
     
-    private bool movementEnabled = true;
+    private bool movementEnabled = false;
     private bool isDashing = false;
     private bool isReady;
 
@@ -101,6 +101,7 @@ public class PlayerMovement : MonoBehaviour {
             return;
         }
 
+        TogglePlayerMovement(true);
         PersistentPlayersManager.Instance.currentLevelData.numPlayersReady++;
 
         playerInputComponent.gameObject.transform.position = PersistentPlayersManager.Instance.currentLevelData.spawnPoints[playerInputComponent.playerIndex].transform.position;
