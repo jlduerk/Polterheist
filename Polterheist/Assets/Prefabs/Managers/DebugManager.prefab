@@ -45,6 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableDebugManager: 1
+  showCursor: 0
   debugKeys:
   - keyCode: 293
     functionType: 0
+  - keyCode: 291
+    functionType: 1
