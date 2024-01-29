@@ -114,6 +114,7 @@ public class Possessable : MonoBehaviour
             if(player.PlayerID == playerId)
             {
                 Eject(player);
+                break;
             }
         }
     }
