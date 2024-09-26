@@ -33,3 +33,29 @@ public class Message {
         Data = data;
     }
 }
+
+//EXAMPLE!
+//
+//
+// This is entered in a script sending a message out. in this case, a controller script sending a message to the world that the how to play panel is being toggled
+//bool toggled;
+//public void ToggleHowToPlay() {
+//    toggled = !toggled;
+//    Message message = new Message(GlobalNames.UI.SHOW_HOW_TO_PLAY, toggled);
+//    MessageDispatcher.SendMessage(message);
+//}
+
+// This is entered in a separate script that is listening for the message. so for example, in a UI manager script we would want to know when we are requesting the how to play panel to be shown
+//public void AddListeners() {
+//    MessageDispatcher.AddListener(GlobalNames.UI.SHOW_HOW_TO_PLAY, ToggleHowToPlayListener);
+//}
+
+//public void RemoveListeners() {
+//    MessageDispatcher.RemoveListener(GlobalNames.UI.SHOW_HOW_TO_PLAY, ToggleHowToPlayListener);
+//}
+
+//public void ToggleHowToPlayListener(Message message) {
+//    if (message.Data is bool whatodo) {
+//        Debug.Log(whatodo);
+//    }
+//}

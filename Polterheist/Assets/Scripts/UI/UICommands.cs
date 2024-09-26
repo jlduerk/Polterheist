@@ -34,8 +34,4 @@ public class UICommands : MonoBehaviour {
 
         }
     }
-
-    public void ToggleHowToPlay() {
-        //Message message = new Message(GlobalNames.UI.SHOW_HOW_TO_PLAY, );
-    }
 }
