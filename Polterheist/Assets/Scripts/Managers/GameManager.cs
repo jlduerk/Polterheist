@@ -35,7 +35,6 @@ public class GameManager : MonoBehaviour {
     public GameObject[] hats;
     private CoroutineHandle howToPlayCoroutine;
     public float howToPlayDuration = 5;
-    public GameObject howToPlayPrompt;
     private bool howToPlayDone;
     private bool countdownStarted;
 
@@ -63,8 +62,6 @@ public class GameManager : MonoBehaviour {
 
         scoreManager.Init();
         gameFlowManager.Init();
-
-        howToPlayPrompt.SetActive(true);
 
         GameStartEvent.AddListener(OnGameStarted);
         GameEndEvent.AddListener(OnGameEnded);
@@ -125,7 +122,6 @@ public class GameManager : MonoBehaviour {
 
     private IEnumerator<float> _HowToPlay() {
         yield return Timing.WaitForSeconds(howToPlayDuration);
-        howToPlayPrompt.SetActive(false);
         howToPlayDone = true;
     }
 }
