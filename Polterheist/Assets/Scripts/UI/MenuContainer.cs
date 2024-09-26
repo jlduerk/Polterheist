@@ -36,15 +36,17 @@ public class MenuContainer : MonoBehaviour {
 
     private void Init() {
         //menu items
-        menuItems = new List<MenuItem>();
-        foreach (Transform child in menuItemsContainer) {
-            MenuItem menuItem = child.GetComponent<MenuItem>();
-            if (menuItem == null) {
-                continue;
-            }
+        if (menuItemsContainer != null) {
+            menuItems = new List<MenuItem>();
+            foreach (Transform child in menuItemsContainer) {
+                MenuItem menuItem = child.GetComponent<MenuItem>();
+                if (menuItem == null) {
+                    continue;
+                }
 
-            menuItem.Init();
-            menuItems.Add(menuItem);
+                menuItem.Init();
+                menuItems.Add(menuItem);
+            }
         }
 
         //fades
@@ -124,7 +126,9 @@ public class MenuContainer : MonoBehaviour {
         if (eventSystem == null) {
             eventSystem = EventSystem.current;
         }
-        menuItems[0].Highlight();
-        eventSystem.SetSelectedGameObject(menuItems[0].gameObject);
+        if (menuItems.Count != 0) {
+            menuItems[0].Highlight();
+            eventSystem.SetSelectedGameObject(menuItems[0].gameObject);
+        }
     }
 }
