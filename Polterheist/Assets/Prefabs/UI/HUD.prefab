@@ -556,6 +556,7 @@ MonoBehaviour:
   fadeOutDuration: 0
   fadeOutEase: 0
   cancelCanClose: 0
+  fadeMenuInstantOnCancelClose: 0
   openContainerOnCancel: {fileID: 0}
 --- !u!225 &8613522767753106877
 CanvasGroup:
@@ -1756,6 +1757,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1070273905533916761, guid: 36bc516ab24451348aa556ffddbf966f, type: 3}
+      propertyPath: m_text
+      value: C0NTR0LS
+      objectReference: {fileID: 0}
     - target: {fileID: 1588237308578193097, guid: 36bc516ab24451348aa556ffddbf966f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1779,6 +1784,14 @@ PrefabInstance:
     - target: {fileID: 1588237308578193097, guid: 36bc516ab24451348aa556ffddbf966f, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3170287336521305396, guid: 36bc516ab24451348aa556ffddbf966f, type: 3}
+      propertyPath: fadeOutEase
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3170287336521305396, guid: 36bc516ab24451348aa556ffddbf966f, type: 3}
+      propertyPath: cancelCanClose
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3196557532159902674, guid: 36bc516ab24451348aa556ffddbf966f, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
@@ -1814,11 +1827,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3196557532159902674, guid: 36bc516ab24451348aa556ffddbf966f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: FadeMenu
+      value: FadeMenuInstant
       objectReference: {fileID: 0}
     - target: {fileID: 3196557532159902674, guid: 36bc516ab24451348aa556ffddbf966f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: FadeMenu
+      value: FadeMenuInstant
       objectReference: {fileID: 0}
     - target: {fileID: 3196557532159902674, guid: 36bc516ab24451348aa556ffddbf966f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -1952,6 +1965,10 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
       objectReference: {fileID: 6648673771234558456}
+    - target: {fileID: 8694653843489045337, guid: 36bc516ab24451348aa556ffddbf966f, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8802261698983977247, guid: 36bc516ab24451348aa556ffddbf966f, type: 3}
       propertyPath: m_Name
       value: PauseMenuContainer
@@ -2146,6 +2163,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3208275480838099537, guid: 7dc39cd933dad9046858a6e94a1aba05, type: 3}
+      propertyPath: m_Color.a
+      value: 0.78431374
+      objectReference: {fileID: 0}
     - target: {fileID: 5527174703042537629, guid: 7dc39cd933dad9046858a6e94a1aba05, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2175,9 +2196,37 @@ PrefabInstance:
       value: HowToPlayPanel
       objectReference: {fileID: 0}
     - target: {fileID: 8058132674450944801, guid: 7dc39cd933dad9046858a6e94a1aba05, type: 3}
+      propertyPath: fadeInEase
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8058132674450944801, guid: 7dc39cd933dad9046858a6e94a1aba05, type: 3}
+      propertyPath: fadeOutEase
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8058132674450944801, guid: 7dc39cd933dad9046858a6e94a1aba05, type: 3}
+      propertyPath: fadeInDuration
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8058132674450944801, guid: 7dc39cd933dad9046858a6e94a1aba05, type: 3}
+      propertyPath: fadeOutDuration
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8058132674450944801, guid: 7dc39cd933dad9046858a6e94a1aba05, type: 3}
       propertyPath: openContainerOnCancel
       value: 
       objectReference: {fileID: 6622470937832623902}
+    - target: {fileID: 8058132674450944801, guid: 7dc39cd933dad9046858a6e94a1aba05, type: 3}
+      propertyPath: showPreviousMenuNoFade
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8058132674450944801, guid: 7dc39cd933dad9046858a6e94a1aba05, type: 3}
+      propertyPath: removeCancelMenuCloseFade
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8058132674450944801, guid: 7dc39cd933dad9046858a6e94a1aba05, type: 3}
+      propertyPath: fadeMenuInstantOnCancelClose
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9184504906288473800, guid: 7dc39cd933dad9046858a6e94a1aba05, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

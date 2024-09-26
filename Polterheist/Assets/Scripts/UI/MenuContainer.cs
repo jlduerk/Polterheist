@@ -21,6 +21,7 @@ public class MenuContainer : MonoBehaviour {
     public float fadeOutDuration;
     public Ease fadeOutEase;
     public bool cancelCanClose;
+    public bool fadeMenuInstantOnCancelClose;
     public MenuContainer openContainerOnCancel;
 
     private void Start() {
@@ -84,21 +85,37 @@ public class MenuContainer : MonoBehaviour {
     public virtual void StartAction(InputAction.CallbackContext context) { }
 
     public virtual void CancelAction(InputAction.CallbackContext context) {
-        if (cancelCanClose) {
-            FadeMenu(false);
+        if (cancelCanClose && IsEnabled()) {
+            if (fadeMenuInstantOnCancelClose) {
+                FadeMenuInstant(false);
+            }
+            else {
+                FadeMenu(false);
+            }
+            
             if (openContainerOnCancel) {
-                openContainerOnCancel.FadeMenu(true);
+                if (fadeMenuInstantOnCancelClose) {
+                    openContainerOnCancel.FadeMenuInstant(true);
+                }
+                else {
+                    openContainerOnCancel.FadeMenu(true);
+                }
             }
         }
+    }
+
+    public void FadeMenuInstant(bool enable) {
+        ToggleMenuItems(enable);
+        canvasGroup.alpha = enable ? 1 : 0;
     }
 
     public void FadeMenu(bool enable) {
         ToggleMenuItems(enable);
         if (enable) {
-            DOTween.To(()=> canvasGroup.alpha, x=> canvasGroup.alpha = x, 1, fadeInDuration).SetEase(fadeInEase).SetUpdate(true);
+            DOTween.To(() => canvasGroup.alpha, x => canvasGroup.alpha = x, 1, fadeInDuration).SetEase(fadeInEase).SetUpdate(true);
         }
         else {
-            DOTween.To(()=> canvasGroup.alpha, x=> canvasGroup.alpha = x, 0, fadeOutDuration).SetEase(fadeOutEase).SetUpdate(true);
+            DOTween.To(() => canvasGroup.alpha, x => canvasGroup.alpha = x, 0, fadeOutDuration).SetEase(fadeOutEase).SetUpdate(true);
         }
     }
 

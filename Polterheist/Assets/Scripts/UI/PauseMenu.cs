@@ -16,6 +16,10 @@ public class PauseMenu : MenuContainer {
         base.StartAction(context);
     }
 
+    public override void CancelAction(InputAction.CallbackContext context) {
+        //base.CancelAction(context);
+    }
+
     public void PauseToggle() {
         paused = !paused;
         Settings.PauseGame(paused);
