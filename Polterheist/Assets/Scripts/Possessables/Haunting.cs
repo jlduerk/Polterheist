@@ -96,4 +96,11 @@ public class Haunting : MonoBehaviour {
     {
 
     }
+
+    public void LevelSelectHaunt() {
+        //changes what the scene selection will be (increment and loop around with loop of names). have this handled in GameManager or something lol
+        //trigger fun shader fx
+        //UICommand.LoadScene when all players are in portals and a countdown is done (gives players time to back out)
+        Debug.LogWarning("TODO!");
+    }
 }
