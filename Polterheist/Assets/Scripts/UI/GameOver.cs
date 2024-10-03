@@ -6,9 +6,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-/// <summary>
-/// THIS SCRIPT NEEDS A REFACTOR IN THE FUTURE IN ORDER TO FOLLOW THE MENUCONTAINER PARADIGM CORRECTLY
-/// </summary>
 public class GameOver : MonoBehaviour
 {
     private GameManager gameManager;
@@ -29,6 +26,7 @@ public class GameOver : MonoBehaviour
     [SerializeField] private string winText = "vict0ry!";
     [SerializeField] private string drawText = "Draw!";
     private const string MAIN_MENU_SCENE_NAME = "MainMenu";
+    private const string HAT_SELECT_SCENE_NAME = "HatSelect";
     public AudioSource music;
 
     // Start is called before the first frame update
@@ -68,10 +66,24 @@ public class GameOver : MonoBehaviour
         gameOverPanel.FadeMenu(true);
     }
 
-    public void Continue() {
+    public void ReturnToHatSelect() {
+        if (!gameOverPanel.IsEnabled()) {
+            return;
+        }
+        UICommands.LoadScene(HAT_SELECT_SCENE_NAME);
+    }
+
+    public void ReturnToMainMenu() {
         if (!gameOverPanel.IsEnabled()) {
             return;
         }
         UICommands.LoadScene(MAIN_MENU_SCENE_NAME);
+    }
+
+    public void ReplayLevel() {
+        if (!gameOverPanel.IsEnabled()) {
+            return;
+        }
+        UICommands.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
