@@ -13,6 +13,7 @@ public class PlayerPossession : MonoBehaviour {
     [SerializeField] private Vector3 possessableAttachPoint;
     [SerializeField] private PossessableDetector possessableDetector;
 
+    [SerializeField] private GameObject hatPossessablePrefab;
 
     // Actions triggered by Possessables
     public UnityAction<Possessable, PlayerPossession> OnPossessionBeginAction;
@@ -163,8 +164,32 @@ public class PlayerPossession : MonoBehaviour {
     #endregion Getters
 
     public void DressPlayer() {
-        TeamDataInit(PlayerData.team);
+        UpdatePlayerColor();
+        UpdateHat();
+    }
+
+    public void DropHat() {
+        if (PlayerData.hatData)
+        {
+            GameObject newHatPossessable = Instantiate(hatPossessablePrefab, GetHatAttachPoint().position, GetHatAttachPoint().rotation);
+            newHatPossessable.GetComponent<HatEquip>().SetHatData(PlayerData.hatData);
+            SetHat(null);
+        }
+    }
+
+    public void SetHat(HatData newHatData) {
+        // TODO: Check if hat is already equipped?
+        PersistentPlayersManager.Instance.SetPlayerHat(playerID, newHatData);
+        UpdateHat();
+    }
+
+    public void UpdateHat() {
         HatData hatData = PlayerData.hatData;
+        
+        for (int i = 0; i < GetHatAttachPoint().childCount; i++) {
+            Destroy(GetHatAttachPoint().GetChild(i).gameObject);
+        }
+
         if (hatData) {
             GameObject spawnedHat = Instantiate(hatData.hatPrefab, GetHatAttachPoint());
             Ghost ghost = GetComponentInChildren<Ghost>();
@@ -179,15 +204,20 @@ public class PlayerPossession : MonoBehaviour {
     public void TeamDataInit(TeamData.Team newTeam) {
         // Set the player's team
         PersistentPlayersManager.Instance.SetPlayerTeam(playerID, newTeam);
+        UpdatePlayerColor();
+    }
 
+    public void UpdatePlayerColor() {
         // Slightly adjust player material color based on team color
         TeamData teamData = TeamData;
         Color randomPlayerColor = teamData.playerColor;
-        if (teamData.team == TeamData.Team.Blue) {
+        
+        if (teamData.team == TeamData.Team.Blue)
+        {
             randomPlayerColor.g += PlayerData.playerInputIndex % 2 * .4f;
             randomPlayerColor.r -= PlayerData.playerInputIndex % 2 * .2f;
         }
-        else if(teamData.team == TeamData.Team.Red)
+        else if (teamData.team == TeamData.Team.Red)
         {
             randomPlayerColor.g += PlayerData.playerInputIndex % 2 * .2f;
         }

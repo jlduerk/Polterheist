@@ -126,6 +126,10 @@ public class PersistentPlayersManager : MonoBehaviour
         playerDataDictionary[playerID].team = newTeam;
     }
 
+    public void SetPlayerHat(string playerID, HatData newHatData) {
+        playerDataDictionary[playerID].hatData = newHatData;
+    }
+
     public TeamData GetTeamData(TeamData.Team team) {
         return teamDataDictionary[team];
     }

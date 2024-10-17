@@ -4,28 +4,36 @@ using UnityEngine;
 
 public class HatEquip : MonoBehaviour
 {
-
     public HatData hatData;
+    private GameObject hatPrefabInstance = null;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        SetHatData(hatData);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetHatData(HatData newHatData)
     {
-        
+        hatData = newHatData;
+
+        if (hatPrefabInstance)
+        {
+            Destroy(hatPrefabInstance);
+        }
+
+        if (hatData)
+        {
+            // Create the new hat prefab geometry, and set up material + collision
+            hatPrefabInstance = Instantiate(hatData.hatPrefab, transform);
+            hatPrefabInstance.GetComponent<MeshRenderer>().material.SetFloat(Shader.PropertyToID("_WiggleSpeed"), 0);
+            GetComponent<MeshCollider>().sharedMesh = hatPrefabInstance.GetComponent<MeshFilter>().mesh;
+        }
     }
 
-    public void EnablePhysics(Possessable possessable, PlayerPossession possessor)
+    public void EquipHat(Possessable possessable, PlayerPossession player)
     {
-        GetComponent<Rigidbody>().isKinematic = false;
-    }
-
-    public void EquipHat(Possessable possessable, PlayerPossession possessor)
-    {
-        
+        player.DropHat();
+        player.SetHat(hatData);
+        Destroy(gameObject);
     }
 }
