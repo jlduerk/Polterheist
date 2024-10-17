@@ -4,7 +4,6 @@ using MEC;
 using UnityEngine;
 
 public class Haunting : MonoBehaviour {
-
     public float pushBackIntensity = 50;
     public float defaultHauntCooldown = 2f;
     public string hauntSFX = "Haunt";
@@ -16,6 +15,8 @@ public class Haunting : MonoBehaviour {
 
     private Rigidbody possessableRidgidBody;
     private CoroutineHandle defualtHauntTimer;
+
+
     private void Start()
     {
         Init();
@@ -79,6 +80,11 @@ public class Haunting : MonoBehaviour {
         }
     }
 
+    public void HauntFXOnly() {
+        AudioManager.Instance.Play(hauntSFX);
+        HauntEffect();
+    }
+
     private IEnumerator<float> _defualtHauntTimer()
     {
         yield return Timing.WaitForSeconds(defaultHauntCooldown);
@@ -95,12 +101,5 @@ public class Haunting : MonoBehaviour {
     public void MonkeBackflip()
     {
 
-    }
-
-    public void LevelSelectHaunt() {
-        //changes what the scene selection will be (increment and loop around with loop of names). have this handled in GameManager or something lol
-        //trigger fun shader fx
-        //UICommand.LoadScene when all players are in portals and a countdown is done (gives players time to back out)
-        Debug.LogWarning("TODO!");
     }
 }

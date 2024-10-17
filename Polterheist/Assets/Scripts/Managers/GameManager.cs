@@ -38,6 +38,11 @@ public class GameManager : MonoBehaviour {
     private bool howToPlayDone;
     private bool countdownStarted;
 
+    //this part is hard-coded and more one off-y. if we work on this again this will def need changes lol
+    private const int NUM_LEVELS = 3;
+    private int currentLevelIndex;
+    private string currentLevelName;
+
     #region Monobehavior
     private void Awake() {
         // check if the instance already exists and destroy the new instance if it does
@@ -49,7 +54,7 @@ public class GameManager : MonoBehaviour {
         instance = this;
 
         playerInputManager = FindObjectOfType<PlayerInputManager>();
-        
+
 #if UNITY_EDITOR
         singlePlayerAllowed = true;
 #endif
@@ -66,7 +71,7 @@ public class GameManager : MonoBehaviour {
         GameStartEvent.AddListener(OnGameStarted);
         GameEndEvent.AddListener(OnGameEnded);
 
-        howToPlayCoroutine = Timing.RunCoroutine(_HowToPlay());
+        //howToPlayCoroutine = Timing.RunCoroutine(_HowToPlay());
     }
 
     private void Update() {

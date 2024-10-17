@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class GlobalNames {
     public static class UI {
-
+        public const string ANNOUNCEMENT = "Announcement";
     }
 
     public static class Game {

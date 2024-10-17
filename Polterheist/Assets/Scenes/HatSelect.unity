@@ -1332,6 +1332,14 @@ PrefabInstance:
       propertyPath: delay
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7232946931636964058, guid: 3dcb17298e1d68d4db5b28c04b0257cb, type: 3}
+      propertyPath: m_fontColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7232946931636964058, guid: 3dcb17298e1d68d4db5b28c04b0257cb, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 16777215
+      objectReference: {fileID: 0}
     - target: {fileID: 7354990451923508451, guid: 3dcb17298e1d68d4db5b28c04b0257cb, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1394,6 +1402,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3dcb17298e1d68d4db5b28c04b0257cb, type: 3}
+--- !u!114 &340809503 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7013866917462205057, guid: 3dcb17298e1d68d4db5b28c04b0257cb, type: 3}
+  m_PrefabInstance: {fileID: 340809502}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6797a859ea45fa34baa1e0a32da6e871, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &387563651
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3479,6 +3498,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2e1b4e9d13e98e64a898afd8f9ba7c56, type: 3}
   m_PrefabInstance: {fileID: 1501571662}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1524430690 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1609714218722372935, guid: 1968a33fbe19d734c8a68f937b988dee, type: 3}
+  m_PrefabInstance: {fileID: 2017239222}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfcf038d31a19604bab37c101b76d172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1560131319
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4649,10 +4679,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1609714218722372935, guid: 1968a33fbe19d734c8a68f937b988dee, type: 3}
+      propertyPath: hauntVFXPrefab
+      value: 
+      objectReference: {fileID: 210007619191889840, guid: 8e702586e940218468221cf0f9abffed, type: 3}
     - target: {fileID: 2126726154529942309, guid: 1968a33fbe19d734c8a68f937b988dee, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: fcac1e07478f3ab4c9902eb2ee2bc942, type: 2}
+      objectReference: {fileID: 2100000, guid: b3c110166f95eee4ea3f03e27bb99f13, type: 2}
     - target: {fileID: 3274078147818018554, guid: 1968a33fbe19d734c8a68f937b988dee, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.07
@@ -9298,12 +9332,48 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7388964437311033581, guid: 1968a33fbe19d734c8a68f937b988dee, type: 3}
+      propertyPath: OnHaunt.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7388964437311033581, guid: 1968a33fbe19d734c8a68f937b988dee, type: 3}
       propertyPath: OnHaunt.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7388964437311033581, guid: 1968a33fbe19d734c8a68f937b988dee, type: 3}
+      propertyPath: OnHaunt.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7388964437311033581, guid: 1968a33fbe19d734c8a68f937b988dee, type: 3}
+      propertyPath: OnHaunt.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 340809503}
+    - target: {fileID: 7388964437311033581, guid: 1968a33fbe19d734c8a68f937b988dee, type: 3}
+      propertyPath: OnHaunt.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1524430690}
+    - target: {fileID: 7388964437311033581, guid: 1968a33fbe19d734c8a68f937b988dee, type: 3}
+      propertyPath: OnHaunt.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7388964437311033581, guid: 1968a33fbe19d734c8a68f937b988dee, type: 3}
       propertyPath: OnHaunt.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LevelSelectHaunt
+      value: IncrementCurrentLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 7388964437311033581, guid: 1968a33fbe19d734c8a68f937b988dee, type: 3}
+      propertyPath: OnHaunt.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: HauntFXOnly
+      objectReference: {fileID: 0}
+    - target: {fileID: 7388964437311033581, guid: 1968a33fbe19d734c8a68f937b988dee, type: 3}
+      propertyPath: OnHaunt.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LevelSelectNotificationPanel, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7388964437311033581, guid: 1968a33fbe19d734c8a68f937b988dee, type: 3}
+      propertyPath: OnHaunt.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Haunting, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7388964437311033581, guid: 1968a33fbe19d734c8a68f937b988dee, type: 3}
+      propertyPath: OnHaunt.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8498999244432665625, guid: 1968a33fbe19d734c8a68f937b988dee, type: 3}
       propertyPath: m_Name
