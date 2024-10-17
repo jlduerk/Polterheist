@@ -12,7 +12,9 @@ public class PossessableRBManager : MonoBehaviour
 {
     private Dictionary<string, SpringJoint> springJoints = new Dictionary<string, SpringJoint>();
     private Dictionary<string, LineRenderer> lineRenderers = new Dictionary<string, LineRenderer>();
-    public Material lineRendererMaterial;
+    private Material lineRendererMaterial;
+    private const string SHADER_INTENSITY_REFERENCE = "_Intensity";
+
 
     private Rigidbody rb = null;
     private Possessable posessable;
@@ -21,6 +23,11 @@ public class PossessableRBManager : MonoBehaviour
     {
         get { return rb; }
         private set { }
+    }
+
+    private void Awake()
+    {
+        lineRendererMaterial = Resources.Load("tetherMat", typeof(Material)) as Material;
     }
 
     private void Start()
@@ -43,6 +50,9 @@ public class PossessableRBManager : MonoBehaviour
             line.Value.endColor = playerTeamData.playerColor;
 
             line.Value.SetPositions(new Vector3[] { transform.position, joint.connectedBody.position });
+            
+            Debug.Log(joint.currentForce.magnitude/220);
+            lineRendererMaterial.SetFloat(SHADER_INTENSITY_REFERENCE, joint.currentForce.magnitude/220);
 
             // detach if fighting over object
 
@@ -97,7 +107,7 @@ public class PossessableRBManager : MonoBehaviour
         lineRenderer.enabled = true;
         lineRenderer.material = lineRendererMaterial;
         lineRenderer.startColor = playerTeamData.playerColor;
-        lineRenderer.startWidth = .3f;
+        lineRenderer.startWidth = 3;
         lineRenderers.Add(playerID, lineRenderer);
 
         // TODO: Find appropriate spring strength
